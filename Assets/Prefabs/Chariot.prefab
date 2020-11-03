@@ -74,8 +74,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87668e45d0ef5ee46b41dcc20c5baea6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tire: {fileID: 7061788423549097246}
-  wc: {fileID: 7061788423549097241}
+  tire: {fileID: 7061788424489928493}
 --- !u!1 &7061788423553087538
 GameObject:
   m_ObjectHideFlags: 0
@@ -429,8 +428,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87668e45d0ef5ee46b41dcc20c5baea6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tire: {fileID: 7061788423854629998}
-  wc: {fileID: 7061788423854629993}
+  tire: {fileID: 7061788424839772236}
 --- !u!1 &7061788423864446274
 GameObject:
   m_ObjectHideFlags: 0
@@ -598,8 +596,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87668e45d0ef5ee46b41dcc20c5baea6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tire: {fileID: 7061788423881283090}
-  wc: {fileID: 7061788423881283091}
+  tire: {fileID: 7061788425198647591}
 --- !u!1 &7061788423942405401
 GameObject:
   m_ObjectHideFlags: 0
@@ -1449,7 +1446,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7061788424571590748}
   m_Layer: 10
-  m_Name: r_dino (2)
+  m_Name: l_dino
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1711,7 +1708,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7061788424839772236}
   m_Layer: 10
-  m_Name: r_dino (3)
+  m_Name: r_dino
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2089,8 +2086,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87668e45d0ef5ee46b41dcc20c5baea6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tire: {fileID: 7061788425136072072}
-  wc: {fileID: 7061788425136072075}
+  tire: {fileID: 7061788424571590748}
 --- !u!1 &7061788425198647588
 GameObject:
   m_ObjectHideFlags: 0

@@ -6,18 +6,16 @@ using UnityEngine;
 [RequireComponent(typeof(WheelCollider))]
 public class Wheel : MonoBehaviour
 {
-    const string TIRE_NAME = "tire";
+    public Transform tire;
+    public float steerAngle;
 
-    [SerializeField] Transform tire;
-    [SerializeField] WheelCollider wc;
+
+    private WheelCollider wc;
 
     // Use this for initialization
     private void Awake()
     {
         wc = GetComponent<WheelCollider>();
-
-        if (tire == null)
-            tire = transform.Find(TIRE_NAME);
     }
 
     public void Move(float torque)
@@ -27,8 +25,8 @@ public class Wheel : MonoBehaviour
 
     public void Turn(float turnSpeed)
     {
-        wc.steerAngle = turnSpeed;
-        tire.localEulerAngles = new Vector3(0f, wc.steerAngle, 0f);
+        wc.steerAngle = steerAngle = turnSpeed;
+        tire.eulerAngles = new Vector3(0f, wc.steerAngle, 0f);
     }
 
     public void Brake(float brake)

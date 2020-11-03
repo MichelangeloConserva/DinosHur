@@ -36,39 +36,37 @@ public class MotorSimulator : MonoBehaviour
             MotorControlling(torque, turnSpeed);
         }
 
+        Debug.DrawRay(transform.position, rbody.velocity, Color.red);
+
+
+
     }
 
 
-    public void Move(float torque, float turnSpeed)
+    public void Move(float torque)
     {
         // Eliminating braking force if present
-        wheel[0].Brake(0);
-        wheel[1].Brake(0);
-        wheel[2].Brake(0);
-        wheel[3].Brake(0);
+        //wheel[0].Brake(0);
+        //wheel[1].Brake(0);
 
         //front wheel drive
         wheel[0].Move(torque);
         wheel[1].Move(torque);
 
         //front wheel steering
-        wheel[0].Turn(turnSpeed);
-        wheel[1].Turn(turnSpeed);
+        //wheel[0].Turn(turnSpeed);
+        //wheel[1].Turn(turnSpeed);
     }
 
     public void Brake(float brakeTorque)
     {
         // Eliminating front force if present
-        wheel[0].Move(0);
-        wheel[1].Move(0);
-        wheel[2].Move(0);
-        wheel[3].Move(0);
+        //wheel[0].Move(0);
+        //wheel[1].Move(0);
 
         //front wheel drive
         wheel[0].Brake(brakeTorque);
         wheel[1].Brake(brakeTorque);
-        wheel[2].Brake(brakeTorque);
-        wheel[3].Brake(brakeTorque);
     }
 
     public void MotorControlling(float torque, float turnSpeed)
@@ -88,8 +86,8 @@ public class MotorSimulator : MonoBehaviour
             //front wheel drive
             wheel[0].Brake(Mathf.Abs(torque));
             wheel[1].Brake(Mathf.Abs(torque));
-            wheel[0].Move(0);
-            wheel[1].Move(0);
+            //wheel[0].Move(0);
+            //wheel[1].Move(0);
         }
 
         //front wheel steering
