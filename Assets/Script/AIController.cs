@@ -23,13 +23,6 @@ public class AIController : MonoBehaviour
         float turn = Input.GetAxis("Horizontal") * 20f;
 
 
-        lDino.GetComponent<Transform>().localRotation = Quaternion.Euler(90f, -90f, 90f - turn);
-        rDino.GetComponent<Transform>().localRotation = Quaternion.Euler(90f, -90f, 90f - turn);
-
-
-
-
-
 
 
     }
