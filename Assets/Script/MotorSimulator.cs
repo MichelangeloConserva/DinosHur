@@ -38,8 +38,6 @@ public class MotorSimulator : MonoBehaviour
 
         Debug.DrawRay(transform.position, rbody.velocity, Color.red);
 
-
-
     }
 
 

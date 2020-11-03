@@ -15,9 +15,7 @@ public class AIController : MonoBehaviour
     //Update is called once per frame
     void Update()
     {
-        var torque = Random.Range(0.8f, 1) * ms.enginePower;
-        var turnSpeed = Random.Range(-0.1f, 0.1f) * ms.turnPower;
-        ms.MotorControlling(torque, turnSpeed);
+
     }
 
 
