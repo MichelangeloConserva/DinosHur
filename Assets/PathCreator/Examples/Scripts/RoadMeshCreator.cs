@@ -31,7 +31,7 @@ namespace PathCreation.Examples {
 
             if (meshCollider == null)
             {
-                meshCollider = gameObject.AddComponent(typeof(MeshCollider)) as MeshCollider;
+                meshCollider = meshHolder.AddComponent(typeof(MeshCollider)) as MeshCollider;
                 meshCollider.sharedMesh = mesh;
             }
         }
