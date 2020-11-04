@@ -65,7 +65,6 @@ public class CarController : MonoBehaviour
     private void Move(float accelInput, float turnInput)
     {
         // manual acceleration curve coefficient scalar
-        float accelerationCurveCoeff = 5;
         Vector3 localVel = transform.InverseTransformVector(rb.velocity);
 
 

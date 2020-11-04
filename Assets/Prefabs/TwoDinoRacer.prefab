@@ -90,7 +90,7 @@ GameObject:
   - component: {fileID: 3833672123444470366}
   - component: {fileID: 3833672123444470360}
   - component: {fileID: 3833672123444470367}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: WheelCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -165,7 +165,7 @@ GameObject:
   - component: {fileID: 3833672123469317547}
   - component: {fileID: 3833672123469317541}
   - component: {fileID: 3833672123469317540}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Main Camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -248,7 +248,7 @@ GameObject:
   - component: {fileID: 3833672123581802840}
   - component: {fileID: 3833672123581802842}
   - component: {fileID: 3833672123581802841}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: WheelCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -481,7 +481,7 @@ GameObject:
   - component: {fileID: 3833672123663287328}
   - component: {fileID: 3833672123663287330}
   - component: {fileID: 3833672123663287329}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -560,7 +560,7 @@ GameObject:
   - component: {fileID: 3833672123668072500}
   - component: {fileID: 3833672123668072502}
   - component: {fileID: 3833672123668072501}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: BodyParts
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -639,7 +639,7 @@ GameObject:
   - component: {fileID: 3833672123685202148}
   - component: {fileID: 3833672123685202150}
   - component: {fileID: 3833672123685202149}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: BodyParts
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -718,7 +718,7 @@ GameObject:
   - component: {fileID: 3833672123707884039}
   - component: {fileID: 3833672123707884033}
   - component: {fileID: 3833672123707884032}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: WheelCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -951,7 +951,7 @@ GameObject:
   - component: {fileID: 3833672123830789521}
   - component: {fileID: 3833672123830789523}
   - component: {fileID: 3833672123830789522}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1028,7 +1028,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3833672123878344403}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: CenterMass
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1218,7 +1218,7 @@ GameObject:
   - component: {fileID: 3833672124003623338}
   - component: {fileID: 3833672124003623339}
   m_Layer: 10
-  m_Name: DinoBody (2)
+  m_Name: LeftDinoBody
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1584,7 +1584,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3833672124265918407}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: LeftWheelCast
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1617,7 +1617,7 @@ GameObject:
   - component: {fileID: 3833672124271796722}
   - component: {fileID: 3833672124271796684}
   - component: {fileID: 3833672124271796723}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: WheelCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1690,7 +1690,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3833672124307418319}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: RightWheelCast (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1721,8 +1721,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3833672124330859722}
-  m_Layer: 10
-  m_Name: Chariot (1)
+  - component: {fileID: 866767369}
+  m_Layer: 9
+  m_Name: Chariot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1747,6 +1748,19 @@ Transform:
   m_Father: {fileID: 3833672124845273149}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &866767369
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3833672124330859721}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1.5, z: 1}
+  m_Center: {x: 0, y: 0.5, z: -0.65}
 --- !u!1 &3833672124395969248
 GameObject:
   m_ObjectHideFlags: 0
@@ -1758,7 +1772,7 @@ GameObject:
   - component: {fileID: 3833672124395969249}
   - component: {fileID: 3833672124395969251}
   - component: {fileID: 3833672124395969250}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1914,7 +1928,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3833672124487026922}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: LeftWheelCast (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1947,7 +1961,7 @@ GameObject:
   - component: {fileID: 3833672124497993688}
   - component: {fileID: 3833672124497993690}
   - component: {fileID: 3833672124497993689}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2024,7 +2038,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3833672124562545115}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: LeftWheelCast (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2055,8 +2069,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3833672124631629989}
-  m_Layer: 0
-  m_Name: Bars (1)
+  m_Layer: 10
+  m_Name: Bars
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2089,7 +2103,7 @@ GameObject:
   - component: {fileID: 3833672124632402493}
   - component: {fileID: 3833672124632402495}
   - component: {fileID: 3833672124632402494}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: WheelCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2164,7 +2178,7 @@ GameObject:
   - component: {fileID: 3833672124746348747}
   - component: {fileID: 3833672124746348741}
   - component: {fileID: 3833672124746348740}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: WheelCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2237,8 +2251,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3833672124748748328}
-  m_Layer: 0
-  m_Name: Character (1)
+  m_Layer: 10
+  m_Name: Character
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2272,7 +2286,7 @@ GameObject:
   - component: {fileID: 3833672124845273149}
   - component: {fileID: 3833672124845273151}
   - component: {fileID: 3833672124845273150}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Vehicle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2359,7 +2373,7 @@ GameObject:
   - component: {fileID: 3833672124895320812}
   - component: {fileID: 3833672124895320814}
   - component: {fileID: 3833672124895320813}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: WheelCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2435,7 +2449,8 @@ GameObject:
   - component: {fileID: 3833672124897661658}
   - component: {fileID: 3833672124897661652}
   - component: {fileID: 3833672124897661659}
-  m_Layer: 0
+  - component: {fileID: 1875269003}
+  m_Layer: 9
   m_Name: Dino
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2528,6 +2543,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Horizontal: Horizontal
   Vertical: Vertical
+--- !u!65 &1875269003
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3833672124897661657}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.5, y: 1.5, z: 2}
+  m_Center: {x: 0, y: 0.69, z: 0}
 --- !u!1 &3833672124938715423
 GameObject:
   m_ObjectHideFlags: 0
@@ -2616,7 +2644,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3833672124973899597}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: WheelCasts
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2650,7 +2678,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3833672124979146810}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: RightWheelCast
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2681,7 +2709,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3833672125054990915}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: WheelCasts
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2950,8 +2978,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3833672125167507441}
+  - component: {fileID: 370366400}
   m_Layer: 10
-  m_Name: DinoBody (3)
+  m_Name: RightDinoBody
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2978,6 +3007,20 @@ Transform:
   m_Father: {fileID: 3833672124897661653}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &370366400
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3833672125167507440}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee54137a5a2e47347aac1b3b435b81b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  frequency: 15
+  range: 0.2
 --- !u!1 &3833672125189766420
 GameObject:
   m_ObjectHideFlags: 0
@@ -2987,7 +3030,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3833672125189766421}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: RightWheelCast (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3018,7 +3061,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3833672125208875932}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: TwoDinoRacer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3052,7 +3095,7 @@ GameObject:
   - component: {fileID: 3833672125249813680}
   - component: {fileID: 3833672125249813682}
   - component: {fileID: 3833672125249813681}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: WheelCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
