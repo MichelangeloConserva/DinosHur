@@ -80,6 +80,8 @@ namespace KartGame.KartSystems
             }
         }
 
+        public bool upInTheAir;
+
         public Rigidbody Rigidbody { get; private set; }
         public Vector2 Input       { get; private set; }
         public float AirPercent    { get; private set; }
