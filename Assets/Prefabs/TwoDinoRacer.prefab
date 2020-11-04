@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3833672123267583613}
   - component: {fileID: 3833672123267583615}
   - component: {fileID: 3833672123267583614}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Bar (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -248,7 +248,7 @@ GameObject:
   - component: {fileID: 3833672123581802840}
   - component: {fileID: 3833672123581802842}
   - component: {fileID: 3833672123581802841}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: WheelCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -263,7 +263,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3833672123581802847}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.5499997, y: -0.5, z: 0}
+  m_LocalPosition: {x: -0.5, y: -0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3833672124265918407}
@@ -323,7 +323,7 @@ GameObject:
   - component: {fileID: 3833672123596100685}
   - component: {fileID: 3833672123596100687}
   - component: {fileID: 3833672123596100686}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Cube (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -481,7 +481,7 @@ GameObject:
   - component: {fileID: 3833672123663287328}
   - component: {fileID: 3833672123663287330}
   - component: {fileID: 3833672123663287329}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -560,7 +560,7 @@ GameObject:
   - component: {fileID: 3833672123668072500}
   - component: {fileID: 3833672123668072502}
   - component: {fileID: 3833672123668072501}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: BodyParts
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -639,7 +639,7 @@ GameObject:
   - component: {fileID: 3833672123685202148}
   - component: {fileID: 3833672123685202150}
   - component: {fileID: 3833672123685202149}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: BodyParts
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -872,7 +872,7 @@ GameObject:
   - component: {fileID: 3833672123781557833}
   - component: {fileID: 3833672123781557835}
   - component: {fileID: 3833672123781557834}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Cube (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -951,7 +951,7 @@ GameObject:
   - component: {fileID: 3833672123830789521}
   - component: {fileID: 3833672123830789523}
   - component: {fileID: 3833672123830789522}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1028,7 +1028,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3833672123878344403}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: CenterMass
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1060,7 +1060,7 @@ GameObject:
   - component: {fileID: 3833672123911969204}
   - component: {fileID: 3833672123911969206}
   - component: {fileID: 3833672123911969205}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Cube (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1217,7 +1217,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3833672124003623338}
   - component: {fileID: 3833672124003623339}
-  m_Layer: 10
+  m_Layer: 9
   m_Name: LeftDinoBody
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1349,7 +1349,7 @@ GameObject:
   - component: {fileID: 3833672124153407211}
   - component: {fileID: 3833672124153407205}
   - component: {fileID: 3833672124153407204}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Cube (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1507,7 +1507,7 @@ GameObject:
   - component: {fileID: 3833672124261548223}
   - component: {fileID: 3833672124261548217}
   - component: {fileID: 3833672124261548216}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Cube (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1584,7 +1584,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3833672124265918407}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: LeftWheelCast
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1599,7 +1599,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3833672124265918406}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.5, y: 0, z: 1.08}
+  m_LocalPosition: {x: -0.5, y: 0, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3833672123581802840}
@@ -1617,7 +1617,7 @@ GameObject:
   - component: {fileID: 3833672124271796722}
   - component: {fileID: 3833672124271796684}
   - component: {fileID: 3833672124271796723}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: WheelCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1632,7 +1632,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3833672124271796721}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.5499997, y: -0.5, z: 0}
+  m_LocalPosition: {x: -0.5, y: -0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3833672124562545115}
@@ -1721,7 +1721,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3833672124330859722}
-  - component: {fileID: 866767369}
   m_Layer: 9
   m_Name: Chariot
   m_TagString: Untagged
@@ -1748,19 +1747,6 @@ Transform:
   m_Father: {fileID: 3833672124845273149}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &866767369
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3833672124330859721}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1.5, z: 1}
-  m_Center: {x: 0, y: 0.5, z: -0.65}
 --- !u!1 &3833672124395969248
 GameObject:
   m_ObjectHideFlags: 0
@@ -1772,7 +1758,7 @@ GameObject:
   - component: {fileID: 3833672124395969249}
   - component: {fileID: 3833672124395969251}
   - component: {fileID: 3833672124395969250}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1851,7 +1837,7 @@ GameObject:
   - component: {fileID: 3833672124468679603}
   - component: {fileID: 3833672124468679565}
   - component: {fileID: 3833672124468679564}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Cube (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1961,7 +1947,7 @@ GameObject:
   - component: {fileID: 3833672124497993688}
   - component: {fileID: 3833672124497993690}
   - component: {fileID: 3833672124497993689}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2038,7 +2024,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3833672124562545115}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: LeftWheelCast (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2053,7 +2039,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3833672124562545114}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.5, y: 0, z: -0.85}
+  m_LocalPosition: {x: -0.5, y: 0, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3833672124271796722}
@@ -2069,7 +2055,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3833672124631629989}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Bars
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2103,7 +2089,7 @@ GameObject:
   - component: {fileID: 3833672124632402493}
   - component: {fileID: 3833672124632402495}
   - component: {fileID: 3833672124632402494}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: WheelCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2118,7 +2104,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3833672124632402492}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.5500002, y: -0.5, z: 0}
+  m_LocalPosition: {x: -0.5, y: -0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3833672125189766421}
@@ -2286,6 +2272,7 @@ GameObject:
   - component: {fileID: 3833672124845273149}
   - component: {fileID: 3833672124845273151}
   - component: {fileID: 3833672124845273150}
+  - component: {fileID: 1868711244}
   m_Layer: 10
   m_Name: Vehicle
   m_TagString: Untagged
@@ -2362,6 +2349,19 @@ HingeJoint:
   m_EnablePreprocessing: 1
   m_MassScale: 1
   m_ConnectedMassScale: 1
+--- !u!65 &1868711244
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3833672124845273148}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1.5, z: 1}
+  m_Center: {x: 0, y: 0, z: -0.75}
 --- !u!1 &3833672124895320595
 GameObject:
   m_ObjectHideFlags: 0
@@ -2373,7 +2373,7 @@ GameObject:
   - component: {fileID: 3833672124895320812}
   - component: {fileID: 3833672124895320814}
   - component: {fileID: 3833672124895320813}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: WheelCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2388,7 +2388,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3833672124895320595}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.5500002, y: -0.5, z: 0}
+  m_LocalPosition: {x: 0.5, y: -0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3833672124979146810}
@@ -2450,7 +2450,7 @@ GameObject:
   - component: {fileID: 3833672124897661652}
   - component: {fileID: 3833672124897661659}
   - component: {fileID: 1875269003}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Dino
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2555,7 +2555,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1.5, y: 1.5, z: 2}
-  m_Center: {x: 0, y: 0.69, z: 0}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &3833672124938715423
 GameObject:
   m_ObjectHideFlags: 0
@@ -2644,7 +2644,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3833672124973899597}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: WheelCasts
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2678,7 +2678,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3833672124979146810}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: RightWheelCast
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2693,7 +2693,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3833672124979146809}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.5, y: 0, z: 1.11}
+  m_LocalPosition: {x: 0.5, y: 0, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3833672124895320812}
@@ -2743,7 +2743,7 @@ GameObject:
   - component: {fileID: 3833672125125803010}
   - component: {fileID: 3833672125125803036}
   - component: {fileID: 3833672125125803011}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Bar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2822,7 +2822,7 @@ GameObject:
   - component: {fileID: 3833672125165693041}
   - component: {fileID: 3833672125165693043}
   - component: {fileID: 3833672125165693042}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Cube (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2901,7 +2901,7 @@ GameObject:
   - component: {fileID: 3833672125166645203}
   - component: {fileID: 3833672125166645165}
   - component: {fileID: 3833672125166645164}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Cube (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2979,7 +2979,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3833672125167507441}
   - component: {fileID: 370366400}
-  m_Layer: 10
+  m_Layer: 9
   m_Name: RightDinoBody
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3030,7 +3030,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3833672125189766421}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: RightWheelCast (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3045,7 +3045,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3833672125189766420}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.5, y: 0, z: -0.8199998}
+  m_LocalPosition: {x: 0.5, y: 0, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3833672124632402493}

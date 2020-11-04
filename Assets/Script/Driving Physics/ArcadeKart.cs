@@ -166,6 +166,7 @@ namespace KartGame.KartSystems
             GroundVehicle(minHeight);
             if (canMove)
             {
+                Rigidbody.inertiaTensor = new Vector3(2.5f, 3.5f, 1.4f);
                 MoveVehicle(accel, turn);
             }
             GroundAirbourne();

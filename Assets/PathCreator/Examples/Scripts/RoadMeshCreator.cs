@@ -23,17 +23,15 @@ namespace PathCreation.Examples {
         Mesh mesh;
         MeshCollider meshCollider = null;
         protected override void PathUpdated () {
-            if (pathCreator != null) {
+            if (pathCreator != null && meshCollider == null) {
                 AssignMeshComponents ();
                 AssignMaterials ();
                 CreateRoadMesh ();
-            }
 
-            if (meshCollider == null)
-            {
                 meshCollider = meshHolder.AddComponent(typeof(MeshCollider)) as MeshCollider;
                 meshCollider.sharedMesh = mesh;
             }
+
         }
 
         void CreateRoadMesh () {
