@@ -2,6 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 
+
+
 [System.Serializable]
 public class AxleInfo
 {
@@ -13,9 +15,24 @@ public class AxleInfo
 
 public class CarController : MonoBehaviour
 {
+
+    public Transform centerOfMass;
     public List<AxleInfo> axleInfos;
     public float maxMotorTorque;
     public float maxSteeringAngle;
+
+    public GameObject dinoLeft, dinoRight;
+
+
+    private Rigidbody rb;
+
+    private void Start()
+    {
+        rb = GetComponent<Rigidbody>();
+
+        rb.centerOfMass = centerOfMass.localPosition;
+    }
+
 
     // finds the corresponding visual wheel
     // correctly applies the transform
@@ -40,6 +57,16 @@ public class CarController : MonoBehaviour
     {
         float motor = maxMotorTorque * Input.GetAxis("Vertical");
         float steering = maxSteeringAngle * Input.GetAxis("Horizontal");
+
+
+        //rb.AddForceAtPosition(dinoLeft.transform.forward * motor, dinoLeft.transform.position, ForceMode.Acceleration);
+        //rb.AddForceAtPosition(dinoRight.transform.forward * motor, dinoRight.transform.position, ForceMode.Acceleration);
+        //rb.AddForceAtPosition(dinoLeft.transform.up * 3f, dinoLeft.transform.position, ForceMode.Acceleration);
+        //rb.AddForceAtPosition(dinoRight.transform.up * 3f, dinoRight.transform.position, ForceMode.Acceleration);
+
+        //dinoLeft.transform.rotation = Quaternion.Euler(0f, steering, 0f);
+        //dinoRight.transform.rotation = Quaternion.Euler(0f, steering, 0f);
+
 
         foreach (AxleInfo axleInfo in axleInfos)
         {
