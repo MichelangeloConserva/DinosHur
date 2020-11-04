@@ -14,42 +14,52 @@ public class BumperObstacle : MonoBehaviour, IObstacle
 
     public float speed = 10;
     public float retractionFactor = 0.5f;
-    public float distance = 10;
 
-    private BumperState bumperState;
+    private BumperState bumperState = BumperState.INACTIVE;
+
 
     private Vector3 startPosition;
     private Vector3 endPosition;
+    
+    private Vector3 direction;
+
+    private float distance;
+    private float currentDistance;
 
     public void Start()
     {
-        startPosition = transform.position;
-        endPosition = new Vector3(startPosition.x + distance, startPosition.y, startPosition.z);
-        bumperState = BumperState.INACTIVE;
+        startPosition = transform.GetChild(0).position;
+        endPosition = transform.GetChild(1).position;
 
+        distance = Vector3.Distance(startPosition, endPosition);
     }
     public void Update()
     {
 
+        currentDistance = Vector3.Distance(transform.position, startPosition);
+        
         if (Input.GetKey(KeyCode.Space) && bumperState == BumperState.INACTIVE)
         {
             // activate bumper
-            rb.velocity = new Vector3(speed, 0, 0);
+            direction = Vector3.Normalize(endPosition - startPosition);
+            rb.velocity = direction * speed;
             bumperState = BumperState.ACTIVE;
         } 
 
         // check if bumper should stop
-        if (transform.position.x > endPosition.x && bumperState == BumperState.ACTIVE)
+        if (currentDistance > distance && bumperState == BumperState.ACTIVE)
         {
             //retract bumper
-            rb.velocity = new Vector3(-speed * retractionFactor, 0, 0);
+            direction = Vector3.Normalize(startPosition - transform.position);
+            rb.velocity = direction * speed * retractionFactor;
             bumperState = BumperState.RETRACTING;
         }
 
-        //
-        if (transform.position.x < startPosition.x && bumperState == BumperState.RETRACTING)
+        if ( currentDistance < 0.1f && bumperState == BumperState.RETRACTING)
         {
+            // reset position
             rb.velocity = new Vector3(0, 0, 0);
+            transform.position = startPosition;
             bumperState = BumperState.INACTIVE;
         }
 
