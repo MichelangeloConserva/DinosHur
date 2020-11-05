@@ -1069,9 +1069,9 @@ MonoBehaviour:
     ReverseAcceleration: 5
     AccelerationCurve: 0.8
     Braking: 10
-    CoastingDrag: 4
+    CoastingDrag: 5
     Grip: 0.95
-    Steer: 5
+    Steer: 3.5
     AddedGravity: 0
     Suspension: 0
   CenterOfMass: {fileID: 1257177639650085510}
@@ -1235,7 +1235,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1257177640830663785}
   serializedVersion: 2
-  m_Mass: 1
+  m_Mass: 0.8
   m_Drag: 0.05
   m_AngularDrag: 10
   m_UseGravity: 1
@@ -1391,7 +1391,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1257177641003917270}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.9, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1257177640830663784}

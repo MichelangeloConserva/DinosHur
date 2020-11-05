@@ -8,7 +8,7 @@ public class BlockDestroy : MonoBehaviour
 
     void OnTriggerEnter(Collider collision)
     {
-        Debug.Log(collision.gameObject.tag);
+
         if (collision.transform.root.CompareTag("vehicle"))
         {
             //Destroy(gameObject);

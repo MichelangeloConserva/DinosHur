@@ -41,7 +41,13 @@ public class BumperObstacle : MonoBehaviour, IObstacle
     {
 
         currentDistance = Vector3.Distance(transform.position, startPosition);
-
+        if (Input.GetKeyDown(KeyCode.Space) && bumperState == BumperState.INACTIVE)
+        {
+            direction = Vector3.Normalize(endPosition - startPosition);
+            rb.velocity = direction * speed;
+            bumperState = BumperState.ACTIVE;
+            startTime = Time.time;
+        }
         // check if bumper should stop
         if (currentDistance > distance && bumperState == BumperState.ACTIVE)
         {

@@ -81,7 +81,6 @@ namespace KartGame.KartSystems
             }
         }
 
-        public bool upInTheAir;
         public bool humanControll = false;
 
         public Rigidbody Rigidbody { get; private set; }
@@ -168,6 +167,8 @@ namespace KartGame.KartSystems
             GroundPercent = (float)groundedCount / Wheels.Length;
             AirPercent = 1 - GroundPercent;
 
+            canMove = (AirPercent == 1) ? false : true;
+
             // gather inputs
             float accel = Input.y;
             float turn = Input.x;
@@ -176,7 +177,8 @@ namespace KartGame.KartSystems
             GroundVehicle(minHeight);
             if (canMove)
             {
-                Rigidbody.inertiaTensor = new Vector3(2.5f, 3.5f, 1.4f);
+                
+                //Rigidbody.inertiaTensor = new Vector3(2.5f, 10f, 1.4f);
                 MoveVehicle(accel, turn);
             }
             GroundAirbourne();
