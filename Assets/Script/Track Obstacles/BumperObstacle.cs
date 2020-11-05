@@ -42,15 +42,6 @@ public class BumperObstacle : MonoBehaviour, IObstacle
 
         currentDistance = Vector3.Distance(transform.position, startPosition);
 
-        if (Input.GetKey(KeyCode.Space) && bumperState == BumperState.INACTIVE)
-        {
-            // activate bumper
-            direction = Vector3.Normalize(endPosition - startPosition);
-            rb.velocity = direction * speed;
-            bumperState = BumperState.ACTIVE;
-            startTime = Time.time;
-        } 
-
         // check if bumper should stop
         if (currentDistance > distance && bumperState == BumperState.ACTIVE)
         {
@@ -64,7 +55,13 @@ public class BumperObstacle : MonoBehaviour, IObstacle
     }
     public void Activate()
     {
-        
+        if (bumperState == BumperState.INACTIVE)
+        {
+            direction = Vector3.Normalize(endPosition - startPosition);
+            rb.velocity = direction * speed;
+            bumperState = BumperState.ACTIVE;
+            startTime = Time.time;
+        }
     }
 
     private void OnCollisionEnter(Collision collision)

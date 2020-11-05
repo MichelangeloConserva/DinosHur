@@ -6,7 +6,7 @@ public class TwitchLogic : MonoBehaviour {
 
 	public TwitchIRC TwitchIRC;
 
-	public GameObject box;
+	public GameObject[] obstacles;
 	
 
 	private int[] _voteCount = new int[11];
@@ -238,38 +238,18 @@ public class TwitchLogic : MonoBehaviour {
 	*/
 	public void ParseMessageRecieved(string msg){
 
-		Debug.Log(msg);
-		msg = msg.Trim();
 
-		if (msg.Equals("Red") || msg.Equals("red"))
-        {
-			box.GetComponent<Renderer>().material.color = Color.red;
-		}
-
-		if (msg.Equals("Yellow") || msg.Equals("yellow"))
-		{
-			box.GetComponent<Renderer>().material.color = Color.yellow;
-		}
-
-		if (msg.Equals("Blue") || msg.Equals("blue"))
-		{
-			box.GetComponent<Renderer>().material.color = Color.blue;
-		}
-
-		if (msg.Equals("Green") || msg.Equals("green"))
-		{
-			box.GetComponent<Renderer>().material.color = Color.green;
-		}
-
-		if (msg.Equals("White") || msg.Equals("white"))
-		{
-			box.GetComponent<Renderer>().material.color = Color.white;
-		}
 
 		if (msg.Equals("FIRE") || msg.Equals("fire"))
 		{
-			FiringObstacleScript obstacle = box.GetComponent<FiringObstacleScript>();
-			obstacle.Activate();
+			foreach (GameObject obstacle in obstacles)
+			{
+				if (obstacle != null)
+				{
+					IObstacle o = obstacle.GetComponent<IObstacle>();
+					o.Activate();
+				}
+			}
 		}
 
 
