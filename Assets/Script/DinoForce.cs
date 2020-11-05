@@ -24,7 +24,6 @@ public class DinoForce : MonoBehaviour
         rot.x = Mathf.Cos(frequency * Time.time) * range*30;
         transform.localRotation = Quaternion.Euler(rot);
 
-
     }
 
 
