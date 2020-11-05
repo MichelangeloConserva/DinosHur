@@ -5,21 +5,26 @@ using UnityEngine;
 public class DinoForce : MonoBehaviour
 {
 
-    public float pushForce;
-    public float maxVelocity;
-    public Transform pointOfForce;
-
-    private Rigidbody rb;
+    public float frequency;
+    public float range;
 
     private void Start()
     {
-        rb = GetComponent<Rigidbody>();
     }
 
 
     private void Update()
     {
-        Debug.DrawRay(pointOfForce.position, rb.velocity, Color.red);
+
+        var pos = transform.localPosition;
+        pos.y = Mathf.Sin(frequency * Time.time) * range + 0.1f;
+        transform.localPosition = pos;
+
+        var rot = transform.localRotation.eulerAngles;
+        rot.x = Mathf.Cos(frequency * Time.time) * range*30;
+        transform.localRotation = Quaternion.Euler(rot);
+
+
     }
 
 

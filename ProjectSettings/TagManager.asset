@@ -6,8 +6,12 @@ TagManager:
   tags:
   - vehicle
   - Track
+<<<<<<< HEAD
   - block
   - Gun
+=======
+  - Obstacle
+>>>>>>> f07a8f7e7056803a10edae10b9af0750460686d6
   layers:
   - Default
   - TransparentFX
@@ -17,9 +21,9 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
-  - 
+  - track
+  - obstacleCollider
+  - cart
   - 
   - 
   - 
