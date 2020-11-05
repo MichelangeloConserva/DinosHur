@@ -6,6 +6,8 @@ TagManager:
   tags:
   - vehicle
   - Track
+  - block
+  - Gun
   layers:
   - Default
   - TransparentFX

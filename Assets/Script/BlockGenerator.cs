@@ -6,7 +6,7 @@ using UnityEngine;
 public class BlockGenerator : MonoBehaviour
 {
 
-    public GameObject spawnPosition;
+    //public GameObject spawnPosition;
 
     public GameObject block;
 
@@ -48,7 +48,7 @@ public class BlockGenerator : MonoBehaviour
     {
         //GameObject newBlock = Instantiate(block);
         block.SetActive(true);
-        block.transform.position = spawnPosition.transform.position;
+        block.transform.position = transform.position;
         isSpawning = false;
     }
 

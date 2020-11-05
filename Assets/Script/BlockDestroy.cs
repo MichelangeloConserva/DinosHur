@@ -5,7 +5,7 @@ using UnityEngine;
 public class BlockDestroy : MonoBehaviour
 {
 
-    public GameObject block;
+    //public GameObject block;
 
 
 
@@ -16,7 +16,7 @@ public class BlockDestroy : MonoBehaviour
         {
 
             //Destroy(gameObject);
-            block.SetActive(false);
+            gameObject.SetActive(false);
 
         }
 
