@@ -1,22 +1,30 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class AIController : MonoBehaviour
 {
-    private MotorSimulator ms;
+    private KartGame.KartSystems.ArcadeKart ak;
 
     //Start is called before the first frame update
     void Start()
     {
-        ms = GetComponent<MotorSimulator>();
+        ak = GetComponent<KartGame.KartSystems.ArcadeKart>();
     }
 
-    //Update is called once per frame
-    void Update()
+
+    private Vector2 BasicAI()
     {
-
+        if (Time.time < 1)
+            return new Vector2(0, 0);
+        return new Vector2(UnityEngine.Random.Range(-0.2f, 0.2f), 1);
     }
 
 
+
+    internal Vector2 GatherInputs()
+    {
+        return BasicAI();
+    }
 }

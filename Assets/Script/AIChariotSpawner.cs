@@ -13,10 +13,10 @@ public class AIChariotSpawner : MonoBehaviour
     void Start()
     {
 
-        AIChariots.Add(Instantiate(chariot, new Vector3(-5.8f, 1, 0), Quaternion.identity, transform));
-        AIChariots.Add(Instantiate(chariot, new Vector3(-11f, 1, 0), Quaternion.identity, transform));
-        AIChariots.Add(Instantiate(chariot, new Vector3(5.8f, 1, 0), Quaternion.identity, transform));
-        AIChariots.Add(Instantiate(chariot, new Vector3(11f, 1, 0), Quaternion.identity, transform));
+        AIChariots.Add(Instantiate(chariot, new Vector3(-5.8f, 2, 0), Quaternion.identity, transform));
+        AIChariots.Add(Instantiate(chariot, new Vector3(-11f, 2, 0), Quaternion.identity, transform));
+        AIChariots.Add(Instantiate(chariot, new Vector3(5.8f, 2, 0), Quaternion.identity, transform));
+        AIChariots.Add(Instantiate(chariot, new Vector3(11f, 2, 0), Quaternion.identity, transform));
 
     }
 

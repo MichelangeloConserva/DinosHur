@@ -23,6 +23,7 @@ namespace KartGame.KartSystems
         [System.Serializable]
         public struct Stats
         {
+
             [Header("Movement Settings")]
             [Tooltip("The maximum speed forwards")]
             public float TopSpeed;
@@ -81,6 +82,7 @@ namespace KartGame.KartSystems
         }
 
         public bool upInTheAir;
+        public bool humanControll = false;
 
         public Rigidbody Rigidbody { get; private set; }
         public Vector2 Input       { get; private set; }
@@ -120,6 +122,8 @@ namespace KartGame.KartSystems
 
         public Transform SuspensionBody;
 
+        public AIController ai;
+
         // saved transforms of where the suspension's neutral positions are
         Vector3 suspensionNeutralPos;
         Quaternion suspensionNeutralRot;
@@ -139,13 +143,19 @@ namespace KartGame.KartSystems
             m_Inputs = GetComponents<IInput>();
             suspensionNeutralPos = SuspensionBody.transform.localPosition;
             suspensionNeutralRot = SuspensionBody.transform.localRotation;
+
+            if (!humanControll)
+                ai = GetComponent<AIController>();
         }
 
         void FixedUpdate()
         {
             ResetIfStuck();
 
-            GatherInputs();
+            if (humanControll)
+                GatherInputs();
+            else
+                Input = ai.GatherInputs();
 
             // apply our powerups to create our finalStats
             TickPowerups();
