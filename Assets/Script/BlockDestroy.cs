@@ -5,33 +5,17 @@ using UnityEngine;
 public class BlockDestroy : MonoBehaviour
 {
 
-    //public GameObject block;
 
-
-
-    void OnCollisionEnter(Collision collision)
+    void OnTriggerEnter(Collider collision)
     {
-
-        if (collision.gameObject.tag == "vehicle")
+        Debug.Log(collision.gameObject.tag);
+        if (collision.transform.root.CompareTag("vehicle"))
         {
-
             //Destroy(gameObject);
+            collision.transform.root.GetComponent<BlockProgress>().blockCollectionCounter++;
             gameObject.SetActive(false);
-
         }
-
     }
 
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

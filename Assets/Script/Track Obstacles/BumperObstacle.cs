@@ -9,7 +9,6 @@ public enum BumperState { INACTIVE = 0, ACTIVE, RETRACTING};
 public class BumperObstacle : MonoBehaviour, IObstacle
 {
     // Start is called before the first frame update
-    public GameObject bumperPrefab;
     public Rigidbody rb;
     public AudioClip audioClip;
 

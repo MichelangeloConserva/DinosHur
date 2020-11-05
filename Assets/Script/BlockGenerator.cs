@@ -33,13 +33,13 @@ public class BlockGenerator : MonoBehaviour
     void Update()
     {
 
-        if (!isSpawning)
-        {
-            //block.SetActive(true);
-            float timer = Random.Range(minWait, maxWait);
-            Invoke("SpawnObject", timer);
-            isSpawning = true;
-        }
+        //if (!isSpawning)
+        //{
+        //    //block.SetActive(true);
+        //    float timer = Random.Range(minWait, maxWait);
+        //    Invoke("SpawnObject", timer);
+        //    isSpawning = true;
+        //}
 
     }
 
@@ -48,7 +48,7 @@ public class BlockGenerator : MonoBehaviour
     {
         //GameObject newBlock = Instantiate(block);
         block.SetActive(true);
-        block.transform.position = transform.position;
+        //block.transform.position = transform.position;
         isSpawning = false;
     }
 
