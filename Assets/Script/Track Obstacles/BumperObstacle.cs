@@ -11,6 +11,7 @@ public class BumperObstacle : MonoBehaviour, IObstacle
     // Start is called before the first frame update
     public GameObject bumperPrefab;
     public Rigidbody rb;
+    public AudioClip audioClip;
 
     public float speed = 10;
     public float retractionFactor = 0.5f;
@@ -26,6 +27,10 @@ public class BumperObstacle : MonoBehaviour, IObstacle
     private float distance;
     private float currentDistance;
 
+    private float startTime;
+
+    
+
     public void Start()
     {
         startPosition = transform.GetChild(0).position;
@@ -37,35 +42,43 @@ public class BumperObstacle : MonoBehaviour, IObstacle
     {
 
         currentDistance = Vector3.Distance(transform.position, startPosition);
-        
+
         if (Input.GetKey(KeyCode.Space) && bumperState == BumperState.INACTIVE)
         {
             // activate bumper
             direction = Vector3.Normalize(endPosition - startPosition);
             rb.velocity = direction * speed;
             bumperState = BumperState.ACTIVE;
+            startTime = Time.time;
         } 
 
         // check if bumper should stop
         if (currentDistance > distance && bumperState == BumperState.ACTIVE)
         {
-            //retract bumper
             direction = Vector3.Normalize(startPosition - transform.position);
             rb.velocity = direction * speed * retractionFactor;
+            float retractingTime = (Time.time - startTime) / retractionFactor;
+            StartCoroutine(Reset(retractingTime));
             bumperState = BumperState.RETRACTING;
-        }
 
-        if ( currentDistance < 0.1f && bumperState == BumperState.RETRACTING)
-        {
-            // reset position
-            rb.velocity = new Vector3(0, 0, 0);
-            transform.position = startPosition;
-            bumperState = BumperState.INACTIVE;
         }
-
     }
     public void Activate()
     {
         
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        AudioSource.PlayClipAtPoint(audioClip, transform.position);
+    }
+
+    private IEnumerator Reset(float time)
+    {
+        yield return new WaitForSeconds(time);
+        rb.velocity = new Vector3(0, 0, 0);
+        transform.position = startPosition;
+        bumperState = BumperState.INACTIVE;
+    }
+
 }

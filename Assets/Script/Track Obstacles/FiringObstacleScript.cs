@@ -8,34 +8,27 @@ public class FiringObstacleScript : MonoBehaviour, IObstacle
 
     
     public GameObject bulletPrefab;
+
     public float force;
-
-
     public Vector3 direction;
-    public Boolean randomize = true;
+
+    public float forceRandomizer = 0.2f;
+    public float spread = 0.5f;
 
     public Transform spawnPoint;
+
     public void Activate()
     {
 
         GameObject bullet = Instantiate(bulletPrefab, spawnPoint.position, Quaternion.identity);
         CannonBallScript cbs = bullet.GetComponent<CannonBallScript>();
 
+        float modifiedForce = force * UnityEngine.Random.Range(1 - forceRandomizer, 1 + forceRandomizer);
+        Vector3 modifiedDirection = new Vector3(direction.x * UnityEngine.Random.Range(1 - spread, 1 + spread),
+                                                direction.y * UnityEngine.Random.Range(1 - spread, 1 + spread),
+                                                direction.z * UnityEngine.Random.Range(1 - spread, 1 + spread));
 
-        if (randomize)
-        {
-
-            float modifiedForce = force * UnityEngine.Random.Range(0.8f, 1.2f);
-            Vector3 modifiedDirection = new Vector3(direction.x * UnityEngine.Random.Range(0.5f, 1.5f),
-                                                  direction.y * UnityEngine.Random.Range(0.5f, 1.5f),
-                                                  direction.z * UnityEngine.Random.Range(0.5f, 1.5f));
-
-            cbs.AddForce(modifiedDirection * modifiedForce);
-        }
-        else
-        {
-            cbs.AddForce(direction * force);
-        }
+        cbs.AddForce(modifiedDirection * modifiedForce);
         
     }
     public void Start()
