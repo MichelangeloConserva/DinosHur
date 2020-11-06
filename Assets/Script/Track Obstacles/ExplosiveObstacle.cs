@@ -23,7 +23,9 @@ public class ExplosiveObstacle : MonoBehaviour, IObstacle
                 
             }
         }
-        AudioSource.PlayClipAtPoint(audioClip, transform.position);
+        AudioSource.PlayClipAtPoint(audioClip, transform.position, 1f);
+        AudioSource.PlayClipAtPoint(audioClip, transform.position, 1f);
+        AudioSource.PlayClipAtPoint(audioClip, transform.position, 1f);
         Destroy(gameObject);
        
         

@@ -1498,7 +1498,7 @@ GameObject:
   - component: {fileID: 7223253160006712560}
   m_Layer: 0
   m_Name: Dino
-  m_TagString: Untagged
+  m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1550,7 +1550,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f366d5a4d78fcb7469777cdc67ea8711, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  upInTheAir: 0
   humanControll: 0
   baseStats:
     TopSpeed: 30

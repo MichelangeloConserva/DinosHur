@@ -1253,7 +1253,7 @@ HingeJoint:
   m_Anchor: {x: 0, y: 0, z: -0.1}
   m_Axis: {x: 0, y: 1, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0, y: 0, z: -2.1400003}
+  m_ConnectedAnchor: {x: 0, y: 0, z: -2.1399999}
   m_UseSpring: 0
   m_Spring:
     spring: 0
@@ -1866,6 +1866,21 @@ Transform:
   m_Father: {fileID: 1257177640702087960}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1022740452
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3395947979677382963}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5953df9ed5452b34a9b9fc1ab245bcaa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletPrefab: {fileID: 562448049260076671, guid: 74c257df773187c449e5ee9b6adc920e,
+    type: 3}
+  vehicleRigibody: {fileID: 1257177640830663786}
 --- !u!1 &5746267327661248360
 GameObject:
   m_ObjectHideFlags: 0
@@ -5317,7 +5332,7 @@ PrefabInstance:
     - target: {fileID: 6225803752026159225, guid: 8e6ce9ce051073a44a0fbf447d4c3524,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6507906073468054864, guid: 8e6ce9ce051073a44a0fbf447d4c3524,
         type: 3}

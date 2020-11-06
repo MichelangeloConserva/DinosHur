@@ -8969,6 +8969,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3055889472706042596, guid: 2ef2c07be4c50a94b985146b4a402a7a,
+        type: 3}
+      propertyPath: nickName
+      value: Lightsider
+      objectReference: {fileID: 0}
     - target: {fileID: 3055889472706042597, guid: 2ef2c07be4c50a94b985146b4a402a7a,
         type: 3}
       propertyPath: m_Name
@@ -9136,6 +9141,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2ef2c07be4c50a94b985146b4a402a7a, type: 3}
+--- !u!1 &1180432717 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1257177641003917270, guid: 97faa199a67851a41b80b2818154fb32,
+    type: 3}
+  m_PrefabInstance: {fileID: 111259796}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1180432720
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1180432717}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5953df9ed5452b34a9b9fc1ab245bcaa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1183284409
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16054,6 +16077,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 947430634252662017, guid: 3fea77224e545a14fa55f6b31f7f0c20,
+        type: 3}
+      propertyPath: audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: fbf09423813bd394fb05c18c38b9cccc, type: 3}
     - target: {fileID: 947430634252662020, guid: 3fea77224e545a14fa55f6b31f7f0c20,
         type: 3}
       propertyPath: m_Name
