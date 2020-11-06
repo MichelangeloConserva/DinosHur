@@ -6,10 +6,11 @@ public class CannonBallScript : MonoBehaviour
 {
 
     public Rigidbody rb;
+    public float livingTime = 5f;
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(DestroyObject(10));
+        StartCoroutine(DestroyObject(livingTime));
     }
 
 

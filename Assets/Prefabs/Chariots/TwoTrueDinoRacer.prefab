@@ -1060,7 +1060,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f366d5a4d78fcb7469777cdc67ea8711, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  upInTheAir: 0
   humanControll: 1
   baseStats:
     TopSpeed: 30
@@ -1073,7 +1072,7 @@ MonoBehaviour:
     Grip: 0.95
     Steer: 3.5
     AddedGravity: 0
-    Suspension: 0
+    Suspension: 0.099
   CenterOfMass: {fileID: 1257177639650085510}
   Wheels:
   - {fileID: 1257177640780797625}
@@ -1083,8 +1082,8 @@ MonoBehaviour:
   GroundLayers:
     serializedVersion: 2
     m_Bits: 4294967291
-  RaycastDist: 10
-  MinHeightThreshold: -10
+  RaycastDist: 0.6
+  MinHeightThreshold: -0.1
   SuspensionBody: {fileID: 1257177640696855663}
   ai: {fileID: 0}
 --- !u!114 &1257177640778456718
@@ -1253,8 +1252,8 @@ HingeJoint:
   m_ConnectedBody: {fileID: 1257177640778456719}
   m_Anchor: {x: 0, y: 0, z: -0.1}
   m_Axis: {x: 0, y: 1, z: 0}
-  m_AutoConfigureConnectedAnchor: 0
-  m_ConnectedAnchor: {x: 0, y: 0, z: -2.3}
+  m_AutoConfigureConnectedAnchor: 1
+  m_ConnectedAnchor: {x: 0, y: 0, z: -2.1400003}
   m_UseSpring: 0
   m_Spring:
     spring: 0

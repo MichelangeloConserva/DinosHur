@@ -60,4 +60,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TwitchIRC: {fileID: 3055889472706042596}
-  box: {fileID: 0}
+  obstacles:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
