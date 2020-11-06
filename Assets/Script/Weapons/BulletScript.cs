@@ -26,7 +26,7 @@ public class BulletScript : MonoBehaviour
         {
             other.gameObject.GetComponent<Rigidbody>().AddExplosionForce(1000f, other.transform.position,5f,100f);
             Destroy(gameObject);
-            Destroy(other.transform.root.gameObject, 1f);
+            Destroy(other.transform.parent.gameObject, 1f);
         }
         
     }

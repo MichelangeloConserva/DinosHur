@@ -372,6 +372,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: AIChariot
       objectReference: {fileID: 0}
+    - target: {fileID: 8030628700643431142, guid: 719efa279dafc374591c28f8a96b8ffa,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8030628700643431161, guid: 719efa279dafc374591c28f8a96b8ffa,
         type: 3}
       propertyPath: m_LocalPosition.x
