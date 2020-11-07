@@ -10,6 +10,8 @@ public class CollectableController : MonoBehaviour
 
     private void Update()
     {
+
+        //Check for collectables that need to be respawned
         foreach(CollectableScript cs in collectables)
         {
             if (cs.State == CollectableState.INACTIVE)
@@ -31,5 +33,6 @@ public class CollectableController : MonoBehaviour
         yield return new WaitForSeconds(cs.RespawnTime);
 
         cs.gameObject.SetActive(true);
+
     }
 }

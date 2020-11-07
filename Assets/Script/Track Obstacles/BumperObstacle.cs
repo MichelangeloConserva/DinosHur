@@ -38,32 +38,33 @@ public class BumperObstacle : MonoBehaviour, IObstacle
     {
 
         currentDistance = Vector3.Distance(transform.position, startPosition);
-        if (Input.GetKeyDown(KeyCode.Space) && bumperState == BumperState.INACTIVE)
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            direction = Vector3.Normalize(endPosition - startPosition);
-            rb.velocity = direction * speed;
-            bumperState = BumperState.ACTIVE;
-            startTime = Time.time;
+            Activate();
         }
+
         // check if bumper should stop
         if (currentDistance > distance && bumperState == BumperState.ACTIVE)
         {
             direction = Vector3.Normalize(startPosition - transform.position);
             rb.velocity = direction * speed * retractionFactor;
             float retractingTime = (Time.time - startTime) / retractionFactor;
-            StartCoroutine(Reset(retractingTime));
-            bumperState = BumperState.RETRACTING;
 
+            StartCoroutine(Reset(retractingTime));
+
+            bumperState = BumperState.RETRACTING;
         }
     }
+
     public void Activate()
     {
         if (bumperState == BumperState.INACTIVE)
         {
             direction = Vector3.Normalize(endPosition - startPosition);
             rb.velocity = direction * speed;
-            bumperState = BumperState.ACTIVE;
+            
             startTime = Time.time;
+            bumperState = BumperState.ACTIVE;
         }
     }
 

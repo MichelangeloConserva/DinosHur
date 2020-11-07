@@ -27,25 +27,18 @@ public class LevelController : MonoBehaviour
         }
     }
 
-    void Start()
-    {
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void AddCollectable(CollectableScript cs)
     {
         CollectableController.AddCollectable(cs);
     }
 
+    /// <summary>
+    /// Increase the number of collected boxes and set the progression bar in the UI.
+    /// </summary>
     public void CollectBox()
     {
-        PlayerController.NumCollectedBoxes++;
-        UIController.SetProgressionBar((float)PlayerController.NumCollectedBoxes / CollectableController.MaximumBoxes);
+        PlayerController.CollectedBoxNum++;
+        UIController.SetProgressionBar((float)PlayerController.CollectedBoxNum / CollectableController.MaximumBoxes);
 
         
     }
