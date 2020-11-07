@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TwitchLogic : MonoBehaviour {
+public class TwitchController : MonoBehaviour {
 
 	public TwitchIRC TwitchIRC;
 
