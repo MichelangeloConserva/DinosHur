@@ -7,7 +7,6 @@ public class BumperObstacle : MonoBehaviour, IObstacle
 {
     // Start is called before the first frame update
     public Rigidbody rb;
-    public AudioClip audioClip;
 
     public float speed = 10;
     public float retractionFactor = 0.5f;
@@ -70,7 +69,7 @@ public class BumperObstacle : MonoBehaviour, IObstacle
 
     private void OnCollisionEnter(Collision collision)
     {
-        AudioSource.PlayClipAtPoint(audioClip, transform.position);
+        LevelController.Instance.PlaySound(SoundType.Bumper, transform.position);
     }
 
     private IEnumerator Reset(float time)

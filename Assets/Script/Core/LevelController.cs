@@ -14,6 +14,7 @@ public class LevelController : MonoBehaviour
 
     public PlayerController PlayerController;
     public UIController UIController;
+    public SoundController SoundController;
    
     private void Awake()
     {
@@ -30,6 +31,11 @@ public class LevelController : MonoBehaviour
     public void AddCollectable(CollectableScript cs)
     {
         CollectableController.AddCollectable(cs);
+    }
+
+    public void PlaySound(SoundType soundType, Vector3 position, float volume = 1f)
+    {
+        SoundController.PlaySound(soundType, position, volume);
     }
 
     /// <summary>
