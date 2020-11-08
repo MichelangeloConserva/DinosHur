@@ -10,7 +10,8 @@ public enum SoundType
     Explosion = 0,
     Bumper,
     CannonFire,
-    CollectBox
+    CollectBox,
+    LaserGunFire
 }
 
 public enum MusicType
@@ -48,6 +49,7 @@ public class SoundController : MonoBehaviour
         try
         {
             AudioSource.PlayClipAtPoint(soundEffect.AudioClip, position, volume);
+            Debug.Log(position);
         } catch (NullReferenceException)
         {
             Debug.LogError("Sound Effect " + soundType + " not set, check SoundManager (SoundController Script)");

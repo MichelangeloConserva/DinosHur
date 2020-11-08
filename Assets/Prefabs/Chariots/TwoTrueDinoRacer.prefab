@@ -723,13 +723,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1257177640596048383}
-  m_LocalRotation: {x: 0.11320323, y: -0, z: -0, w: 0.9935719}
+  m_LocalRotation: {x: 0.13052616, y: 0, z: 0, w: 0.9914449}
   m_LocalPosition: {x: 0, y: 2, z: -0.31715566}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1257177641464175229}
   m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 13.000001, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 15, y: 0, z: 0}
 --- !u!20 &1257177640596048368
 Camera:
   m_ObjectHideFlags: 0
@@ -947,7 +947,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1257177640778456716}
   serializedVersion: 2
-  m_Mass: 2
+  m_Mass: 3
   m_Drag: 0
   m_AngularDrag: 0.1
   m_UseGravity: 1
@@ -1122,7 +1122,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1257177640830663785}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -2.04}
+  m_LocalPosition: {x: 0, y: 0, z: -2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1257177641345126559}
@@ -1157,7 +1157,7 @@ HingeJoint:
   m_Anchor: {x: 0, y: 0, z: -0.1}
   m_Axis: {x: 0, y: 1, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0, y: 0, z: -2.1399994}
+  m_ConnectedAnchor: {x: 0, y: 0, z: -2.1}
   m_UseSpring: 0
   m_Spring:
     spring: 0
@@ -1203,8 +1203,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1257177641003917257}
-  - component: {fileID: 8738860381051028037}
-  - component: {fileID: 1180432720}
   - component: {fileID: 1180432718}
   m_Layer: 0
   m_Name: TwoTrueDinoRacer
@@ -1229,35 +1227,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8738860381051028037
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1257177641003917270}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fcc82e28380c84444ab4ca2800ea4d4a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  blockCollectionCounter: 0
-  progressionBar: {fileID: 0}
-  gun: {fileID: 3395947979677382963}
---- !u!114 &1180432720
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1257177641003917270}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5953df9ed5452b34a9b9fc1ab245bcaa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 0}
-  vehicleRigibody: {fileID: 0}
 --- !u!114 &1180432718
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1270,6 +1239,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3c4a54831655bb4e98d1c13d39ed688, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CollectionCollider: {fileID: 1257177640830663790}
+  ObstacleCollider: {fileID: 0}
+  dinoRigidbody: {fileID: 1257177640778456719}
+  vehicleRigidbody: {fileID: 1257177640830663786}
 --- !u!1 &1257177641087070292
 GameObject:
   m_ObjectHideFlags: 0

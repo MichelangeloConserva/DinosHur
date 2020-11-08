@@ -8,12 +8,12 @@ public class GunScript : MonoBehaviour
 {
 
     public GameObject bulletPrefab;
-    public Rigidbody vehicleRigibody;
+    private Rigidbody vehicleRigibody;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        vehicleRigibody = LevelController.Instance.PlayerController.vehicleRigidbody;   
     }
 
     // Update is called once per frame
@@ -27,26 +27,15 @@ public class GunScript : MonoBehaviour
 
     void Fire()
     {
-        /*
-        if(bulletPrefab == null)
-        {
-            Debug.Log("aaaa" + Time.time);
-        }
-        if (bulletPrefab != null)
-        {
-            Debug.Log("bbb" + Time.time);
-        }*/
-        try
-        {
-            GameObject bullet = Instantiate(bulletPrefab, transform.position, transform.parent.rotation);
-            BulletScript bulletScript = bullet.GetComponent<BulletScript>();
 
 
-            bulletScript.SetVelocity(transform.TransformDirection(Vector3.forward), vehicleRigibody.velocity);
-        } catch(NullReferenceException e)
-        {
-            Debug.Log("No bullet");
-        }
+        GameObject bullet = Instantiate(bulletPrefab, transform.position, transform.parent.rotation);
+            
+        BulletScript bulletScript = bullet.GetComponent<BulletScript>();
+        bulletScript.SetVelocity(transform.TransformDirection(Vector3.forward), vehicleRigibody.velocity);
+
+        LevelController.Instance.PlaySound(SoundType.LaserGunFire, transform.position, 0.1f);
+
 
     }
 }
