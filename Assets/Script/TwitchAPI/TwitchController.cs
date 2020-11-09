@@ -39,7 +39,7 @@ public class TwitchController : MonoBehaviour {
 		_chatEventActive = false;
 		TwitchIRC.messageRecievedEvent.AddListener(OnChatMsgRecieved);
 
-        SendMsg("Hello this is unity speaking:\nWrite FIRE to fire a cannonball.");
+        SendMsg("Hello this is unity speaking:\nWrite FIRE to fire a cannonball.\n Or CHEER to cheer for the racers");
 				
 
 	}

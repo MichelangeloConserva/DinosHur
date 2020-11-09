@@ -29,7 +29,7 @@ public class CollectableScript : MonoBehaviour
         if (other.Equals(playerCollider))
         {
             LevelController.Instance.CollectBox();
-
+            LevelController.Instance.PlaySound(SoundType.CollectBox, transform.position);
             //other.transform.root.GetComponent<BlockProgress>().blockCollectionCounter++;
             
             State = CollectableState.INACTIVE;
