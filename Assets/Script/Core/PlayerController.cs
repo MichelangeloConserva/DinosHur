@@ -6,6 +6,10 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
 
+    public int boxesNecessaryForGun = 6;
+
+    public GameObject gun;
+
     public Collider CollectionCollider;
     public Collider ObstacleCollider;
 
@@ -28,6 +32,10 @@ public class PlayerController : MonoBehaviour
         {
             RespawnPlayer();
         }
+
+        if (CollectedBoxNum == boxesNecessaryForGun)
+            gun.SetActive(true);
+
     }
 
     /// <summary>

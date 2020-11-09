@@ -28,14 +28,12 @@ public class GunScript : MonoBehaviour
     void Fire()
     {
 
-
         GameObject bullet = Instantiate(bulletPrefab, transform.position, transform.parent.rotation);
             
         BulletScript bulletScript = bullet.GetComponent<BulletScript>();
         bulletScript.SetVelocity(transform.TransformDirection(Vector3.forward), vehicleRigibody.velocity);
 
         LevelController.Instance.PlaySound(SoundType.LaserGunFire, transform.position, 0.1f);
-
 
     }
 }

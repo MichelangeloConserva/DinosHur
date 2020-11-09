@@ -30,12 +30,10 @@ public class CameraController : MonoBehaviour
 
         float rotateAmountX = mouseX * mouseSensitivity;
         float rotateAmountY = mouseY * mouseSensitivity;
-
       
         Vector3 rotatePlayer = player.transform.rotation.eulerAngles;
         rotatePlayer.y += rotateAmountX;
         rotatePlayer.x -= rotateAmountY;
-
 
        if (rotatePlayer.x > 45 && rotatePlayer.x < 180)
         {
