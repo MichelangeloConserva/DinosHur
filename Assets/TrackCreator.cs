@@ -5,10 +5,22 @@ using UnityEngine;
 [ExecuteInEditMode]
 public class TrackCreator : MonoBehaviour
 {
+    [System.Serializable]
+    public class TrackPiece
+    {
+        public Vector3 startPos, direction;
+        public int num;
+        public Vector3 rotation;
+    }
+
+
+
+    public TrackPiece[] trackPieces;
+
 
     public GameObject straightPiece;
 
-    public List<GameObject> track;
+    private List<GameObject> track;
 
 
     // Start is called before the first frame update
@@ -18,10 +30,10 @@ public class TrackCreator : MonoBehaviour
     }
 
 
-    void DeployStraight(Vector3 startPos, int num, Vector3 rotation)
+    void DeployStraight(Vector3 startPos, int num, Quaternion rotation, Vector3 direction)
     {
-        for (int i =0; i<num; i++)
-            track.Add(Instantiate(straightPiece, startPos + ))
+        for (int i = 0; i < num; i++)
+            track.Add(Instantiate(straightPiece, startPos + i * direction, rotation, transform.GetChild(0)));
     }
 
 
@@ -29,11 +41,11 @@ public class TrackCreator : MonoBehaviour
     void Update()
     {
         foreach (GameObject o in track)
-            Destroy(o);
+            DestroyImmediate(o);
+        track = new List<GameObject>();
 
-
-        DeployStraight(Vector3.zero, 30, Vector3.zero);
-
+        foreach (TrackPiece tp in trackPieces)
+            DeployStraight(tp.startPos, tp.num, Quaternion.Euler(tp.rotation), tp.direction);
 
 
 
