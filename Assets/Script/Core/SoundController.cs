@@ -11,7 +11,8 @@ public enum SoundType
     Bumper,
     CannonFire,
     CollectBox,
-    LaserGunFire
+    LaserGunFire,
+    ChariotCollision
 }
 
 public enum MusicType
