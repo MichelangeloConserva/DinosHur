@@ -1159,6 +1159,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1180432718, guid: 97faa199a67851a41b80b2818154fb32, type: 3}
+      propertyPath: gun
+      value: 
+      objectReference: {fileID: 2052545532}
     - target: {fileID: 1257177640596048382, guid: 97faa199a67851a41b80b2818154fb32,
         type: 3}
       propertyPath: m_LocalPosition.y
@@ -13592,6 +13596,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1032461901079431532, guid: b745b93e4044a6b40958aa5c942d0b78,
     type: 3}
   m_PrefabInstance: {fileID: 1113020337}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2052545532 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3395947979677382963, guid: 97faa199a67851a41b80b2818154fb32,
+    type: 3}
+  m_PrefabInstance: {fileID: 111259796}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &2086038019
 GameObject:
