@@ -45,8 +45,8 @@ public class CameraController : MonoBehaviour
         {
             rotatePlayer.x = 315;
         }
+        rotatePlayer.z = 0;
 
-        
         player.rotation = Quaternion.Euler(rotatePlayer);
 
     }
