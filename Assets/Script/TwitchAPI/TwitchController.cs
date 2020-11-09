@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
 
 public class TwitchController : MonoBehaviour {
 
 	public TwitchIRC TwitchIRC;
 	[SerializeField, SerializeReference]
-	public List<IObstacle> obstacles;
+	public GameObject[] obstacles;
 	
 
 	
@@ -43,6 +44,7 @@ public class TwitchController : MonoBehaviour {
         {
 			case "fire": ActivateObstacles();  break;
 			case "cheer": Cheer();  break;
+			case "fire all": StartCoroutine(FireAllTime()); break;
 			
         }
 	}
@@ -50,8 +52,28 @@ public class TwitchController : MonoBehaviour {
 	#region TwitchActions
 	private void ActivateObstacles()
     {
-		obstacles.ForEach(o => o.Activate());
+
+		foreach(GameObject go in obstacles)
+        {
+			if (go != null)
+			{
+				IObstacle iobstacle = go.GetComponent<IObstacle>();
+				iobstacle.Activate();
+			}
+        }
+
     }
+
+	private IEnumerator FireAllTime()
+    {
+		while (true)
+		{
+			yield return new WaitForSeconds(0.05f);
+			ActivateObstacles();
+		}
+    }
+
+
 
 	private void Cheer()
     {
