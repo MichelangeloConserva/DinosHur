@@ -1155,6 +1155,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1257177640830663787, guid: 97faa199a67851a41b80b2818154fb32,
+        type: 3}
+      propertyPath: m_UseSpring
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1257177640830663787, guid: 97faa199a67851a41b80b2818154fb32,
+        type: 3}
+      propertyPath: m_Spring.spring
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1257177640830663787, guid: 97faa199a67851a41b80b2818154fb32,
+        type: 3}
+      propertyPath: m_Spring.damper
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 1257177641003917257, guid: 97faa199a67851a41b80b2818154fb32,
         type: 3}
       propertyPath: m_LocalPosition.x
