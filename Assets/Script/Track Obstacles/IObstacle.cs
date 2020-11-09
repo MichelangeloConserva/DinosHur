@@ -1,4 +1,5 @@
 ﻿
+using System;
 /// <summary>
 /// Base interface for every obstacle
 /// </summary>

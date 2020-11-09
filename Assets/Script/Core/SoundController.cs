@@ -18,7 +18,8 @@ public enum SoundType
 public enum MusicType
 {
     Racing,
-    MainMenu,
+    Cheering,
+    MainMenu
 }
 
 [Serializable]
