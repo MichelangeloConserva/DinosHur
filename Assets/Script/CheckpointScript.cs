@@ -23,7 +23,6 @@ public class CheckpointScript : MonoBehaviour
         
         if (other.Equals(playerController.CollectionCollider))
         {
-            Debug.Log("Done");
             playerController.CurrentCheckPoint = transform;
         }
     }

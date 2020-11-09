@@ -9,7 +9,6 @@ public class CameraController : MonoBehaviour
     public Transform player;
 
     float maxHeight = 45f;
-    float minHeight = -45f;
     // Start is called before the first frame update
     void Start()
     {
@@ -35,13 +34,13 @@ public class CameraController : MonoBehaviour
         rotatePlayer.y += rotateAmountX;
         rotatePlayer.x -= rotateAmountY;
 
-       if (rotatePlayer.x > 45 && rotatePlayer.x < 180)
+       if (rotatePlayer.x > maxHeight && rotatePlayer.x < 180)
         {
-            rotatePlayer.x = 45;
+            rotatePlayer.x = maxHeight;
         }
-       else if (rotatePlayer.x > 180 && rotatePlayer.x < 315)
+       else if (rotatePlayer.x > 180 && rotatePlayer.x < 360 - maxHeight)
         {
-            rotatePlayer.x = 315;
+            rotatePlayer.x = 360 - maxHeight;
         }
         rotatePlayer.z = 0;
 
