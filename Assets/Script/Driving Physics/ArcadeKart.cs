@@ -130,7 +130,7 @@ namespace KartGame.KartSystems
         // the input sources that can control the kart
         IInput[] m_Inputs;
 
-        // can the kart move?
+        // can the kart steer?
         bool canMove = true;
         List<StatPowerup> activePowerupList = new List<StatPowerup>();
         GameObject lastGroundCollided = null;
@@ -152,9 +152,13 @@ namespace KartGame.KartSystems
             ResetIfStuck();
 
             if (humanControll)
+            {
                 GatherInputs();
+            }
             else
+            {
                 Input = ai.GatherInputs();
+            }
 
             // apply our powerups to create our finalStats
             TickPowerups();
@@ -168,7 +172,6 @@ namespace KartGame.KartSystems
             AirPercent = 1 - GroundPercent;
 
             canMove = (AirPercent == 1) ? false : true;
-
             // gather inputs
             float accel = Input.y;
             float turn = Input.x;
@@ -177,14 +180,31 @@ namespace KartGame.KartSystems
             GroundVehicle(minHeight);
             if (canMove)
             {
-                
-                //Rigidbody.inertiaTensor = new Vector3(2.5f, 10f, 1.4f);
                 MoveVehicle(accel, turn);
+                
+            } else
+            {
+                StopAngularVecloity(true, true , false);
             }
+
+            LevelController.Instance.UIController.SetDebugText(AirPercent.ToString());
+            
+
             GroundAirbourne();
 
             // animation
             AnimateSuspension();
+        }
+
+        private void StopAngularVecloity(bool x = true, bool y = true, bool z = true)
+        {
+            Vector3 angularVecloity;
+
+            angularVecloity.x = x ? 0 : Rigidbody.angularVelocity.x;
+            angularVecloity.y = x ? 0 : Rigidbody.angularVelocity.y;
+            angularVecloity.z = x ? 0 : Rigidbody.angularVelocity.z;
+
+            Rigidbody.angularVelocity = angularVecloity;
         }
 
         void GatherInputs()

@@ -50,7 +50,6 @@ public class SoundController : MonoBehaviour
         try
         {
             AudioSource.PlayClipAtPoint(soundEffect.AudioClip, position, volume);
-            Debug.Log(position);
         } catch (NullReferenceException)
         {
             Debug.LogError("Sound Effect " + soundType + " not set, check SoundManager (SoundController Script)");
