@@ -77,7 +77,7 @@ public class TwitchController : MonoBehaviour {
 
 	private void Cheer()
     {
-		LevelController.Instance.SoundController.PlayMusic(MusicType.Cheering);
+		LevelController.Instance.PlayMusic(MusicType.Cheering);
     }
 	#endregion
 

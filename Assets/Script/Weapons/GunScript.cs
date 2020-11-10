@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class GunScript : MonoBehaviour
+public class GunScript : MonoBehaviour, IWeapon
 {
 
     public GameObject bulletPrefab;
@@ -21,19 +21,18 @@ public class GunScript : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            Fire();
+            Use();
         }
     }
 
-    void Fire()
-    {
 
+    public void Use()
+    {
         GameObject bullet = Instantiate(bulletPrefab, transform.position, transform.parent.rotation);
-            
+
         BulletScript bulletScript = bullet.GetComponent<BulletScript>();
         bulletScript.SetVelocity(transform.TransformDirection(Vector3.forward), vehicleRigibody.velocity);
 
         LevelController.Instance.PlaySound(SoundType.LaserGunFire, transform.position, 0.1f);
-
     }
 }

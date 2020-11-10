@@ -12,7 +12,8 @@ public enum SoundType
     CannonFire,
     CollectBox,
     LaserGunFire,
-    ChariotCollision
+    ChariotCollision,
+    LightsaberSwing
 }
 
 public enum MusicType

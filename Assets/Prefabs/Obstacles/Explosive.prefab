@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 947430634252662016}
   - component: {fileID: 947430634252662023}
   - component: {fileID: 947430634252662022}
-  - component: {fileID: 947430634252662021}
   - component: {fileID: 947430634252662017}
+  - component: {fileID: 2103610315}
+  - component: {fileID: 2103610316}
   m_Layer: 0
   m_Name: Explosive
   m_TagString: Untagged
@@ -81,7 +82,37 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!136 &947430634252662021
+--- !u!114 &947430634252662017
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 947430634252662020}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce2ea2b1f779a66488483c56b21a6db3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Cooldown: 5
+  explosionForce: 20
+  explosionRadius: 10
+  upForce: 0
+  delayTime: 1
+--- !u!135 &2103610315
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 947430634252662020}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 7.5
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!136 &2103610316
 CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -95,19 +126,3 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
---- !u!114 &947430634252662017
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 947430634252662020}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce2ea2b1f779a66488483c56b21a6db3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  explosionForce: 20
-  explosionRadius: 20
-  upForce: 0
-  audioClip: {fileID: 8300000, guid: 6867925775b297243bbd12c4ecb035d9, type: 3}

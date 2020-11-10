@@ -62,7 +62,7 @@ public class SmoothCameraController : MonoBehaviour
 /*        float wantedDistance = vehicleTransform.position.z + distance + speedDistanceIncrease;
         float myDistance = transform.position.z;*/
 
-        LevelController.Instance.UIController.SetDebugText(speedDistanceIncrease.ToString());
+        //LevelController.Instance.UIController.SetDebugText(speedDistanceIncrease.ToString());
 
         myAngle = Mathf.LerpAngle(myAngle, wantedAngle, rotationDampening * Time.deltaTime);
         myHeight = Mathf.LerpAngle(myHeight, wantedHeight, heightDampening * Time.deltaTime);

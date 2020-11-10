@@ -10,6 +10,7 @@ public class LevelController : MonoBehaviour
     public static LevelController Instance = null;
 
     public CollectableController CollectableController;
+    public ObstacleController ObstacleController;
     public TwitchController TwitchController;
 
     public PlayerController PlayerController;
@@ -41,9 +42,19 @@ public class LevelController : MonoBehaviour
         CollectableController.AddCollectable(cs);
     }
 
+    public void AddObstacle(IObstacle obstacle)
+    {
+        ObstacleController.AddObstacle(obstacle);
+    }
+
     public void PlaySound(SoundType soundType, Vector3 position, float volume = 1f)
     {
         SoundController.PlaySound(soundType, position, volume);
+    }
+
+    public void PlayMusic(MusicType musicType, float volume = 1f)
+    {
+        SoundController.PlayMusic(musicType, volume);
     }
 
     /// <summary>

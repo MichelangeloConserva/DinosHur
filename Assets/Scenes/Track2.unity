@@ -1198,6 +1198,11 @@ PrefabInstance:
       propertyPath: m_Limits.max
       value: 15
       objectReference: {fileID: 0}
+    - target: {fileID: 1257177640830663787, guid: 97faa199a67851a41b80b2818154fb32,
+        type: 3}
+      propertyPath: m_ConnectedAnchor.z
+      value: -2.1
+      objectReference: {fileID: 0}
     - target: {fileID: 1257177641003917257, guid: 97faa199a67851a41b80b2818154fb32,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -9386,12 +9391,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 524b9ba842bc9954e8ea6b500106e924, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  car: {fileID: 1843537097}
   distance: 10
   height: 5
   rotationDampening: 2
   heightDampening: 2
-  zoomRatio: 4
+  speedFOVModifier: 4
+  speedHeightModifier: 1.5
+  speedDistanceModifier: 1.5
   defaultFOV: 60
 --- !u!1 &1430596095
 GameObject:
@@ -12359,12 +12365,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1839573411}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!4 &1843537097 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1257177640830663784, guid: 97faa199a67851a41b80b2818154fb32,
-    type: 3}
-  m_PrefabInstance: {fileID: 111259796}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1861104967
 GameObject:
   m_ObjectHideFlags: 0

@@ -186,6 +186,7 @@ namespace KartGame.KartSystems
             {
                 StopAngularVecloity(true, true , false);
             }
+
             GroundAirbourne();
 
             // animation

@@ -3,7 +3,7 @@ using UnityEngine;
 
 
 public enum BumperState { INACTIVE = 0, ACTIVE, RETRACTING};
-public class BumperObstacle : MonoBehaviour, IObstacle
+public class BumperObstacle : IObstacle
 {
     // Start is called before the first frame update
     public Rigidbody rb;
@@ -26,8 +26,9 @@ public class BumperObstacle : MonoBehaviour, IObstacle
 
     
 
-    public void Start()
+    public new void Start()
     {
+        base.Start();
         startPosition = transform.GetChild(0).position;
         endPosition = transform.GetChild(1).position;
 
@@ -55,7 +56,7 @@ public class BumperObstacle : MonoBehaviour, IObstacle
         }
     }
 
-    public void Activate()
+    public override void Activate()
     {
         if (bumperState == BumperState.INACTIVE)
         {
