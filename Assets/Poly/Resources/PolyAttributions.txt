@@ -1,5 +1,11 @@
 This project uses the following items from Poly (http://poly.google.com):
 
+Title: ALIEN SMOOTHIE
+Author: PIRATE “PIRATE CAT” CAT GAMING
+URL: https://poly.google.com/view/6rLnEwzfrXL
+License: Creative Commons CC-BY
+https://creativecommons.org/licenses/by/3.0/legalcode
+
 Title: asteroid
 Author: Amy Smith
 URL: https://poly.google.com/view/3uT00pp0Zd7
