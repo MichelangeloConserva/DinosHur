@@ -3,39 +3,33 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public enum CollectableState { INACTIVE, RESPAWNING, ACTIVE};
-public class CollectableScript : MonoBehaviour
+
+public class CollectableScript : ICollectable
 {
-    public float RotationSpeed = 200f;
-    public float RespawnTime = 5f;
-
-    private Collider playerCollider;
-
-    public CollectableState State { get; set; }
-
-    private void Start()
+    public new void Start()
     {
-        LevelController.Instance.AddCollectable(this);
-        playerCollider = LevelController.Instance.PlayerController.CollectionCollider;
+        base.Start();
     }
-    void Update()
+    public new void Update()
     {
-        transform.Rotate(Time.deltaTime * RotationSpeed / 2, Time.deltaTime * RotationSpeed, 0);
+        base.Update();
+       
     }
 
     public void OnTriggerEnter(Collider other)
     {
-        
         if (other.Equals(playerCollider))
         {
-            LevelController.Instance.CollectBox();
-            LevelController.Instance.PlaySound(SoundType.CollectBox, transform.position);
-            //other.transform.root.GetComponent<BlockProgress>().blockCollectionCounter++;
-            
-            State = CollectableState.INACTIVE;
-            gameObject.SetActive(false);
-
+            Collect();
         }
+    }
 
+    public override void Collect()
+    {
+        LevelController.Instance.CollectBox();
+        LevelController.Instance.PlaySound(SoundType.CollectBox, transform.position);
+
+        State = CollectableState.INACTIVE;
+        gameObject.SetActive(false);
     }
 }

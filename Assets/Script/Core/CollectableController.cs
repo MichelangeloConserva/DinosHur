@@ -5,14 +5,14 @@ using UnityEngine;
 
 public class CollectableController : MonoBehaviour
 {
-    private List<CollectableScript> collectables = new List<CollectableScript>();
+    private List<ICollectable> collectables = new List<ICollectable>();
     public int MaximumBoxes = 6;
 
     private void Update()
     {
 
         //Check for collectables that need to be respawned
-        foreach(CollectableScript cs in collectables)
+        foreach(ICollectable cs in collectables)
         {
             if (cs.State == CollectableState.INACTIVE)
             {
@@ -21,18 +21,19 @@ public class CollectableController : MonoBehaviour
         }
     }
 
-    public void AddCollectable(CollectableScript cs)
+    public void AddCollectable(ICollectable cs)
     {
         collectables.Add(cs);
     }
 
-    private IEnumerator RespawnCollectable(CollectableScript cs)
+    private IEnumerator RespawnCollectable(ICollectable cs)
     {
         cs.State = CollectableState.RESPAWNING;
 
         yield return new WaitForSeconds(cs.RespawnTime);
-
+        Debug.Log("YeP" + cs.GetInstanceID());
         cs.gameObject.SetActive(true);
+        cs.State = CollectableState.ACTIVE;
 
     }
 }

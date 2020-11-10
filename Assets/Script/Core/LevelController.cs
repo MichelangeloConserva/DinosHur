@@ -37,7 +37,7 @@ public class LevelController : MonoBehaviour
         }
     }
 
-    public void AddCollectable(CollectableScript cs)
+    public void AddCollectable(ICollectable cs)
     {
         CollectableController.AddCollectable(cs);
     }
