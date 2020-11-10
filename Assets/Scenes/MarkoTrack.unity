@@ -13860,33 +13860,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 947430634252662017, guid: 3fea77224e545a14fa55f6b31f7f0c20,
-        type: 3}
-      propertyPath: audioClip
-      value: 
-      objectReference: {fileID: 8300000, guid: fbf09423813bd394fb05c18c38b9cccc, type: 3}
-    - target: {fileID: 947430634252662017, guid: 3fea77224e545a14fa55f6b31f7f0c20,
-        type: 3}
-      propertyPath: Cooldown
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 947430634252662017, guid: 3fea77224e545a14fa55f6b31f7f0c20,
-        type: 3}
-      propertyPath: explosionRadius
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 947430634252662017, guid: 3fea77224e545a14fa55f6b31f7f0c20,
-        type: 3}
-      propertyPath: explosionForce
-      value: 20
-      objectReference: {fileID: 0}
     - target: {fileID: 947430634252662020, guid: 3fea77224e545a14fa55f6b31f7f0c20,
         type: 3}
       propertyPath: m_Name
       value: Explosive
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 3578865746918869058, guid: 3fea77224e545a14fa55f6b31f7f0c20, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3fea77224e545a14fa55f6b31f7f0c20, type: 3}
 --- !u!1 &2103610313 stripped
 GameObject:
@@ -13900,33 +13879,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2103610312}
   m_PrefabAsset: {fileID: 0}
---- !u!135 &2103610315
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2103610313}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 7.5
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!136 &2103610316
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2103610313}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
 --- !u!1 &2109104153
 GameObject:
   m_ObjectHideFlags: 0

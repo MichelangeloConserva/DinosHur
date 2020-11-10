@@ -347,6 +347,11 @@ PrefabInstance:
       propertyPath: force
       value: 1000
       objectReference: {fileID: 0}
+    - target: {fileID: 3924283501924743074, guid: de0345624bdcba544aabb81958e16fe0,
+        type: 3}
+      propertyPath: Cooldown
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3924283501924743077, guid: de0345624bdcba544aabb81958e16fe0,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1482,6 +1487,11 @@ PrefabInstance:
         type: 3}
       propertyPath: force
       value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 3924283501924743074, guid: de0345624bdcba544aabb81958e16fe0,
+        type: 3}
+      propertyPath: Cooldown
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3924283501924743077, guid: de0345624bdcba544aabb81958e16fe0,
         type: 3}
@@ -4501,6 +4511,11 @@ PrefabInstance:
       propertyPath: force
       value: 1000
       objectReference: {fileID: 0}
+    - target: {fileID: 3924283501924743074, guid: de0345624bdcba544aabb81958e16fe0,
+        type: 3}
+      propertyPath: Cooldown
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3924283501924743077, guid: de0345624bdcba544aabb81958e16fe0,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4876,6 +4891,11 @@ PrefabInstance:
         type: 3}
       propertyPath: force
       value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 3924283501924743074, guid: de0345624bdcba544aabb81958e16fe0,
+        type: 3}
+      propertyPath: Cooldown
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3924283501924743077, guid: de0345624bdcba544aabb81958e16fe0,
         type: 3}
@@ -5549,6 +5569,11 @@ PrefabInstance:
       propertyPath: force
       value: 1000
       objectReference: {fileID: 0}
+    - target: {fileID: 3924283501924743074, guid: de0345624bdcba544aabb81958e16fe0,
+        type: 3}
+      propertyPath: Cooldown
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3924283501924743077, guid: de0345624bdcba544aabb81958e16fe0,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6080,6 +6105,11 @@ PrefabInstance:
       propertyPath: force
       value: 1000
       objectReference: {fileID: 0}
+    - target: {fileID: 3924283501924743074, guid: de0345624bdcba544aabb81958e16fe0,
+        type: 3}
+      propertyPath: Cooldown
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3924283501924743077, guid: de0345624bdcba544aabb81958e16fe0,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6584,6 +6614,11 @@ PrefabInstance:
       propertyPath: audioClip
       value: 
       objectReference: {fileID: 8300000, guid: 26707193bc3f5a148bb3e23e757e401c, type: 3}
+    - target: {fileID: 5183022656377686834, guid: 91fba6a8d2d5467499389c76fcbcaf5c,
+        type: 3}
+      propertyPath: Cooldown
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 5183022656377686837, guid: 91fba6a8d2d5467499389c76fcbcaf5c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7854,6 +7889,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CollectableController: {fileID: 976200691}
+  ObstacleController: {fileID: 1757374594}
   TwitchController: {fileID: 0}
   PlayerController: {fileID: 1180432718}
   UIController: {fileID: 157200428}
@@ -8979,6 +9015,11 @@ PrefabInstance:
       propertyPath: force
       value: 1000
       objectReference: {fileID: 0}
+    - target: {fileID: 3924283501924743074, guid: de0345624bdcba544aabb81958e16fe0,
+        type: 3}
+      propertyPath: Cooldown
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3924283501924743077, guid: de0345624bdcba544aabb81958e16fe0,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -9518,6 +9559,11 @@ PrefabInstance:
         type: 3}
       propertyPath: force
       value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 3924283501924743074, guid: de0345624bdcba544aabb81958e16fe0,
+        type: 3}
+      propertyPath: Cooldown
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3924283501924743077, guid: de0345624bdcba544aabb81958e16fe0,
         type: 3}
@@ -10142,6 +10188,11 @@ PrefabInstance:
       propertyPath: force
       value: 1000
       objectReference: {fileID: 0}
+    - target: {fileID: 3924283501924743074, guid: de0345624bdcba544aabb81958e16fe0,
+        type: 3}
+      propertyPath: Cooldown
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3924283501924743077, guid: de0345624bdcba544aabb81958e16fe0,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -10498,6 +10549,11 @@ PrefabInstance:
         type: 3}
       propertyPath: force
       value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 3924283501924743074, guid: de0345624bdcba544aabb81958e16fe0,
+        type: 3}
+      propertyPath: Cooldown
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3924283501924743077, guid: de0345624bdcba544aabb81958e16fe0,
         type: 3}
@@ -10866,6 +10922,11 @@ PrefabInstance:
         type: 3}
       propertyPath: force
       value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 3924283501924743074, guid: de0345624bdcba544aabb81958e16fe0,
+        type: 3}
+      propertyPath: Cooldown
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3924283501924743077, guid: de0345624bdcba544aabb81958e16fe0,
         type: 3}
@@ -11492,6 +11553,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1757374593}
+  - component: {fileID: 1757374594}
   m_Layer: 0
   m_Name: Obstacle
   m_TagString: Untagged
@@ -11529,6 +11591,19 @@ Transform:
   m_Father: {fileID: 1179578906}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1757374594
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1757374592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 265f314d71f83d540bcaaf2e1d495b07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TwitchEnabled: 0
 --- !u!1 &1768055908
 GameObject:
   m_ObjectHideFlags: 0
@@ -11835,6 +11910,11 @@ PrefabInstance:
       propertyPath: force
       value: 1000
       objectReference: {fileID: 0}
+    - target: {fileID: 3924283501924743074, guid: de0345624bdcba544aabb81958e16fe0,
+        type: 3}
+      propertyPath: Cooldown
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3924283501924743077, guid: de0345624bdcba544aabb81958e16fe0,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -12031,6 +12111,11 @@ PrefabInstance:
         type: 3}
       propertyPath: force
       value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 3924283501924743074, guid: de0345624bdcba544aabb81958e16fe0,
+        type: 3}
+      propertyPath: Cooldown
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3924283501924743077, guid: de0345624bdcba544aabb81958e16fe0,
         type: 3}
@@ -12632,6 +12717,11 @@ PrefabInstance:
         type: 3}
       propertyPath: force
       value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 3924283501924743074, guid: de0345624bdcba544aabb81958e16fe0,
+        type: 3}
+      propertyPath: Cooldown
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3924283501924743077, guid: de0345624bdcba544aabb81958e16fe0,
         type: 3}
