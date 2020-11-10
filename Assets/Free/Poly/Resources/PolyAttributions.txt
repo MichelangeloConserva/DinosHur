@@ -1,0 +1,13 @@
+This project uses the following items from Poly (http://poly.google.com):
+
+Title: Dinosaur
+Author: Akif Bin Abdullah
+URL: https://poly.google.com/view/aB8EyrTAmAT
+License: Creative Commons CC-BY
+https://creativecommons.org/licenses/by/3.0/legalcode
+
+Title: heart
+Author: Media Lab
+URL: https://poly.google.com/view/68m1bicL-JN
+License: Creative Commons CC-BY
+https://creativecommons.org/licenses/by/3.0/legalcode
