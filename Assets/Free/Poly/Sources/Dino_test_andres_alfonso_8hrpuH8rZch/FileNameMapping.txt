@@ -1,0 +1,3 @@
+scene.bin -> E0C5CEE43DB1A80C6DEDB94F23180265.bin
+textures/pasted__TrexText_baseColor.png -> 4CB174A836F03FD9899551A8F2E03797.png
+textures/pasted__TrexText_normal.png -> 8A3686D2F5C87489CAFF0598B7F77895.png
