@@ -5376,12 +5376,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 864209854}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!4 &870082117 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1257177640830663784, guid: 97faa199a67851a41b80b2818154fb32,
-    type: 3}
-  m_PrefabInstance: {fileID: 111259796}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &873174294
 GameObject:
   m_ObjectHideFlags: 0
@@ -7752,14 +7746,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 524b9ba842bc9954e8ea6b500106e924, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  car: {fileID: 870082117}
-  distance: 10
+  distance: 8
   height: 5
   rotationDampening: 2
   heightDampening: 2
-  zoomRatio: 4
+  speedFOVModifier: 4
+  speedHeightModifier: 1.5
+  speedDistanceModifier: 2
   defaultFOV: 60
-  rotationVector: 0
 --- !u!81 &1172392433
 AudioListener:
   m_ObjectHideFlags: 0
@@ -7819,7 +7813,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1172392431}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -14088,6 +14082,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2261614846969519857, guid: 05a8a872e7b984f498cef85b213e100f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2261614846969519863, guid: 05a8a872e7b984f498cef85b213e100f,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2261614848024431141, guid: 05a8a872e7b984f498cef85b213e100f,
         type: 3}
       propertyPath: m_LocalPosition.x
