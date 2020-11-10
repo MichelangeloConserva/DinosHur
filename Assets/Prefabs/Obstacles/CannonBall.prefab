@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 5940871793100926717}
   m_Layer: 0
   m_Name: CannonBall
-  m_TagString: Untagged
+  m_TagString: cannonball
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -108,6 +108,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 5940871793100926717}
+  livingTime: 5
 --- !u!54 &5940871793100926717
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FiringObstacleScript : MonoBehaviour, IObstacle
+public class CannonScript : IObstacle
 {
 
     
@@ -17,7 +17,7 @@ public class FiringObstacleScript : MonoBehaviour, IObstacle
 
     public Transform spawnPoint;
 
-    public void Activate()
+    public override void Activate()
     {
 
         GameObject bullet = Instantiate(bulletPrefab, spawnPoint.position, Quaternion.identity);
@@ -32,8 +32,9 @@ public class FiringObstacleScript : MonoBehaviour, IObstacle
         cbs.AddForce(modifiedDirection * modifiedForce);
         
     }
-    public void Start()
+    public new void Start()
     {
+        base.Start();
         direction = Vector3.Normalize(direction);
     }
     // Update is called once per frame

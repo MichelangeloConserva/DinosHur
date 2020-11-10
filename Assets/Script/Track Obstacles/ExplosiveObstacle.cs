@@ -2,17 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ExplosiveObstacle : MonoBehaviour, IObstacle
+public class ExplosiveObstacle : IObstacle
 {
     public float explosionForce = 10f;
     public float explosionRadius = 5f;
     public float upForce = 0.5f;
 
-    public AudioClip audioClip;
+    public float delayTime = 1f;
+    private bool ready = true;
 
-    public void Activate()
+    public override void Activate()
     {
-
+        
         Collider[] colliders = Physics.OverlapSphere(transform.position, explosionRadius);
         foreach(Collider collider in colliders)
         {
@@ -24,17 +25,30 @@ public class ExplosiveObstacle : MonoBehaviour, IObstacle
             }
         }
 
+        StartCoroutine(Ready(Cooldown));
         LevelController.Instance.PlaySound(SoundType.Explosion, transform.position);
-        Destroy(gameObject);
-       
-        
 
     }
 
     // Start is called before the first frame update
-    void Start()
+    new void Start()
     {
-        
+        //base.Start(); //only used for recurring obstacles
+    }
+
+    public void OnTriggerEnter(Collider other)
+    {
+        if (ready == true)
+        {
+            Invoke(nameof(Activate), 0.2f);
+            ready = false;
+        }
+    }
+
+    private IEnumerator Ready(float time)
+    {
+        yield return new WaitForSeconds(time);
+        ready = true;
     }
 
     // Update is called once per frame
@@ -45,4 +59,6 @@ public class ExplosiveObstacle : MonoBehaviour, IObstacle
             Activate();
         }
     }
+
+
 }

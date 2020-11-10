@@ -1,10 +1,19 @@
 ﻿
 using System;
+using UnityEngine;
 /// <summary>
 /// Base interface for every obstacle
 /// </summary>
-public interface IObstacle
+public abstract class IObstacle : MonoBehaviour
 {
-    void Activate();
+    public float Cooldown = 2f;
+    public abstract void Activate();
+
+    public void Start()
+    {
+        LevelController.Instance.AddObstacle(this);
+    }
+
+
 
 }

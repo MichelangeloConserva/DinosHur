@@ -25,6 +25,14 @@ public class CannonBallScript : MonoBehaviour
         
     }
 
+    public void OnCollisionEnter(Collision other)
+    {
+        if (!other.gameObject.CompareTag("cannonball"))
+        {
+            StartCoroutine(DestroyObject(1f));
+        }
+    }
+
     private IEnumerator DestroyObject(float waitTime)
     {
         yield return new WaitForSeconds(waitTime);
