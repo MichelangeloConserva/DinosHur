@@ -187,9 +187,7 @@ namespace KartGame.KartSystems
                 StopAngularVecloity(true, true , false);
             }
 
-            LevelController.Instance.UIController.SetDebugText(AirPercent.ToString());
             
-
             GroundAirbourne();
 
             // animation
