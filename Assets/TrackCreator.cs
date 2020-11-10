@@ -24,7 +24,7 @@ public class TrackCreator : MonoBehaviour
 
     public static void WaypointAdd(WaypointChecker waypoint, GameObject nextGO)
     {
-        waypoint.nextWaypointsAndDist.Add(nextGO, Vector3.Distance(waypoint.transform.position, nextGO.transform.position));
+        waypoint.nextWaypointsAndDist.Add(nextGO.GetComponent<WaypointChecker>(), Vector3.Distance(waypoint.transform.position, nextGO.transform.position)); ;
     }
 
 

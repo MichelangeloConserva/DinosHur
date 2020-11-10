@@ -187,13 +187,15 @@ namespace KartGame.KartSystems
                 StopAngularVecloity(true, true , false);
             }
 
-            
             GroundAirbourne();
 
             // animation
             AnimateSuspension();
         }
 
+        /// <summary>
+        /// Used to prevent rotation during airtime
+        /// </summary>
         private void StopAngularVecloity(bool x = true, bool y = true, bool z = true)
         {
             Vector3 angularVecloity;
