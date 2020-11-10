@@ -31,7 +31,7 @@ public class CollectableController : MonoBehaviour
         cs.State = CollectableState.RESPAWNING;
 
         yield return new WaitForSeconds(cs.RespawnTime);
-        Debug.Log("YeP" + cs.GetInstanceID());
+
         cs.gameObject.SetActive(true);
         cs.State = CollectableState.ACTIVE;
 
