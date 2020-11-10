@@ -15,15 +15,6 @@ public class CollectableScript : ICollectable
         base.Update();
        
     }
-
-    public void OnTriggerEnter(Collider other)
-    {
-        if (other.Equals(playerCollider))
-        {
-            Collect();
-        }
-    }
-
     public override void Collect()
     {
         LevelController.Instance.CollectBox();
