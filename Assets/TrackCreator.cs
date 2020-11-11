@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-[ExecuteInEditMode]
+//[ExecuteInEditMode]
 public class TrackCreator : MonoBehaviour
 {
 
@@ -84,7 +84,9 @@ public class TrackCreator : MonoBehaviour
             DeployStraight(tp.startPos, tp.num, Quaternion.Euler(tp.rotation), tp.direction);
 
 
-        //Make sure that curves are added after straight lines and not before so that AddWaypoints works
+
+
+        // Make sure that curves are added after straight lines and not before so that AddWaypoints works
         foreach (TrackPieceCurve tp in trackCurves)
         {
             var curve = Instantiate(curvePiece, tp.startPos, Quaternion.Euler(tp.rotation), transform.GetChild(0));

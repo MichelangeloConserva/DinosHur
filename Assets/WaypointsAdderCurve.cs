@@ -10,15 +10,27 @@ public class WaypointsAdderCurve : MonoBehaviour
 
     private GameObject findLink(Vector3 pos)
     {
-        RaycastHit hitInfo;
-        if (Physics.BoxCast(pos, Vector3.one * 8, Vector3.one, out hitInfo, Quaternion.identity))
-        {
-            DrawBoxCastOnHit(pos, Vector3.one * 8, Quaternion.identity, Vector3.one, hitInfo.distance, Color.red);
-        }
-        DrawBoxCastOnHit(pos, Vector3.one * 8, Quaternion.identity, Vector3.one, 10, Color.red);
+
+        var cc = Physics.OverlapBox(pos, Vector3.one * 4);
+
+        DrawBox(pos, Vector3.one * 4, Quaternion.identity, Color.red);
+
+        
+        return cc[0].gameObject.transform.parent.gameObject;
+
+        Debug.Log(cc[0].gameObject.name);
+
+
+
+        //RaycastHit hitInfo;
+        //if (Physics.BoxCast(pos, Vector3.one * 4, Quaternion.identity, out hitInfo))
+        //{
+        //    DrawBoxCastOnHit(pos, Vector3.one * 4, Quaternion.identity, transform.forward, hitInfo.distance, Color.black);
+        //}
+        DrawBoxCastOnHit(pos, Vector3.one * 4, Quaternion.identity, Vector3.zero, 10, Color.red);
 
         RaycastHit rHit;
-        if (Physics.BoxCast(pos, Vector3.one * 8, Vector3.one, out rHit))
+        if (Physics.BoxCast(pos, Vector3.one * 4, Vector3.one * 0.1f, out rHit))
             return rHit.transform.parent.gameObject;
         Debug.LogError("A CURVE HAS NOT FOUND THE PREVIOUS STRAIGHT LINE");
         return null;

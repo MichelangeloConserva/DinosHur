@@ -35,20 +35,20 @@ public static class Utils
     }
     public static void DrawBox(Box box, Color color)
     {
-        Debug.DrawLine(box.frontTopLeft, box.frontTopRight, color);
-        Debug.DrawLine(box.frontTopRight, box.frontBottomRight, color);
-        Debug.DrawLine(box.frontBottomRight, box.frontBottomLeft, color);
-        Debug.DrawLine(box.frontBottomLeft, box.frontTopLeft, color);
+        Debug.DrawLine(box.frontTopLeft, box.frontTopRight, color, Mathf.Infinity);
+        Debug.DrawLine(box.frontTopRight, box.frontBottomRight, color, Mathf.Infinity);
+        Debug.DrawLine(box.frontBottomRight, box.frontBottomLeft, color, Mathf.Infinity);
+        Debug.DrawLine(box.frontBottomLeft, box.frontTopLeft, color, Mathf.Infinity);
 
-        Debug.DrawLine(box.backTopLeft, box.backTopRight, color);
-        Debug.DrawLine(box.backTopRight, box.backBottomRight, color);
-        Debug.DrawLine(box.backBottomRight, box.backBottomLeft, color);
-        Debug.DrawLine(box.backBottomLeft, box.backTopLeft, color);
+        Debug.DrawLine(box.backTopLeft, box.backTopRight, color, Mathf.Infinity);
+        Debug.DrawLine(box.backTopRight, box.backBottomRight, color, Mathf.Infinity);
+        Debug.DrawLine(box.backBottomRight, box.backBottomLeft, color, Mathf.Infinity);
+        Debug.DrawLine(box.backBottomLeft, box.backTopLeft, color, Mathf.Infinity);
 
-        Debug.DrawLine(box.frontTopLeft, box.backTopLeft, color);
-        Debug.DrawLine(box.frontTopRight, box.backTopRight, color);
-        Debug.DrawLine(box.frontBottomRight, box.backBottomRight, color);
-        Debug.DrawLine(box.frontBottomLeft, box.backBottomLeft, color);
+        Debug.DrawLine(box.frontTopLeft, box.backTopLeft, color, Mathf.Infinity);
+        Debug.DrawLine(box.frontTopRight, box.backTopRight, color, Mathf.Infinity);
+        Debug.DrawLine(box.frontBottomRight, box.backBottomRight, color, Mathf.Infinity);
+        Debug.DrawLine(box.frontBottomLeft, box.backBottomLeft, color, Mathf.Infinity);
     }
 
     public struct Box

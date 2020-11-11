@@ -7,15 +7,21 @@ public class AStarController : MonoBehaviour
 {
     public static object[] MinArgmin<TKey>(Dictionary<TKey,float> dict)
     {
+        int index = 0, minIndex = 0;
         var minDistObj = dict.Keys.ToList().First();
         float minDist = Mathf.Infinity;
         foreach (var kv in dict)
+        {
             if (kv.Value < minDist)
             {
                 minDistObj = kv.Key;
                 minDist = kv.Value;
+                minIndex = index;
             }
-        return new object[] { minDistObj, minDist };
+            index++;
+        }
+            
+        return new object[] { minDistObj, minDist, minIndex };
     }
 
 
@@ -27,13 +33,15 @@ public class AStarController : MonoBehaviour
     public WaypointChecker end;
 
     public List<Vector3> curPath;
-    public Vector3 curTarget;
+    public WaypointChecker curWaypointTarget;
+
+    public Vector3 curTargetPos() { return curWaypointTarget.transform.position; }
 
     void Start()
     {
         start = lm.GetChild(0).GetChild(0).GetChild(4).GetComponent<WaypointChecker>();
         end = start;
-        for (int i = 0; i< 6 ; i++)
+        for (int i = 0; i< H ; i++)
         {
             end = end.nextWaypointsAndDist.Keys.ToList().Last();
         }
@@ -42,9 +50,14 @@ public class AStarController : MonoBehaviour
     }
 
 
-    //private float DistToEnd(WaypointChecker wc)
-    //{
-    //}
+    public void NextTg()
+    {
+        start = curWaypointTarget;
+        var prova = end.nextWaypointsAndDist.Keys.ToArray();
+        end = prova[Random.Range(0, prova.Length)];
+
+        CalculateTrajectory();
+    }
 
 
     private float DistToEnd(WaypointChecker wc, List<Vector3> list)
@@ -70,7 +83,7 @@ public class AStarController : MonoBehaviour
     }
 
 
-    public void CalculateTrajectory()
+    private void CalculateTrajectory()
     {
         Dictionary<List<Vector3>, float[]> nextWaypointHeuristicValues = new Dictionary<List<Vector3>, float[]>();
 
@@ -118,8 +131,12 @@ public class AStarController : MonoBehaviour
 
         foreach (var kv in nextWaypointHeuristicValues)
         {
+
+
             if (kv.Value[0] < 100)  // if we are nearby the end then the angular cost is decreased
+            {
                 kv.Value[2] /= 20;
+            }
 
             float normCost = 0;
             for (int i = 0; i < costsSums.Length; i++)
@@ -134,7 +151,7 @@ public class AStarController : MonoBehaviour
 
         var res = MinArgmin<List<Vector3>>(nextWaypointHeuristicValuesNormalized);
         curPath = (List<Vector3>)res[0];
-        curTarget = curPath.First();
+        curWaypointTarget = start.nextWaypointsAndDist.Keys.ToArray()[(int)res[2]];
     }
 
 
@@ -145,10 +162,10 @@ public class AStarController : MonoBehaviour
 
         //if (curPath.Count == 0 && Vector3.Distance(transform.position, end.transform.position) > 2f)
         //    CalculateTrajectory();
-        CalculateTrajectory();
+        // CalculateTrajectory();
 
         foreach (var v in curPath)
-            Debug.DrawLine(transform.position, v, Color.red);
+            Debug.DrawLine(transform.GetChild(0).transform.position, v, Color.red);
 
 
 
