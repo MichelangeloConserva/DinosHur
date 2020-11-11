@@ -5,7 +5,6 @@ using UnityEngine;
 public class WaypointChecker : MonoBehaviour
 {
 
-
     public Dictionary<WaypointChecker, float> nextWaypointsAndDist = new Dictionary<WaypointChecker, float>();
 
 
@@ -15,6 +14,7 @@ public class WaypointChecker : MonoBehaviour
         {
             if (transform.root.GetComponent<TrackCreator>().IsDebugOn)
                 Debug.DrawLine(transform.position, wc.transform.position + Vector3.up*3, Color.red);
+
         }
     }
 

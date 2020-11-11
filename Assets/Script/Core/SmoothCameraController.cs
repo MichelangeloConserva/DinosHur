@@ -5,6 +5,8 @@ using UnityEngine;
 public class SmoothCameraController : MonoBehaviour
 {
 
+    public Rigidbody vehicleRigidbody;
+    private Transform vehicleTransform;
 
     public float distance = 10f;
     public float height = 5f;
@@ -16,13 +18,11 @@ public class SmoothCameraController : MonoBehaviour
     public float defaultFOV = 60f;
     public readonly float maxAcceleration = 30f;
     private float rotationVector;
-    private Rigidbody vehicleRigidbody;
-    private Transform vehicleTransform;
 
 
     private void Start()
     {
-        vehicleRigidbody = LevelController.Instance.PlayerController.vehicleRigidbody;
+        //vehicleRigidbody = LevelController.Instance.PlayerController.vehicleRigidbody;
         vehicleTransform = vehicleRigidbody.transform;
     }
     // Update is called once per frame

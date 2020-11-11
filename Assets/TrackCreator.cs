@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 [ExecuteInEditMode]
 public class TrackCreator : MonoBehaviour
 {
@@ -26,7 +27,6 @@ public class TrackCreator : MonoBehaviour
     {
         waypoint.nextWaypointsAndDist.Add(nextGO.GetComponent<WaypointChecker>(), Vector3.Distance(waypoint.transform.position, nextGO.transform.position)); ;
     }
-
 
 
     public bool IsDebugOn;
@@ -84,14 +84,14 @@ public class TrackCreator : MonoBehaviour
             DeployStraight(tp.startPos, tp.num, Quaternion.Euler(tp.rotation), tp.direction);
 
 
-        // Make sure that curves are added after straight lines and not before so that AddWaypoints works
+        //Make sure that curves are added after straight lines and not before so that AddWaypoints works
         foreach (TrackPieceCurve tp in trackCurves)
         {
             var curve = Instantiate(curvePiece, tp.startPos, Quaternion.Euler(tp.rotation), transform.GetChild(0));
             curve.GetComponent<WaypointsAdderCurve>().AddWaypoints();
             track.Add(curve);
         }
-            
+
     }
 
     void Update()
