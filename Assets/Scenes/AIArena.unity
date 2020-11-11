@@ -18583,8 +18583,8 @@ GameObject:
   - component: {fileID: 809711764}
   - component: {fileID: 809711759}
   - component: {fileID: 809711763}
-  - component: {fileID: 809711762}
   - component: {fileID: 809711761}
+  - component: {fileID: 809711762}
   - component: {fileID: 809711760}
   m_Layer: 0
   m_Name: Dino
@@ -18621,7 +18621,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8858d29edd07e34b8d60ed315aff65f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slow: 0.5
+  slow: 1
   turner: 2
   minTurnToTurn: 2
 --- !u!65 &809711761
@@ -52213,8 +52213,8 @@ GameObject:
   - component: {fileID: 5866926535413092353}
   - component: {fileID: 5866926535413092366}
   - component: {fileID: 5866926535413092352}
-  - component: {fileID: 5866926535413092367}
   - component: {fileID: 7230655531907389279}
+  - component: {fileID: 5866926535413092367}
   - component: {fileID: 6496199067946581825}
   m_Layer: 0
   m_Name: Dino
@@ -53986,7 +53986,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8858d29edd07e34b8d60ed315aff65f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slow: 0.5
+  slow: 1
   turner: 2
   minTurnToTurn: 2
 --- !u!4 &7138196467540173467

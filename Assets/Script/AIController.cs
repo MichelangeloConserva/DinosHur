@@ -58,11 +58,15 @@ public class AIController : MonoBehaviour
 
 
         var angle = AngleToTurn();
-        var speed = 1 - Mathf.Min(Mathf.Abs(angle), 20f) / 20f;
+
+        var speed = 1 - Mathf.Abs(angle);
+        if (speed < 0.2f)
+            speed = -0.8f;
+
 
 
         Debug.Log(speed);
-        Debug.Log(Vector3.Distance(asc.curTargetPos(), dinos.transform.position));
+        // Debug.Log(Vector3.Distance(asc.curTargetPos(), dinos.transform.position));
 
         //var angle = Input.GetAxis("Horizontal");
         //var speed = Input.GetAxis("Vertical");
