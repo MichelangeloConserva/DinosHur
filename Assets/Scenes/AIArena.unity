@@ -10517,6 +10517,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ProgressionBar: {fileID: 38378463}
+  hearts: []
 --- !u!4 &417534693
 Transform:
   m_ObjectHideFlags: 0
@@ -18531,7 +18532,7 @@ Transform:
   - {fileID: 972960748}
   - {fileID: 809711764}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &804029411
 GameObject:
@@ -36784,7 +36785,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1584199360
 GameObject:
@@ -43051,6 +43052,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.z
       value: -6.48
+      objectReference: {fileID: 0}
+    - target: {fileID: 1257177640778456704, guid: 97faa199a67851a41b80b2818154fb32,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 6.89
+      objectReference: {fileID: 0}
+    - target: {fileID: 1257177640778456704, guid: 97faa199a67851a41b80b2818154fb32,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1257177640830663784, guid: 97faa199a67851a41b80b2818154fb32,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 6.89
+      objectReference: {fileID: 0}
+    - target: {fileID: 1257177640830663784, guid: 97faa199a67851a41b80b2818154fb32,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -3.7
       objectReference: {fileID: 0}
     - target: {fileID: 1257177640830663787, guid: 97faa199a67851a41b80b2818154fb32,
         type: 3}
@@ -52752,7 +52773,7 @@ Transform:
   - {fileID: 5866926535469167337}
   - {fileID: 5866926535413092353}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5866926535892504919
 GameObject:
