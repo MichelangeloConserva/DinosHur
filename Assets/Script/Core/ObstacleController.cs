@@ -5,7 +5,7 @@ using UnityEngine;
 public class ObstacleController : MonoBehaviour
 {
     private List<IObstacle> recurringObstacles = new List<IObstacle>();
-    
+    public float randomNess = 1f;
     public bool TwitchEnabled = true;
     // Update is called once per frame
 
@@ -14,7 +14,7 @@ public class ObstacleController : MonoBehaviour
 
         while (true)
         {
-            yield return new WaitForSeconds(obstacle.Cooldown);
+            yield return new WaitForSeconds(obstacle.Cooldown + UnityEngine.Random.Range(-randomNess, randomNess);
             obstacle.Activate();
         }
     }
