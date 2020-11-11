@@ -870,6 +870,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boxesNecessaryForGun: 6
+  playerHealth: 4
   gun: {fileID: 3395947979677382963}
   CollectionCollider: {fileID: 1257177640830663790}
   ObstacleCollider: {fileID: 0}
@@ -1374,7 +1375,7 @@ PrefabInstance:
     - target: {fileID: 6426586342817408470, guid: 9cd26ebe797afe640b36d506484f1be9,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.164
+      value: -0.33900008
       objectReference: {fileID: 0}
     - target: {fileID: 6426586342817408470, guid: 9cd26ebe797afe640b36d506484f1be9,
         type: 3}
@@ -1576,7 +1577,7 @@ PrefabInstance:
     - target: {fileID: 1142930538604569110, guid: ef9be85b4ec54fa4e957ac0853208d2a,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.485
+      value: -0.66
       objectReference: {fileID: 0}
     - target: {fileID: 1142930538604569110, guid: ef9be85b4ec54fa4e957ac0853208d2a,
         type: 3}
@@ -1833,7 +1834,7 @@ PrefabInstance:
     - target: {fileID: 1142930538604569110, guid: ef9be85b4ec54fa4e957ac0853208d2a,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.454
+      value: -0.62900007
       objectReference: {fileID: 0}
     - target: {fileID: 1142930538604569110, guid: ef9be85b4ec54fa4e957ac0853208d2a,
         type: 3}

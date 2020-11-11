@@ -70,6 +70,8 @@ public class BumperObstacle : IObstacle
 
     private void OnCollisionEnter(Collision collision)
     {
+
+        LevelController.Instance.PlayerController.DecreaseHealth();
         LevelController.Instance.PlaySound(SoundType.Bumper, transform.position);
     }
 

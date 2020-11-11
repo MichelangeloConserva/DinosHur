@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour
 {
 
     public int boxesNecessaryForGun = 6;
+    public int playerHealth = 4;
 
     public GameObject gun;
 
@@ -63,5 +64,20 @@ public class PlayerController : MonoBehaviour
         
     }
 
+    public void DecreaseHealth()
+    {
+        if (playerHealth > 0)
+        {
+            playerHealth--;
+            LevelController.Instance.UIController.SetHealth(playerHealth);
+        }
+    }
+
+    public void IncreaseHealth()
+    {
+        if (playerHealth < 4)
+            playerHealth++;
+            LevelController.Instance.UIController.SetHealth(playerHealth);
+    }
 
 }
