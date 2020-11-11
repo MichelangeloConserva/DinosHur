@@ -65,6 +65,5 @@ public class LevelController : MonoBehaviour
         PlayerController.CollectedBoxNum++;
         UIController.SetProgressionBar((float)PlayerController.CollectedBoxNum / CollectableController.MaximumBoxes);
 
-        
     }
 }
