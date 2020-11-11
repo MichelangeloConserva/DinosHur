@@ -99,8 +99,8 @@ public class AStarController : MonoBehaviour
 
             var frwd = transform.GetChild(1).forward; frwd.y = 0;
             var frwdAction = (path.First() - transform.GetChild(1).position).normalized;
-            
-            float angularCost = Mathf.Min(50f,Vector3.Angle(frwd, frwdAction)) / 50 + 0.01f;
+
+            float angularCost = 0.01f; // Mathf.Min(50f,Vector3.Angle(frwd, frwdAction)) / 50 + 0.01f;
 
             //Debug.Log(distanceCost);
             //Debug.Log(angularCost);

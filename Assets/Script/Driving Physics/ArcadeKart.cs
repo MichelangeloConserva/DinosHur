@@ -82,6 +82,7 @@ namespace KartGame.KartSystems
         }
 
         public bool humanControll = false;
+        public float humanHandicap;
 
         public Rigidbody Rigidbody { get; private set; }
         public Vector2 Input       { get; private set; }
@@ -149,6 +150,25 @@ namespace KartGame.KartSystems
 
         void FixedUpdate()
         {
+
+            // Bound the z rotation
+            var tr = transform.localRotation;
+
+            Debug.Log(tr.z);
+
+
+            if (Mathf.Abs(tr.z) > 0.1f)
+            {
+                transform.localRotation = Quaternion.Euler(tr.x, tr.y, Mathf.Clamp(tr.z, -0.1f, 0.1f));
+                Debug.Log("Reset Rotation");
+            }
+
+            if (transform.position.y > 5 && Mathf.Abs(tr.x) < 10)
+                transform.position -= Vector3.up * (transform.position.y - 5);
+
+
+
+
             ResetIfStuck();
 
             if (humanControll)
@@ -175,6 +195,10 @@ namespace KartGame.KartSystems
             // gather inputs
             float accel = Input.y;
             float turn = Input.x;
+
+            if (humanControll)
+                accel *= (1-humanHandicap);
+
 
             // apply vehicle physics
             GroundVehicle(minHeight);
