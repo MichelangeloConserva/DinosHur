@@ -18,7 +18,7 @@ public class LevelController : MonoBehaviour
     public UIController UIController;
     public SoundController SoundController;
 
-    private List<String> lapTimes = new List<String>();
+    public List<CheckpointScript> Checkpoints;
 
     public float startTime;
     private void Awake()
@@ -35,9 +35,7 @@ public class LevelController : MonoBehaviour
 
     public void Start()
     {
-
         startTime = Time.time;
-        
     }
 
     public void Update()
@@ -60,6 +58,11 @@ public class LevelController : MonoBehaviour
         ObstacleController.AddObstacle(obstacle);
     }
 
+    public void AddCheckPoint(CheckpointScript checkpoint)
+    {
+        Checkpoints.Add(checkpoint);
+    }
+
     public void PlaySound(SoundType soundType, Vector3 position, float volume = 1f)
     {
         SoundController.PlaySound(soundType, position, volume);
@@ -80,14 +83,58 @@ public class LevelController : MonoBehaviour
 
     }
 
+    public void FinishLap()
+    {
+
+        // check if all checkpoints have been passed
+        bool passedAll = true;
+        foreach(CheckpointScript cs in Checkpoints)
+        {
+            if (cs.Passed == false)
+            {
+                passedAll = false;
+            }
+        }
+
+        
+        if (passedAll == true)
+        {
+
+            float currentLapStartTime = startTime;
+
+            foreach(float previousLapTime in PlayerController.LapTimes) {
+                currentLapStartTime += previousLapTime;
+            }
+
+            float lapTime = Time.time - currentLapStartTime;
+            string formattedTime = ParseTime(lapTime);
+
+            UIController.SetLapTime(PlayerController.CurrentLap, formattedTime);
+            PlayerController.FinishLap(lapTime);
+
+            foreach (CheckpointScript cs in Checkpoints)
+            {
+                cs.Passed = false;
+            }
+        }
+
+
+    }
+
     public void SetTime(float time)
     {
 
-        int minutes = (int) Mathf.Floor(time / 60);
+        string formattedTime = ParseTime(time);
+        UIController.SetTime(formattedTime);
+    }
+
+    private string ParseTime(float time)
+    {
+        int minutes = (int)Mathf.Floor(time / 60);
         int seconds = (int)time % 60;
         int fraction = ((int)(time * 100)) % 100;
-        
-        string format = String.Format("{0:00}:{1:00}:{2:00}", minutes, seconds, fraction);
-        UIController.SetTime(format);
+
+        return String.Format("{0:00}:{1:00}:{2:00}", minutes, seconds, fraction);
     }
+
 }

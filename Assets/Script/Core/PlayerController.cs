@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -16,13 +17,16 @@ public class PlayerController : MonoBehaviour
     public Rigidbody dinoRigidbody;
     public Rigidbody vehicleRigidbody;
 
-    public Transform CurrentCheckPoint { get; set; }
-
+    public CheckpointScript CurrentCheckPoint { get; set; }
     public int CollectedBoxNum { get; set; } = 0;
+
+
+    public int CurrentLap { get; set; } = 0;
+    public List<float> LapTimes { get; set; } = new List<float>();
     // Start is called before the first frame update
     void Start()
     {
-        CurrentCheckPoint = transform;
+        //CurrentCheckPoint = LevelController.Instance.Checkpoints[0];
     }
 
     // Update is called once per frame
@@ -47,20 +51,20 @@ public class PlayerController : MonoBehaviour
         dinoRigidbody.velocity = Vector3.zero;
         dinoRigidbody.angularVelocity = Vector3.zero;
         dinoRigidbody.transform.position = new Vector3(
-                                                    CurrentCheckPoint.position.x,
-                                                    CurrentCheckPoint.position.y + 10f,
-                                                    CurrentCheckPoint.position.z
+                                                    CurrentCheckPoint.transform.position.x,
+                                                    CurrentCheckPoint.transform.position.y + 10f,
+                                                    CurrentCheckPoint.transform.position.z
                                                     );
-        dinoRigidbody.transform.rotation = CurrentCheckPoint.rotation;
+        dinoRigidbody.transform.rotation = CurrentCheckPoint.transform.rotation;
 
         vehicleRigidbody.velocity = Vector3.zero;
         vehicleRigidbody.angularVelocity = Vector3.zero;
         vehicleRigidbody.transform.position = new Vector3(
-                                                    CurrentCheckPoint.position.x, 
-                                                    CurrentCheckPoint.position.y + 10f, 
-                                                    CurrentCheckPoint.position.z - 2f
+                                                    CurrentCheckPoint.transform.position.x, 
+                                                    CurrentCheckPoint.transform.position.y + 10f, 
+                                                    CurrentCheckPoint.transform.position.z - 2f
                                                     );
-        vehicleRigidbody.transform.rotation = CurrentCheckPoint.rotation;
+        vehicleRigidbody.transform.rotation = CurrentCheckPoint.transform.rotation;
         
     }
 
@@ -78,6 +82,12 @@ public class PlayerController : MonoBehaviour
         if (playerHealth < 4)
             playerHealth++;
             LevelController.Instance.UIController.SetHealth(playerHealth);
+    }
+
+    public void FinishLap(float time)
+    {
+        CurrentLap++;
+        LapTimes.Add(time);
     }
 
 }

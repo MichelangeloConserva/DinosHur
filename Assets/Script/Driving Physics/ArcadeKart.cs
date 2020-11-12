@@ -152,7 +152,7 @@ namespace KartGame.KartSystems
         {
 
             // Bound the z rotation
-            var tr = transform.localRotation;
+            /*var tr = transform.localRotation;
 
             Debug.Log(tr.z);
 
@@ -164,7 +164,7 @@ namespace KartGame.KartSystems
             }
 
             if (transform.position.y > 5 && Mathf.Abs(tr.x) < 10)
-                transform.position -= Vector3.up * (transform.position.y - 5);
+                transform.position -= Vector3.up * (transform.position.y - 5);*/
 
 
 

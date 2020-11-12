@@ -5,27 +5,29 @@ using UnityEngine;
 public class CheckpointScript : MonoBehaviour
 {
 
-    private PlayerController playerController;
+    protected PlayerController playerController;
+    public bool Passed = false;
     // Start is called before the first frame update
     void Start()
     {
+        LevelController.Instance.AddCheckPoint(this);
         playerController = LevelController.Instance.PlayerController;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     public void OnTriggerEnter(Collider other)
     {
-        
         if (other.Equals(playerController.CollectionCollider))
         {
-            playerController.CurrentCheckPoint = transform;
+            Passed = true;
+            playerController.CurrentCheckPoint = this;
         }
     }
+
+    public void ResetCheckPoint()
+    {
+        Passed = false;
+    }
+
 
 
 }

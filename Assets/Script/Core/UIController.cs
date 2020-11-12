@@ -8,6 +8,7 @@ public class UIController : MonoBehaviour
     public Image ProgressionBar;
     public Image[] Hearts;
 
+    public Text[] LapTimes;
     public void SetProgressionBar(float percentage)
     {
         ProgressionBar.fillAmount = percentage;
@@ -31,6 +32,11 @@ public class UIController : MonoBehaviour
     public void SetTime(string time)
     {
         Timer.text = time;
+    }
+
+    public void SetLapTime(int lap, string time)
+    {
+        LapTimes[lap].text = time;
     }
 
     
