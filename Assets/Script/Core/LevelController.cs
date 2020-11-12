@@ -18,7 +18,7 @@ public class LevelController : MonoBehaviour
     public UIController UIController;
     public SoundController SoundController;
 
-    public List<CheckpointScript> Checkpoints;
+    public List<CheckpointScript> Checkpoints { get; set; } = new List<CheckpointScript>();
 
     private float startTime;
     private void Awake()

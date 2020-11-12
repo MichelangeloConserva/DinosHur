@@ -99,6 +99,6 @@ public class TrackCreator : MonoBehaviour
 
     void Update()
     {
-        UpdateTrack();
+        //UpdateTrack();
     }
 }
