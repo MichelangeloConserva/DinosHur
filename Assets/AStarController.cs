@@ -7,6 +7,9 @@ using static AIController;
 
 public class AStarController : MonoBehaviour
 {
+
+    private static Vector3 GetVector3Down(Vector3 v) { return v - Vector3.up * v.y; }
+
     public static object[] MinArgmin<TKey>(Dictionary<TKey,float> dict)
     {
         int index = 0, minIndex = 0;
@@ -25,8 +28,12 @@ public class AStarController : MonoBehaviour
             
         return new object[] { minDistObj, minDist, minIndex };
     }
-    // DISTANCE -- COLLECTABLE
+
+
+
     public float[] costWeights = new float[] { 0.5f, 0.5f };
+
+    public GameObject[] otherPlayers;
 
     public float turnCostWeight;
     public int H = 5;
@@ -60,30 +67,20 @@ public class AStarController : MonoBehaviour
         start = lm.GetChild(0).GetChild(0).GetChild(4).GetComponent<WaypointChecker>();
         end = start;
         for (int i = 0; i< H ; i++)
-        {
             end = end.nextWaypointsAndDist.Keys.ToList().Last();
-        }
-
 
         CalculateLayers();
         calculateTarget();
-        //CalculateTrajectory();
     }
-
 
     private void CalculateLayers()
     {
-
         waypointsLayers = new List<List<WaypointChecker>>();
         var curWp = start.nextWaypointsAndDist.Keys.ToArray()[0];
 
         for (int i = 0; i < H; i++)
         {
             var concurrents = concurrentWp(curWp);
-
-            foreach (var wp in concurrents)
-                DrawBox(wp.transform.position + Vector3.up * 2, Vector3.one + Vector3.up * 3, Quaternion.identity, Color.black);
-
             waypointsLayers.Add(concurrents);
             curWp = concurrents.First().nextWaypointsAndDist.Keys.ToArray()[0];
         }
@@ -92,135 +89,15 @@ public class AStarController : MonoBehaviour
     public void NextTg()
     {
         start = curWaypointTarget;
-
         CalculateLayers();
-        //CalculateTrajectory();
     }
-
-
-    //private float DistToEnd(WaypointChecker wc)
-    //{
-    //    float distance = 0;
-
-    //    if (wc.nextWaypointsAndDist.ContainsKey(end))
-    //        return distance;
-
-    //    var res = MinArgmin(wc.nextWaypointsAndDist);
-    //    WaypointChecker minDistWc = (WaypointChecker)res[0];
-    //    float minDist = (float)res[1];
-
-    //    //Debug.Log(wc.nextWaypointsAndDist.Values.ToArray()[0]);
-    //    //Debug.Log(wc.nextWaypointsAndDist.Values.ToArray()[1]);
-    //    //Debug.Log(wc.nextWaypointsAndDist.Values.ToArray()[2]);
-    //    //Debug.Log(wc.nextWaypointsAndDist.Values.ToArray()[3]);
-
-    //    return distance + minDist + DistToEnd(minDistWc);
-    //}
-
-
-    //private float DistToEnd(WaypointChecker wc, List<Vector3> list)
-    //{
-    //    float distance = 0;
-
-    //    if (wc.nextWaypointsAndDist.ContainsKey(end))
-    //        return distance;
-
-    //    var res = MinArgmin(wc.nextWaypointsAndDist);
-    //    WaypointChecker minDistWc = (WaypointChecker)res[0];
-    //    float minDist = (float)res[1];
-
-    //    //Debug.Log(wc.nextWaypointsAndDist.Values.ToArray()[0]);
-    //    //Debug.Log(wc.nextWaypointsAndDist.Values.ToArray()[1]);
-    //    //Debug.Log(wc.nextWaypointsAndDist.Values.ToArray()[2]);
-    //    //Debug.Log(wc.nextWaypointsAndDist.Values.ToArray()[3]);
-
-    //    if (list.Count < H)
-    //        list.Add(minDistWc.transform.position);
-
-    //    return distance + minDist + DistToEnd(minDistWc, list);
-    //}
-
-
-    //private void CalculateTrajectory()
-    //{
-    //    Dictionary<List<Vector3>, float[]> nextWaypointHeuristicValues = new Dictionary<List<Vector3>, float[]>();
-
-    //    float[] costsSums = new float[] { 0,0,0,0,0 };
-
-    //    foreach( var kv in start.nextWaypointsAndDist)
-    //    {
-    //        // nextWaypointHeuristicValues.Add(kv.Key, DistToEnd(kv.Key));
-
-    //        List<Vector3> path = new List<Vector3>();
-    //        path.Add(kv.Key.transform.position);
-    //        float distanceCost = DistToEnd(kv.Key, path) + kv.Value;
-
-    //        var frwd = transform.GetChild(1).forward; frwd.y = 0;
-    //        var frwdAction = (path.First() - transform.GetChild(1).position).normalized;
-
-    //        //float angularCost = 0.01f; 
-    //        float angularCost = Mathf.Min(turnCostWeight, Vector3.Angle(frwd, frwdAction)) / turnCostWeight + 0.01f;
-
-    //        //Debug.Log(distanceCost);
-    //        //Debug.Log(angularCost);
-    //        //Debug.Log("------");
-
-
-    //        // TODO : implement the cost using the path
-    //        float enemiesCost = 0.01f;
-    //        float obstacleCost = 0.01f;
-    //        float collectableCost = 0.01f;
-
-    //        costsSums[0] += distanceCost;
-    //        costsSums[1] += angularCost;
-    //        costsSums[2] += enemiesCost;
-    //        costsSums[3] += obstacleCost;
-    //        costsSums[4] += collectableCost;
-
-    //        // the total cost associate with this choice
-    //        float[] totalCosts = new float[] { distanceCost, angularCost, enemiesCost, obstacleCost, collectableCost };
-
-
-    //        nextWaypointHeuristicValues.Add(path, totalCosts);
-    //    }
-
-    //    Dictionary<List<Vector3>, float> nextWaypointHeuristicValuesNormalized = new Dictionary<List<Vector3>, float>();
-
-
-
-    //    foreach (var kv in nextWaypointHeuristicValues)
-    //    {
-
-
-    //        if (kv.Value[0] < 100)  // if we are nearby the end then the angular cost is decreased
-    //        {
-    //            kv.Value[2] /= 20;
-    //        }
-
-    //        float normCost = 0;
-    //        for (int i = 0; i < costsSums.Length; i++)
-    //        {
-    //            normCost += kv.Value[i] / costsSums[i];
-    //        }
-
-
-    //        nextWaypointHeuristicValuesNormalized.Add(kv.Key, normCost);
-    //    }
-
-
-    //    var res = MinArgmin<List<Vector3>>(nextWaypointHeuristicValuesNormalized);
-    //    curPath = (List<Vector3>)res[0];
-    //    curWaypointTarget = start.nextWaypointsAndDist.Keys.ToArray()[(int)res[2]];
-    //}
-
-
-
 
     private List<WaypointChecker> concurrentWp(WaypointChecker wp)
     {
         var wps = new List<WaypointChecker>();
-        for (int i = 0; i < wp.transform.parent.childCount-2; i++)
-            wps.Add(wp.transform.parent.GetChild(i).GetComponent<WaypointChecker>());
+        for (int i = 0; i < wp.transform.parent.childCount; i++)
+            if (wp.transform.parent.GetChild(i).GetComponent<WaypointChecker>())
+                wps.Add(wp.transform.parent.GetChild(i).GetComponent<WaypointChecker>());
         return wps;
     }
 
@@ -228,7 +105,7 @@ public class AStarController : MonoBehaviour
     {
         var normalizedCost = 0f;
         for (int i = 0; i < sums.Length; i++)
-            normalizedCost += unnormalized[i] * weights[i] / sums[i] ;
+            normalizedCost += unnormalized[i] * weights[i] / (sums[i] > 0 ? sums[i] : 0.001f) ;
         return normalizedCost;
     }
 
@@ -241,8 +118,13 @@ public class AStarController : MonoBehaviour
 
 
 
-
-
+    private bool ProspectiveCollision(Vector3 target)
+    {
+        foreach (var otherP in otherPlayers)
+            if (Vector3.Angle(GetVector3Down(target) - GetVector3Down(otherP.transform.position), otherP.transform.forward) < 20)
+                return true;
+        return false;
+    }
 
     private Dictionary<WaypointChecker, float> GetFrontierNormalized(Dictionary<WaypointChecker, float[]> frontier, float[] costsSums)
     {
@@ -255,17 +137,13 @@ public class AStarController : MonoBehaviour
         return frontierNormalized;
     }
 
-
-
-    private WaypointChecker bestOfLayer(List<WaypointChecker> waypointsLayers, WaypointChecker lastSelected, float weight)
+    private WaypointChecker bestOfLayer(List<WaypointChecker> waypointsLayers, Vector3 future)
     {
-
-
-
         Dictionary<WaypointChecker, float[]> curLayer = new Dictionary<WaypointChecker, float[]>();
         float[] costsSums = new float[] { 0, 0, 0, 0, 0 };
 
         // Find the waypoints in the last H layer
+        int k = 0;
         foreach (var wp in waypointsLayers)
         {
             var otherPos = wp.transform.position;
@@ -274,31 +152,43 @@ public class AStarController : MonoBehaviour
             var distanceCost = Vector3.Distance(transform.position, otherPos);
             costsSums[0] = distanceCost;
 
-            var collectableCost = 1;
+            var collectableCost = 1f;
             if (checkCollectable(wp.transform.position))
-                collectableCost = 0;
+                collectableCost = 0f;
             costsSums[1] = collectableCost;
 
 
+            var angularCost = 0f;
             var velocity = GetComponent<Rigidbody>().velocity;
-            var angularCost = Vector3.Angle(new Vector3(velocity.x, 0, velocity.z).normalized,
-                                            new Vector3(otherPos.x, 0, otherPos.z).normalized);
-            costsSums[2] = angularCost;
+            if (velocity.magnitude > 10 && Vector3.Distance(transform.position, otherPos) > 18f)
+            {
+                velocity = GetVector3Down(GetComponent<Rigidbody>().velocity);
+                velocity = velocity.magnitude > 3 ? velocity : transform.forward;
+                angularCost = Vector3.Angle(velocity, otherPos - transform.position);
+            }
+            costsSums[2] = Mathf.Max(angularCost,0.001f);
 
-            var dissonancePathCos = 0f;
-            if (lastSelected)
-                dissonancePathCos = Vector3.Distance(wp.transform.position, lastSelected.transform.position);
+
+            var dissonancePathCos = Vector3.Distance(wp.transform.position, future);
             costsSums[3] = dissonancePathCos;
 
 
-            var beingTooCentralCost = Vector3.Distance(otherPos, wp.transform.parent.GetChild(wp.transform.parent.childCount - 1).position);
-            costsSums[4] = beingTooCentralCost;
+            var collisionCost = 0f; // Vector3.Distance(otherPos, wp.transform.parent.GetChild(wp.transform.parent.childCount - 1).position);
+            //if (ProspectiveCollision(otherPos))
+            //    collisionCost = 1f;
+            costsSums[4] = collisionCost;
 
 
-            //Debug.Log(angularCost);
-
-            var costs = new float[] { distanceCost, collectableCost, angularCost, dissonancePathCos, beingTooCentralCost };
+            var costs = new float[] { distanceCost, collectableCost, angularCost, dissonancePathCos, collisionCost };
             curLayer.Add(wp, costs);
+
+            var str = "";
+            foreach (var cc in costs)
+                str += cc.ToString() + "-";
+            Debug.Log(str);
+
+
+
         }
 
         Dictionary<WaypointChecker, float> curLayerNormalized = GetFrontierNormalized(curLayer, costsSums);
@@ -321,14 +211,15 @@ public class AStarController : MonoBehaviour
 
     private void calculateTarget()
     {
+        WaypointChecker future = start;
+        for (int i = 0; i < H + 2; i++)
+            future = future.nextWaypointsAndDist.Keys.First();
+
         WaypointChecker curTarget = null;
         for (int i = waypointsLayers.Count - 1; i >= 0; i--)
         {
             float weigth = (i / waypointsLayers.Count - 1) * 0.6f;
-
-
-            curTarget = bestOfLayer(waypointsLayers.ElementAt(i), curTarget, weigth);
-            //curPath.Add(curTarget.transform.position);
+            curTarget = bestOfLayer(waypointsLayers.ElementAt(i), future.transform.position);
         }
         curWaypointTarget = curTarget;
     }
@@ -336,8 +227,6 @@ public class AStarController : MonoBehaviour
 
     void Update()
     {
-
-        //curPath = new List<Vector3>();
         calculateTarget();
 
         WaypointChecker future = start;
@@ -345,15 +234,17 @@ public class AStarController : MonoBehaviour
             future = future.nextWaypointsAndDist.Keys.First();
         DrawBox(future.transform.position, Vector3.one * 3, Quaternion.identity, Color.cyan);
 
-
+        //foreach (var concurrents in waypointsLayers)
+        //    foreach (var wp in concurrents)
+        //        DrawBox(wp.transform.position + Vector3.up * 2, Vector3.one , Quaternion.identity, Color.black);
 
 
         //if (curPath.Count == 0 && Vector3.Distance(transform.position, end.transform.position) > 2f)
         //    CalculateTrajectory();
         // CalculateTrajectory();
 
-            //foreach (var v in curPath)
-            //    Debug.DrawLine(transform.GetChild(0).transform.position, v, Color.red);
+        //foreach (var v in curPath)
+        //    Debug.DrawLine(transform.GetChild(0).transform.position, v, Color.red);
 
     }
 }

@@ -107,7 +107,8 @@ public class LevelController : MonoBehaviour
     {
 
         string formattedTime = ParseTime(time);
-        UIController.SetTime(formattedTime);
+        if (UIController)
+            UIController.SetTime(formattedTime);
     }
 
     private void UpdateUITimers()
@@ -121,7 +122,8 @@ public class LevelController : MonoBehaviour
 
         float lapTime = Time.time - currentLapStartTime;
 
-        UIController.SetLapTime(PlayerController.CurrentLap, ParseTime(lapTime));
+        if (UIController)
+            UIController.SetLapTime(PlayerController.CurrentLap, ParseTime(lapTime));
     }
 
     private string ParseTime(float time)

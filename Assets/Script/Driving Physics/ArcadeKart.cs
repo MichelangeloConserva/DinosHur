@@ -146,6 +146,8 @@ namespace KartGame.KartSystems
 
             if (!humanControll)
                 ai = GetComponent<AIController>();
+            else
+                baseStats.TopSpeed *= (1 - humanHandicap);
         }
 
         void FixedUpdate()
@@ -190,6 +192,8 @@ namespace KartGame.KartSystems
 
             if (humanControll)
                 accel *= (1-humanHandicap);
+            if (humanControll && Time.time < 1)
+                accel *= 0.2f;
 
 
             // apply vehicle physics
@@ -200,7 +204,8 @@ namespace KartGame.KartSystems
                 
             } else
             {
-                StopAngularVecloity(true, true , false);
+                //StopAngularVecloity(true, true , false);
+                Rigidbody.AddForceAtPosition(- transform.up * 5, transform.position + transform.forward, ForceMode.Acceleration);
             }
 
             GroundAirbourne();

@@ -8,57 +8,27 @@ using static Utils;
 public class WaypointsAdderCurve : MonoBehaviour
 {
 
-    private GameObject findLink(Vector3 pos)
+    public void AddPreviousConnection(GameObject prevStraigth)
     {
-
-        var cc = Physics.OverlapBox(pos, Vector3.one * 4, Quaternion.identity, LayerMask.GetMask("Default"));
-
-        //DrawBox(pos, Vector3.one * 4, Quaternion.identity, Color.red);
-
-        
-        return cc[0].gameObject.transform.parent.gameObject;
-
-        Debug.Log(cc[0].gameObject.name);
-
-
-
-        //RaycastHit hitInfo;
-        //if (Physics.BoxCast(pos, Vector3.one * 4, Quaternion.identity, out hitInfo))
-        //{
-        //    DrawBoxCastOnHit(pos, Vector3.one * 4, Quaternion.identity, transform.forward, hitInfo.distance, Color.black);
-        //}
-        DrawBoxCastOnHit(pos, Vector3.one * 4, Quaternion.identity, Vector3.zero, 10, Color.red);
-
-        RaycastHit rHit;
-        if (Physics.BoxCast(pos, Vector3.one * 4, Vector3.one * 0.1f, out rHit))
-            return rHit.transform.parent.gameObject;
-        Debug.LogError("A CURVE HAS NOT FOUND THE PREVIOUS STRAIGHT LINE");
-        return null;
-    }
-
-
-    public void AddWaypoints()
-    {
-
-        var previousPos = transform.GetChild(transform.childCount - 2);
-        var nextPos = transform.GetChild(transform.childCount - 1);
-
-        GameObject prevStraigth = findLink(previousPos.position);
-        GameObject nextStraigth = findLink(nextPos.position);
-
         for (int i = 0; i < prevStraigth.transform.childCount - 2; i++)  // -2 for the walls
             for (int j = 0; j < transform.GetChild(0).childCount; j++)
                 WaypointAdd(prevStraigth.transform.GetChild(i).GetComponent<WaypointChecker>(), transform.GetChild(0).GetChild(j).gameObject);
+    }
 
-        for (int k = 0; k < 5; k++)
+    public void AddNextConnection(GameObject nextStraigth)
+    {
+
+        for (int j = 0; j < transform.GetChild(3).childCount; j++)
+            for (int i = 0; i < nextStraigth.transform.childCount - 2; i++)  // -2 for the walls
+                WaypointAdd(transform.GetChild(3).GetChild(j).GetComponent<WaypointChecker>(), nextStraigth.transform.GetChild(i).gameObject);
+    }
+
+    public void AddInternalWaypoints()
+    {
+        for (int k = 0; k < 3; k++)
             for (int i = 0; i < transform.GetChild(k).childCount; i++)
                 for (int j = 0; j < transform.GetChild(k + 1).childCount; j++)
                     WaypointAdd(transform.GetChild(k).transform.GetChild(i).GetComponent<WaypointChecker>(), transform.GetChild(k + 1).GetChild(j).gameObject);
-
-        for (int j = 0; j < transform.GetChild(5).childCount; j++)
-            for (int i = 0; i < nextStraigth.transform.childCount - 2; i++)  // -2 for the walls
-                WaypointAdd(transform.GetChild(5).GetChild(j).GetComponent<WaypointChecker>(), nextStraigth.transform.GetChild(i).gameObject);
-
     }
 
 }

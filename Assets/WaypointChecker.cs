@@ -13,8 +13,7 @@ public class WaypointChecker : MonoBehaviour
         foreach (WaypointChecker wc in nextWaypointsAndDist.Keys)
         {
             if (transform.root.GetComponent<TrackCreator>().IsDebugOn)
-                Debug.DrawLine(transform.position, wc.transform.position + Vector3.up*3, Color.red);
-
+                Debug.DrawLine(transform.position, wc.transform.position + Vector3.up, Color.red);
         }
     }
 
