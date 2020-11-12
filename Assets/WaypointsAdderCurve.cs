@@ -11,9 +11,9 @@ public class WaypointsAdderCurve : MonoBehaviour
     private GameObject findLink(Vector3 pos)
     {
 
-        var cc = Physics.OverlapBox(pos, Vector3.one * 4);
+        var cc = Physics.OverlapBox(pos, Vector3.one * 4, Quaternion.identity, LayerMask.GetMask("Default"));
 
-        DrawBox(pos, Vector3.one * 4, Quaternion.identity, Color.red);
+        //DrawBox(pos, Vector3.one * 4, Quaternion.identity, Color.red);
 
         
         return cc[0].gameObject.transform.parent.gameObject;
