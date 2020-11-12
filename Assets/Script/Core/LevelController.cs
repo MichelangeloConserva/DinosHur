@@ -20,7 +20,7 @@ public class LevelController : MonoBehaviour
 
     public List<CheckpointScript> Checkpoints;
 
-    public float startTime;
+    private float startTime;
     private void Awake()
     {
         if (Instance == null)
