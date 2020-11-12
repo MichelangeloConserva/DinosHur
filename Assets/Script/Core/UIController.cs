@@ -2,12 +2,13 @@
 using UnityEngine.UI;
 
 public class UIController : MonoBehaviour
-{
+{ 
+    public Text Timer;
+
     public Image ProgressionBar;
+    public Image[] Hearts;
 
-    public Image[] hearts;
-
-
+    public Text[] LapTimes;
     public void SetProgressionBar(float percentage)
     {
         ProgressionBar.fillAmount = percentage;
@@ -15,17 +16,29 @@ public class UIController : MonoBehaviour
 
     public void SetHealth(int currentHealth)
     {
-        for (int i = 0; i < hearts.Length; i++)
+        for (int i = 0; i < Hearts.Length; i++)
         {
             if (i < currentHealth)
             {
-                hearts[i].gameObject.SetActive(true);
+                Hearts[i].gameObject.SetActive(true);
             }
             else
             {
-                hearts[i].gameObject.SetActive(false);
+                Hearts[i].gameObject.SetActive(false);
             }
         }
     }
+
+    public void SetTime(string time)
+    {
+        Timer.text = time;
+    }
+
+    public void SetLapTime(int lap, string time)
+    {
+        LapTimes[lap].text = time;
+    }
+
+    
 
 }

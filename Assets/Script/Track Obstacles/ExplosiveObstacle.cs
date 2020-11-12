@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class ExplosiveObstacle : IObstacle
 {
+
+    public GameObject area;
     public float explosionForce = 10f;
     public float explosionRadius = 5f;
     public float upForce = 0.5f;
@@ -31,16 +33,14 @@ public class ExplosiveObstacle : IObstacle
     }
 
     // Start is called before the first frame update
-    new void Start()
-    {
-        //base.Start(); //only used for recurring obstacles
-    }
+
 
     public void OnTriggerEnter(Collider other)
     {
         if (ready == true)
         {
             Invoke(nameof(Activate), 0.2f);
+            area.SetActive(false);
             ready = false;
         }
     }
@@ -48,6 +48,7 @@ public class ExplosiveObstacle : IObstacle
     private IEnumerator Ready(float time)
     {
         yield return new WaitForSeconds(time);
+        area.SetActive(true);
         ready = true;
     }
 

@@ -152,13 +152,13 @@ namespace KartGame.KartSystems
         {
 
             // Bound the z rotation
-            var tr = transform.localRotation;
+            /*var tr = transform.localRotation;
 
             if (Mathf.Abs(tr.z) > 0.1f)
                 transform.localRotation = Quaternion.Euler(tr.x, tr.y, Mathf.Clamp(tr.z, -0.1f, 0.1f));
 
             if (transform.position.y > 5 && Mathf.Abs(tr.x) < 10)
-                transform.position -= Vector3.up * (transform.position.y - 5);
+                transform.position -= Vector3.up * (transform.position.y - 5);*/
 
 
             ResetIfStuck();
