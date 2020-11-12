@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
@@ -16,7 +17,10 @@ public class LevelController : MonoBehaviour
     public PlayerController PlayerController;
     public UIController UIController;
     public SoundController SoundController;
-   
+
+    private List<String> lapTimes = new List<String>();
+
+    public float startTime;
     private void Awake()
     {
         if (Instance == null)
@@ -29,8 +33,17 @@ public class LevelController : MonoBehaviour
         }
     }
 
+    public void Start()
+    {
+
+        startTime = Time.time;
+        
+    }
+
     public void Update()
     {
+        SetTime(Time.time - startTime);
+
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             Application.Quit();
@@ -65,5 +78,16 @@ public class LevelController : MonoBehaviour
         PlayerController.CollectedBoxNum++;
         UIController.SetProgressionBar((float)PlayerController.CollectedBoxNum / CollectableController.MaximumBoxes);
 
+    }
+
+    public void SetTime(float time)
+    {
+
+        int minutes = (int) Mathf.Floor(time / 60);
+        int seconds = (int)time % 60;
+        int fraction = ((int)(time * 100)) % 100;
+        
+        string format = String.Format("{0:00}:{1:00}:{2:00}", minutes, seconds, fraction);
+        UIController.SetTime(format);
     }
 }
