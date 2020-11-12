@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-//[ExecuteInEditMode]
+[ExecuteInEditMode]
 public class TrackCreator : MonoBehaviour
 {
 
@@ -25,6 +25,7 @@ public class TrackCreator : MonoBehaviour
 
     public static void WaypointAdd(WaypointChecker waypoint, GameObject nextGO)
     {
+        Debug.Log(waypoint.transform.position);
         waypoint.nextWaypointsAndDist.Add(nextGO.GetComponent<WaypointChecker>(), Vector3.Distance(waypoint.transform.position, nextGO.transform.position)); ;
     }
 
@@ -98,6 +99,6 @@ public class TrackCreator : MonoBehaviour
 
     void Update()
     {
-        // UpdateTrack();
+        UpdateTrack();
     }
 }
