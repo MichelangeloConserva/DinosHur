@@ -10,6 +10,9 @@ public class GunScript : MonoBehaviour, IWeapon
     public GameObject bulletPrefab;
     private Rigidbody vehicleRigibody;
 
+    public int MaxAmmo = 6;
+    private int currentAmmo = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,6 +28,12 @@ public class GunScript : MonoBehaviour, IWeapon
         }
     }
 
+    public void OnEnable()
+    {
+        currentAmmo = 6;
+
+    }
+
 
     public void Use()
     {
@@ -34,5 +43,11 @@ public class GunScript : MonoBehaviour, IWeapon
         bulletScript.SetVelocity(transform.TransformDirection(Vector3.forward), vehicleRigibody.velocity);
 
         LevelController.Instance.PlaySound(SoundType.LaserGunFire, transform.position, 0.1f);
+
+        currentAmmo--;
+        if (currentAmmo == 0)
+        {
+            LevelController.Instance.PlayerController.UnequipGun();
+        }
     }
 }

@@ -38,7 +38,10 @@ public class PlayerController : MonoBehaviour
         }
 
         if (CollectedBoxNum == boxesNecessaryForGun)
-            gun.SetActive(true);
+        {
+            EquipGun();
+        }
+            
 
     }
 
@@ -68,6 +71,8 @@ public class PlayerController : MonoBehaviour
         
     }
 
+
+
     public void DecreaseHealth()
     {
         if (playerHealth > 0)
@@ -88,6 +93,18 @@ public class PlayerController : MonoBehaviour
     {
         CurrentLap++;
         LapTimes.Add(time);
+    }
+
+    public void EquipGun()
+    {
+        gun.SetActive(true);
+    }
+
+    public void UnequipGun()
+    {
+        gun.SetActive(false);
+        CollectedBoxNum = 0;
+        LevelController.Instance.UIController.SetProgressionBar(0f);
     }
 
 }
