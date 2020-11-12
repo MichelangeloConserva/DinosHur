@@ -40,7 +40,9 @@ public class LevelController : MonoBehaviour
 
     public void Update()
     {
-        SetTime(Time.time - startTime);
+        
+
+        UpdateUITimers();
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {
@@ -86,38 +88,18 @@ public class LevelController : MonoBehaviour
     public void FinishLap()
     {
 
-        // check if all checkpoints have been passed
-        bool passedAll = true;
-        foreach(CheckpointScript cs in Checkpoints)
+        if (Checkpoints.TrueForAll(o => o.Passed == true))
         {
-            if (cs.Passed == false)
-            {
-                passedAll = false;
-            }
-        }
-
-        
-        if (passedAll == true)
-        {
-
             float currentLapStartTime = startTime;
-
-            foreach(float previousLapTime in PlayerController.LapTimes) {
-                currentLapStartTime += previousLapTime;
-            }
-
+            PlayerController.LapTimes.ForEach(o => currentLapStartTime += o);
+            
             float lapTime = Time.time - currentLapStartTime;
-            string formattedTime = ParseTime(lapTime);
 
-            UIController.SetLapTime(PlayerController.CurrentLap, formattedTime);
+            UIController.SetLapTime(PlayerController.CurrentLap, ParseTime(lapTime));
             PlayerController.FinishLap(lapTime);
 
-            foreach (CheckpointScript cs in Checkpoints)
-            {
-                cs.Passed = false;
-            }
+            Checkpoints.ForEach(o => o.ResetCheckPoint());
         }
-
 
     }
 
@@ -126,6 +108,20 @@ public class LevelController : MonoBehaviour
 
         string formattedTime = ParseTime(time);
         UIController.SetTime(formattedTime);
+    }
+
+    private void UpdateUITimers()
+    {
+        // main timer
+        SetTime(Time.time - startTime);
+
+        // lap timers
+        float currentLapStartTime = startTime;
+        PlayerController.LapTimes.ForEach(o => currentLapStartTime += o);
+
+        float lapTime = Time.time - currentLapStartTime;
+
+        UIController.SetLapTime(PlayerController.CurrentLap, ParseTime(lapTime));
     }
 
     private string ParseTime(float time)
