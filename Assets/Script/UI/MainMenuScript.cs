@@ -42,7 +42,7 @@ public class MainMenuScript : MonoBehaviour
     IEnumerator LoadYourAsyncScene()
     {
 
-        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync("MarkoTrack");
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync("TrackAI");
         //asyncLoad.allowSceneActivation = false;
 
         string text = "...Loading...";
