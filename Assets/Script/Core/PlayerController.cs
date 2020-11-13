@@ -28,7 +28,8 @@ public class PlayerController : MonoBehaviour
     {
         //CurrentCheckPoint = LevelController.Instance.Checkpoints[0];
 
-        transform.GetChild(0).GetChild(2).gameObject.SetActive(true);
+        if (transform.GetChild(0).childCount == 3)
+            transform.GetChild(0).GetChild(2).gameObject.SetActive(true);
 
     }
 

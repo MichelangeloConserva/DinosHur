@@ -11,11 +11,14 @@ public class TrackCreator : MonoBehaviour
     public class TrackPiece
     {
         public int num;
+        public bool hasFinalCurve = true;
         public bool curveRotated;
+        public Vector3 curveModifier;
         public Vector3 startPos, direction;
         public Vector3 rotation;
         public GameObject finalCurve;
         public GameObject firstPiece;
+        public GameObject lastPiece;
     }
 
 
@@ -45,6 +48,12 @@ public class TrackCreator : MonoBehaviour
         UpdateTrack();
     }
 
+    private void LinkTwoStraight(GameObject prev, GameObject next)
+    {
+        for (int j = 0; j < prev.transform.childCount - 2; j++)   // -2 to take into account of the walls
+            for (int k = 0; k < next.transform.childCount - 2; k++)
+                WaypointAdd(prev.transform.GetChild(j).GetComponent<WaypointChecker>(), next.transform.GetChild(k).gameObject);
+    }
 
     void DeployStraight(TrackPiece tp, Vector3 startPos, int num, Quaternion rotation, Vector3 direction, int index)
     {
@@ -53,28 +62,35 @@ public class TrackCreator : MonoBehaviour
         {
             var cur = Instantiate(straightPiece, startPos + i * direction, rotation, transform.GetChild(0));
             if (prev)
-                for (int j = 0; j < prev.transform.childCount-2; j++)   // -2 to take into account of the walls
-                    for (int k = 0; k < cur.transform.childCount-2; k++)
-                        WaypointAdd(prev.transform.GetChild(j).GetComponent<WaypointChecker>(), cur.transform.GetChild(k).gameObject);
+                LinkTwoStraight(prev, cur);
 
             if (i == 0)
             {
                 tp.firstPiece = cur;
                 if (index > 0)
-                    trackPieces[index - 1].finalCurve.GetComponent<WaypointsAdderCurve>().AddNextConnection(cur);
+                {
+                    if (trackPieces[index - 1].hasFinalCurve)
+                        trackPieces[index - 1].finalCurve.GetComponent<WaypointsAdderCurve>().AddNextConnection(cur);
+                    else
+                        LinkTwoStraight(trackPieces[index - 1].lastPiece, cur);
+                }
             }
 
             track.Add(prev = cur);
+            tp.lastPiece = cur;
         }
 
-        tp.finalCurve = Instantiate(curvePiece, prev.transform.position + direction.normalized * 30 - Vector3.Cross(direction.normalized, Vector3.up) / 10, Quaternion.Euler(0, rotation.eulerAngles.y + 90 + (tp.curveRotated ? 90 : 0), 0), transform.GetChild(0));
+        if (tp.hasFinalCurve)
+        {
 
-        if (tp.curveRotated)
-            for (int ii=1; ii<4; ii++)
-                tp.finalCurve.transform.GetChild(ii).SetAsFirstSibling();
-
-        tp.finalCurve.GetComponent<WaypointsAdderCurve>().AddInternalWaypoints();
-        tp.finalCurve.GetComponent<WaypointsAdderCurve>().AddPreviousConnection(prev);
+            tp.finalCurve = Instantiate(curvePiece, prev.transform.position + direction.normalized * 30 - Vector3.Cross(direction.normalized, Vector3.up) / 10 + tp.curveModifier, 
+                Quaternion.Euler(0, rotation.eulerAngles.y + 90 + (tp.curveRotated ? 90 : 0), 0), transform.GetChild(0));
+            if (tp.curveRotated)
+                for (int ii = 1; ii < 4; ii++)
+                    tp.finalCurve.transform.GetChild(ii).SetAsFirstSibling();
+            tp.finalCurve.GetComponent<WaypointsAdderCurve>().AddInternalWaypoints();
+            tp.finalCurve.GetComponent<WaypointsAdderCurve>().AddPreviousConnection(prev);
+        }
 
         if ((index == (trackPieces.Length - 1)))
             tp.finalCurve.GetComponent<WaypointsAdderCurve>().AddNextConnection(trackPieces[0].firstPiece);

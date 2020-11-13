@@ -10,7 +10,7 @@ public class AStarController : MonoBehaviour
 
     private static Vector3 GetVector3Down(Vector3 v) { return v - Vector3.up * v.y; }
 
-    public static object[] MinArgmin<TKey>(Dictionary<TKey,float> dict)
+    public static object[] MinArgmin<TKey>(Dictionary<TKey, float> dict)
     {
         int index = 0, minIndex = 0;
         var minDistObj = dict.Keys.ToList().First();
@@ -25,7 +25,7 @@ public class AStarController : MonoBehaviour
             }
             index++;
         }
-            
+
         return new object[] { minDistObj, minDist, minIndex };
     }
 
@@ -33,7 +33,7 @@ public class AStarController : MonoBehaviour
 
     public float[] costWeights = new float[] { 0.5f, 0.5f };
 
-    public GameObject[] otherPlayers;
+    public GameObject Player;
 
     public float turnCostWeight;
     public int H = 5;
@@ -51,16 +51,14 @@ public class AStarController : MonoBehaviour
 
     private bool isAboutToTurn = false;
     private List<List<WaypointChecker>> waypointsLayers;
+    private KartGame.KartSystems.ArcadeKart ak;
 
-
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
         if (other.gameObject.CompareTag("AIAdvisor"))
-        {
-            //Debug.Log("NOaiNO");
-            isAboutToTurn = true;
-        }
+            GetComponent<Rigidbody>().AddForceAtPosition((other.transform.position - transform.position).normalized * 2 - Vector3.up*5, transform.position + transform.forward - Vector3.up, ForceMode.Acceleration);
     }
+
 
     private void OnTriggerExit(Collider other)
     {
@@ -70,9 +68,11 @@ public class AStarController : MonoBehaviour
 
     void Start()
     {
+        ak = GetComponent<KartGame.KartSystems.ArcadeKart>();
+
         start = lm.GetChild(0).GetChild(1).GetChild(4).GetComponent<WaypointChecker>();
         end = start;
-        for (int i = 0; i< H ; i++)
+        for (int i = 0; i < H; i++)
             end = end.nextWaypointsAndDist.Keys.ToList().Last();
 
         CalculateLayers();
@@ -111,7 +111,7 @@ public class AStarController : MonoBehaviour
     {
         var normalizedCost = 0f;
         for (int i = 0; i < sums.Length; i++)
-            normalizedCost += unnormalized[i] * weights[i] / (sums[i] > 0 ? sums[i] : 0.001f) ;
+            normalizedCost += unnormalized[i] * weights[i] / (sums[i] > 0 ? sums[i] : 0.001f);
         return normalizedCost;
     }
 
@@ -122,15 +122,6 @@ public class AStarController : MonoBehaviour
         return false;
     }
 
-
-
-    private bool ProspectiveCollision(Vector3 target)
-    {
-        foreach (var otherP in otherPlayers)
-            if (Vector3.Angle(GetVector3Down(target) - GetVector3Down(otherP.transform.position), otherP.transform.forward) < 20)
-                return true;
-        return false;
-    }
 
     private Dictionary<WaypointChecker, float> GetFrontierNormalized(Dictionary<WaypointChecker, float[]> frontier, float[] costsSums)
     {
@@ -149,6 +140,7 @@ public class AStarController : MonoBehaviour
         float[] costsSums = new float[] { 0, 0, 0, 0, 0 };
 
         // Find the waypoints in the last H layer
+        int k = 0;
         foreach (var wp in waypointsLayers)
         {
             var otherPos = wp.transform.position;
@@ -170,7 +162,7 @@ public class AStarController : MonoBehaviour
                 velocity = velocity.magnitude > 3 ? velocity : transform.forward;
                 angularCost = Vector3.Angle(velocity, otherPos - transform.position);
             }
-            costsSums[2] = Mathf.Max(angularCost,0.001f);
+            costsSums[2] = Mathf.Max(angularCost, 0.001f);
 
 
             var dissonancePathCos = Vector3.Distance(wp.transform.position, future);
@@ -205,7 +197,7 @@ public class AStarController : MonoBehaviour
         // Expanding the best node in the frontier
         var res = MinArgmin(curLayerNormalized);
         var best = (WaypointChecker)res[0];
-        var cost = Mathf.Max((float)res[1],5);
+        var cost = Mathf.Max((float)res[1], 5);
 
         DrawBox(best.transform.position + Vector3.up * 2 * cost, Vector3.one + Vector3.up * 1 * cost, Quaternion.identity, Color.blue);
 
@@ -237,6 +229,7 @@ public class AStarController : MonoBehaviour
         for (int i = 0; i < 2 * H + 1; i++)
             future = future.nextWaypointsAndDist.Keys.First();
         DrawBox(future.transform.position, Vector3.one * 3, Quaternion.identity, Color.cyan);
+
 
         //foreach (var concurrents in waypointsLayers)
         //    foreach (var wp in concurrents)

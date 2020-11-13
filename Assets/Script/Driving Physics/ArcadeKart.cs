@@ -81,6 +81,8 @@ namespace KartGame.KartSystems
             }
         }
 
+        public ArcadeKart Player;
+        public int counter = 0;
         public bool humanControll = false;
         public float humanHandicap;
 
@@ -137,12 +139,16 @@ namespace KartGame.KartSystems
         GameObject lastGroundCollided = null;
         ArcadeKart.Stats finalStats;
 
+        private float initialTopSpeed;
+
         void Awake()
         {
             Rigidbody = GetComponent<Rigidbody>();
             m_Inputs = GetComponents<IInput>();
             suspensionNeutralPos = SuspensionBody.transform.localPosition;
             suspensionNeutralRot = SuspensionBody.transform.localRotation;
+
+            initialTopSpeed = baseStats.TopSpeed;
 
             if (!humanControll)
                 ai = GetComponent<AIController>();
@@ -172,6 +178,13 @@ namespace KartGame.KartSystems
             else
             {
                 Input = ai.GatherInputs();
+
+                if (counter - Player.counter > 2)
+                    baseStats.TopSpeed = Mathf.Max(initialTopSpeed - 8, baseStats.TopSpeed * 0.99f);
+                else if (Player.counter - counter > 2)
+                    baseStats.TopSpeed = Mathf.Min(initialTopSpeed + 12, baseStats.TopSpeed * 1.01f);
+                else
+                    baseStats.TopSpeed = initialTopSpeed;
             }
 
             // apply our powerups to create our finalStats
@@ -199,18 +212,22 @@ namespace KartGame.KartSystems
             // apply vehicle physics
             GroundVehicle(minHeight);
             if (canMove)
-            {
                 MoveVehicle(accel, turn);
-            } 
             else
-            {
-                Rigidbody.AddForceAtPosition(- Vector3.up * 500, transform.position + transform.forward, ForceMode.Acceleration);
-            }
+                if (Mathf.Abs(transform.localRotation.z) > 5)
+                    Rigidbody.AddForceAtPosition(- Vector3.up * 500, transform.position + transform.forward, ForceMode.Acceleration);
 
             GroundAirbourne();
 
             // animation
             AnimateSuspension();
+        }
+
+
+        private void OnTriggerExit(Collider other)
+        {
+            if (other.gameObject.CompareTag("Counter"))
+                counter++;
         }
 
         /// <summary>

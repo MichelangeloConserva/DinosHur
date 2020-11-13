@@ -35,12 +35,14 @@ public class AIController : MonoBehaviour
 
     private AStarController asc;
     private KartGame.KartSystems.ArcadeKart ak;
+    private Vector3 lastPos;
 
     //Start is called before the first frame update
     void Start()
     {
         ak = GetComponent<KartGame.KartSystems.ArcadeKart>();
         asc = GetComponent<AStarController>();
+        lastPos = transform.position;
     }
 
     private Vector2 BasicAI()
@@ -105,9 +107,10 @@ public class AIController : MonoBehaviour
     {
 
 
+        lastPos = transform.position;
 
 
-        if (Vector3.Project(asc.curTargetPos() - transform.position, transform.forward).magnitude < 1)
+        if (Vector3.Project(asc.curTargetPos() - transform.position, transform.forward).magnitude < 3)
             asc.NextTg();
 
 
