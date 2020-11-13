@@ -13,6 +13,7 @@ public class BumperObstacle : IObstacle
 
     private BumperState bumperState = BumperState.INACTIVE;
 
+    private Collider playerCollider;
 
     private Vector3 startPosition;
     private Vector3 endPosition;
@@ -29,6 +30,8 @@ public class BumperObstacle : IObstacle
     public new void Start()
     {
         base.Start();
+
+        playerCollider = LevelController.Instance.PlayerController.ObstacleCollider;
         startPosition = transform.GetChild(0).position;
         endPosition = transform.GetChild(1).position;
 
@@ -70,8 +73,8 @@ public class BumperObstacle : IObstacle
 
     private void OnCollisionEnter(Collision collision)
     {
-
-        if (collision.gameObject.CompareTag("Player"))
+       
+        if (collision.gameObject.Equals(playerCollider.gameObject))
         {
             LevelController.Instance.PlayerController.DecreaseHealth();
             LevelController.Instance.PlaySound(SoundType.Bumper, transform.position);

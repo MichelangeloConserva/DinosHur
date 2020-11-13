@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class LevelController : MonoBehaviour
@@ -92,6 +93,11 @@ public class LevelController : MonoBehaviour
 
         if (Checkpoints.TrueForAll(o => o.Passed == true))
         {
+
+            if (PlayerController.CurrentLap == 3)
+            {
+                FinishRace();
+            }
             float currentLapStartTime = startTime;
             PlayerController.LapTimes.ForEach(o => currentLapStartTime += o);
             
@@ -135,6 +141,12 @@ public class LevelController : MonoBehaviour
         int fraction = ((int)(time * 100)) % 100;
 
         return String.Format("{0:00}:{1:00}:{2:00}", minutes, seconds, fraction);
+    }
+
+    public void FinishRace()
+    {
+        GameController.Instance.SetLapTimes(PlayerController.LapTimes);
+        SceneManager.LoadScene(2);
     }
 
 }

@@ -23,12 +23,19 @@ public class MainMenuScript : MonoBehaviour
         Rules.SetActive(false);
         Loading.gameObject.SetActive(true);
 
+
         StartCoroutine(LoadYourAsyncScene());
     }
+
 
     public void ExitGame()
     {
         Application.Quit();
+    }
+
+    public void MainMenu()
+    {
+        SceneManager.LoadScene(0);
     }
 
 

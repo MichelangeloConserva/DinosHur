@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MarkoTrack.unity
     guid: 3b89183bba5988348a9b9b000523bd45
+  - enabled: 1
+    path: Assets/Scenes/EndScene.unity
+    guid: ff0eb6bfe5189d942b6489957087ec60
   m_configObjects: {}
