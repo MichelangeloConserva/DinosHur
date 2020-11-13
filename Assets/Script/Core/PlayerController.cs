@@ -9,6 +9,9 @@ public class PlayerController : MonoBehaviour
     public int boxesNecessaryForGun = 6;
     public int playerHealth = 4;
 
+    public float invurnerableTime = 1f;
+    private bool invurnerable = false;
+
     public GameObject gun;
 
     public Collider CollectionCollider;
@@ -71,25 +74,54 @@ public class PlayerController : MonoBehaviour
                                                     CurrentCheckPoint.transform.position.z - 2f
                                                     );
         vehicleRigidbody.transform.rotation = CurrentCheckPoint.transform.rotation;
-        
+
+        vehicleRigidbody.isKinematic = true;
+        dinoRigidbody.isKinematic = true;
+
+        StartCoroutine(disableKinematic());
+    }
+
+    private IEnumerator disableKinematic()
+    {
+        yield return new WaitForEndOfFrame();
+
+        vehicleRigidbody.isKinematic = false;
+        dinoRigidbody.isKinematic = false;
     }
 
 
 
     public void DecreaseHealth()
     {
-        if (playerHealth > 0)
+        if (playerHealth > 0 && invurnerable == false)
         {
             playerHealth--;
             LevelController.Instance.UIController.SetHealth(playerHealth);
+            StartCoroutine(makeInvurnerable(invurnerableTime));
+        } 
+       
+        if (playerHealth == 0)
+        {
+            RespawnPlayer();
+            playerHealth = 4;
+            LevelController.Instance.UIController.SetHealth(playerHealth);
         }
+    }
+
+    private IEnumerator makeInvurnerable(float time)
+    {
+        invurnerable = true;
+        yield return new WaitForSeconds(time);
+        invurnerable = false;
     }
 
     public void IncreaseHealth()
     {
         if (playerHealth < 4)
+        {
             playerHealth++;
-            LevelController.Instance.UIController.SetHealth(playerHealth);
+        }
+        LevelController.Instance.UIController.SetHealth(playerHealth);
     }
 
     public void FinishLap(float time)
@@ -107,7 +139,6 @@ public class PlayerController : MonoBehaviour
 
     public void UnequipGun()
     {
-
         CollectedBoxNum = 0;
         gun.SetActive(false);
 
