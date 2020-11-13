@@ -58,9 +58,15 @@ public class AStarController : MonoBehaviour
         if (other.gameObject.CompareTag("AIAdvisor"))
         {
             Debug.Log("NOaiNO");
+            isAboutToTurn = true;
         }
     }
 
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.CompareTag("AIAdvisor"))
+            isAboutToTurn = false;
+    }
 
     void Start()
     {
@@ -159,10 +165,9 @@ public class AStarController : MonoBehaviour
 
 
             var angularCost = 0f;
-            var velocity = GetComponent<Rigidbody>().velocity;
-            if (velocity.magnitude > 10 && Vector3.Distance(transform.position, otherPos) > 18f)
+            if (!isAboutToTurn)
             {
-                velocity = GetVector3Down(GetComponent<Rigidbody>().velocity);
+                var velocity = GetVector3Down(GetComponent<Rigidbody>().velocity);
                 velocity = velocity.magnitude > 3 ? velocity : transform.forward;
                 angularCost = Vector3.Angle(velocity, otherPos - transform.position);
             }
@@ -201,7 +206,7 @@ public class AStarController : MonoBehaviour
         // Expanding the best node in the frontier
         var res = MinArgmin(curLayerNormalized);
         var best = (WaypointChecker)res[0];
-        var cost = (float)res[1];
+        var cost = Mathf.Max((float)res[1],5);
 
         DrawBox(best.transform.position + Vector3.up * 2 * cost, Vector3.one + Vector3.up * 1 * cost, Quaternion.identity, Color.blue);
 
