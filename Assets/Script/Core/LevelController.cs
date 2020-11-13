@@ -107,7 +107,11 @@ public class LevelController : MonoBehaviour
             float lapTime = Time.time - currentLapStartTime;
 
             UIController.SetLapTime(PlayerController.CurrentLap, ParseTime(lapTime));
+
             PlayerController.FinishLap(lapTime);
+
+            UIController.ChangeLap(PlayerController.CurrentLap);
+
 
             Checkpoints.ForEach(o => o.ResetCheckPoint());
         }

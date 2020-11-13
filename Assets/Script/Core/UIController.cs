@@ -13,8 +13,8 @@ public class UIController : MonoBehaviour
     public GameObject BulletUI;
     public Image[] Bullets;
 
-   
 
+    public Text[] Laps;
     public Text[] LapTimes;
     
     public void SetProgressionBar(float percentage)
@@ -55,6 +55,23 @@ public class UIController : MonoBehaviour
     public void SetTime(string time)
     {
         Timer.text = time;
+    }
+
+    public void ChangeLap(int lap)
+    {
+        for (int i = 0; i < Laps.Length; i++)
+        {
+            if (i <= lap)
+            {
+                Laps[i].gameObject.SetActive(true);
+                LapTimes[i].gameObject.SetActive(true);
+            }
+            else
+            {
+                LapTimes[i].gameObject.SetActive(false);
+                Laps[i].gameObject.SetActive(false);
+            }
+        }
     }
 
     public void SetLapTime(int lap, string time)
