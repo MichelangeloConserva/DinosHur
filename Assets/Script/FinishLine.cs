@@ -8,7 +8,7 @@ public class FinishLine : MonoBehaviour
     // Start is called before the first frame update
 
 
-    public new void OnTriggerEnter(Collider other)
+    public void OnTriggerEnter(Collider other)
     {
         
         if (other.Equals(LevelController.Instance.PlayerController.CollectionCollider))

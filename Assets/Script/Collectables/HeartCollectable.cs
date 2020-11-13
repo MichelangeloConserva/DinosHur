@@ -4,9 +4,13 @@ using UnityEngine;
 
 public class HeartCollectable : ICollectable
 {
-    public override void Collect()
+    public override void Collect(bool player)
     {
-        LevelController.Instance.PlayerController.IncreaseHealth();
+        if (player == true)
+        {
+            LevelController.Instance.PlayerController.IncreaseHealth();
+        }
+
         LevelController.Instance.PlaySound(SoundType.CollectBox, transform.position);
 
         State = CollectableState.INACTIVE;
@@ -18,7 +22,5 @@ public class HeartCollectable : ICollectable
     {
         base.Start();   
     }
-
-    // Update is called once per frame
 
 }

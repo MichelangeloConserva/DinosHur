@@ -81,10 +81,13 @@ public class LevelController : MonoBehaviour
     /// <summary>
     /// Increase the number of collected boxes and set the progression bar in the UI.
     /// </summary>
-    public void CollectBox()
+    public void CollectBox(bool player)
     {
-        PlayerController.CollectedBoxNum++;
-        UIController.SetProgressionBar((float)PlayerController.CollectedBoxNum / CollectableController.MaximumBoxes);
+        if (player)
+        {
+            PlayerController.CollectedBoxNum++;
+            UIController.SetProgressionBar((float)PlayerController.CollectedBoxNum / CollectableController.MaximumBoxes);
+        }
 
     }
 

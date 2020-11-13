@@ -15,9 +15,10 @@ public class CollectableScript : ICollectable
         base.Update();
        
     }
-    public override void Collect()
+    public override void Collect(bool player)
     {
-        LevelController.Instance.CollectBox();
+
+        LevelController.Instance.CollectBox(player);
         LevelController.Instance.PlaySound(SoundType.CollectBox, transform.position);
 
         State = CollectableState.INACTIVE;
