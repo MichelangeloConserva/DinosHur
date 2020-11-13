@@ -70,7 +70,7 @@ public class AStarController : MonoBehaviour
 
     void Start()
     {
-        start = lm.GetChild(0).GetChild(0).GetChild(4).GetComponent<WaypointChecker>();
+        start = lm.GetChild(0).GetChild(1).GetChild(4).GetComponent<WaypointChecker>();
         end = start;
         for (int i = 0; i< H ; i++)
             end = end.nextWaypointsAndDist.Keys.ToList().Last();
