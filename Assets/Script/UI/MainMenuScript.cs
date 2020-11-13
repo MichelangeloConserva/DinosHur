@@ -10,8 +10,13 @@ public class MainMenuScript : MonoBehaviour
     public GameObject Controls;
     public GameObject MenuItems;
     public GameObject Rules;
+
     public Text Loading;
 
+    public Text RulesText;
+    public Text RulesHeading;
+
+    public Text TwitchText;
 
     public void StartRace()
     {
@@ -36,6 +41,31 @@ public class MainMenuScript : MonoBehaviour
     public void MainMenu()
     {
         SceneManager.LoadScene(0);
+    }
+
+    public void ToggleTwitch()
+    {
+        if (GameController.Instance.TwitchEnabled == true)
+        {
+            GameController.Instance.TwitchEnabled = false;
+            TwitchText.text = "Twitch Disabled";
+        }
+        else
+        {
+            GameController.Instance.TwitchEnabled = true;
+            TwitchText.text = "Twitch Enabled";
+        }
+    }
+    public void TwitchHover()
+    {
+        RulesHeading.text = "Twitch:";
+        RulesText.text = "- Twitch is a streaming platform.\n\n - To play with your friend have them go to twitch.tv/lightsider23\n\n - To fire the cannons have them write \"FIRE\" in the chat.";
+    }
+
+    public void TwitchLeave()
+    {
+        RulesHeading.text = "Rules:";
+        RulesText.text = "- Finish 4 laps before the opponents to win the race\n\n- Collect 6 boxes to receive a gun\n\n- Avoid the obstacles on the track\n\n- Have your friends control the cannons at twitch.tv";
     }
 
 
