@@ -9,7 +9,7 @@ public abstract class ICollectable : MonoBehaviour
     public float RespawnTime = 5f;
     public float RotationSpeed = 200f;
 
-    protected Collider playerCollider;
+    protected List<Collider> chariotColliders = new List<Collider>();
    
     public CollectableState State { get; set; }
 
@@ -18,7 +18,12 @@ public abstract class ICollectable : MonoBehaviour
     public void Start()
     {
         State = CollectableState.ACTIVE;
-        playerCollider = LevelController.Instance.PlayerController.CollectionCollider;
+
+        chariotColliders.Add(LevelController.Instance.PlayerController.CollectionCollider);
+        foreach(PlayerController pc in LevelController.Instance.AIControllers)
+        {
+            chariotColliders.Add(pc.CollectionCollider);
+        }
 
         LevelController.Instance.AddCollectable(this);
        
@@ -30,7 +35,7 @@ public abstract class ICollectable : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
-        if (other.Equals(playerCollider))
+        if (chariotColliders.Contains(other))
         {
             Collect();
         }

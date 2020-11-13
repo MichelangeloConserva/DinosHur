@@ -204,8 +204,7 @@ namespace KartGame.KartSystems
                 
             } else
             {
-                //StopAngularVecloity(true, true , false);
-                Rigidbody.AddForceAtPosition(- transform.up * 5, transform.position + transform.forward, ForceMode.Acceleration);
+                Rigidbody.AddForceAtPosition(- Vector3.up * 500, transform.position + transform.forward, ForceMode.Acceleration);
             }
 
             GroundAirbourne();
