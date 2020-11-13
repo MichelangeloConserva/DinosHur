@@ -27,6 +27,9 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         //CurrentCheckPoint = LevelController.Instance.Checkpoints[0];
+
+        transform.GetChild(0).GetChild(2).gameObject.SetActive(true);
+
     }
 
     // Update is called once per frame

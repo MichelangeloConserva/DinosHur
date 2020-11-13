@@ -201,8 +201,8 @@ namespace KartGame.KartSystems
             if (canMove)
             {
                 MoveVehicle(accel, turn);
-                
-            } else
+            } 
+            else
             {
                 Rigidbody.AddForceAtPosition(- Vector3.up * 500, transform.position + transform.forward, ForceMode.Acceleration);
             }
