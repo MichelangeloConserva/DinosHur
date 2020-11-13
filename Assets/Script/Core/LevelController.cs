@@ -15,6 +15,8 @@ public class LevelController : MonoBehaviour
     public TwitchController TwitchController;
 
     public PlayerController PlayerController;
+    public List<PlayerController> AIControllers;
+
     public UIController UIController;
     public SoundController SoundController;
 

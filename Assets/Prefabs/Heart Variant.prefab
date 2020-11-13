@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2757107987789758333}
   - component: {fileID: 912263674}
   - component: {fileID: 912263675}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Heart Variant
   m_TagString: Untagged
   m_Icon: {fileID: 0}

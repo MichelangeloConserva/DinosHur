@@ -57,7 +57,7 @@ public class AStarController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("AIAdvisor"))
         {
-            Debug.Log("NOaiNO");
+            //Debug.Log("NOaiNO");
             isAboutToTurn = true;
         }
     }
@@ -190,7 +190,7 @@ public class AStarController : MonoBehaviour
             var str = "";
             foreach (var cc in costs)
                 str += cc.ToString() + "-";
-            Debug.Log(str);
+            //Debug.Log(str);
 
 
 

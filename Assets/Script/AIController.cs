@@ -152,7 +152,6 @@ public class AIController : MonoBehaviour
 
 
         return new Vector2(angle, speed * slow);
-        return BasicAI();
     }
 
 
