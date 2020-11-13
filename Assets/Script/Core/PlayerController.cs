@@ -42,7 +42,6 @@ public class PlayerController : MonoBehaviour
             EquipGun();
         }
             
-
     }
 
     /// <summary>
@@ -98,13 +97,19 @@ public class PlayerController : MonoBehaviour
     public void EquipGun()
     {
         gun.SetActive(true);
+
+        LevelController.Instance.UIController.ShowBullets();
     }
 
     public void UnequipGun()
     {
-        gun.SetActive(false);
+
         CollectedBoxNum = 0;
-        LevelController.Instance.UIController.SetProgressionBar(0f);
+        gun.SetActive(false);
+
+        LevelController.Instance.UIController.SetProgressionBar(0);
+        LevelController.Instance.UIController.ShowProgressionBar();
+        
     }
 
 }
