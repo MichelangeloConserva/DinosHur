@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class UIController : MonoBehaviour
@@ -16,6 +17,8 @@ public class UIController : MonoBehaviour
 
     public Text[] Laps;
     public Text[] LapTimes;
+
+    public GameObject LivesNotification;
     
     public void SetProgressionBar(float percentage)
     {
@@ -89,6 +92,18 @@ public class UIController : MonoBehaviour
     {
         BulletUI.SetActive(false);
         ProgressionBarUI.SetActive(true);
+    }
+
+    public void ShowLivesNotification(float time)
+    {
+        LivesNotification.SetActive(true);
+        StartCoroutine(HideLivesNotification(time));
+    }
+
+    private IEnumerator HideLivesNotification(float time)
+    {
+        yield return new WaitForSeconds(time);
+        LivesNotification.SetActive(false);
     }
     
 

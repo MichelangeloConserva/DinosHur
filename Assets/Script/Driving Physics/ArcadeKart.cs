@@ -168,14 +168,16 @@ namespace KartGame.KartSystems
             if (transform.position.y > 5 && Mathf.Abs(tr.x) < 10)
                 transform.position -= Vector3.up * (transform.position.y - 5);*/
 
-
-            ResetIfStuck();
+            if (Rigidbody.isKinematic == false)
+            {
+                ResetIfStuck();
+            }
 
             if (humanControll)
             {
                 GatherInputs();
             }
-            else
+            else if (humanControll == false)
             {
                 Input = ai.GatherInputs();
 
@@ -249,14 +251,18 @@ namespace KartGame.KartSystems
             // reset input
             Input = Vector2.zero;
 
-            // gather nonzero input from our sources
-            for (int i = 0; i < m_Inputs.Length; i++)
+
+            if (AirPercent < 1)
             {
-                var inputSource = m_Inputs[i];
-                Vector2 current = inputSource.GenerateInput();
-                if (current.sqrMagnitude > 0)
+                // gather nonzero input from our sources
+                for (int i = 0; i < m_Inputs.Length; i++)
                 {
-                    Input = current;
+                    var inputSource = m_Inputs[i];
+                    Vector2 current = inputSource.GenerateInput();
+                    if (current.sqrMagnitude > 0)
+                    {
+                        Input = current;
+                    }
                 }
             }
         }

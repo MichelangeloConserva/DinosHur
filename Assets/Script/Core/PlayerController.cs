@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-
+    public bool isAI = false;
     public int boxesNecessaryForGun = 6;
     public int playerHealth = 4;
 
@@ -39,7 +39,8 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.R))
+        
+        if (Input.GetKeyDown(KeyCode.R) && isAI == false)
         {
             RespawnPlayer();
         }
@@ -54,42 +55,41 @@ public class PlayerController : MonoBehaviour
     /// <summary>
     /// Resets player to the last checkpoint
     /// </summary>
-    void RespawnPlayer()
+    public void RespawnPlayer()
     {
 
         dinoRigidbody.velocity = Vector3.zero;
         dinoRigidbody.angularVelocity = Vector3.zero;
+        dinoRigidbody.transform.rotation = CurrentCheckPoint.transform.rotation; 
+
         dinoRigidbody.transform.position = new Vector3(
                                                     CurrentCheckPoint.transform.position.x,
                                                     CurrentCheckPoint.transform.position.y + 10f,
                                                     CurrentCheckPoint.transform.position.z
                                                     );
-        dinoRigidbody.transform.rotation = CurrentCheckPoint.transform.rotation;
+       
 
         vehicleRigidbody.velocity = Vector3.zero;
         vehicleRigidbody.angularVelocity = Vector3.zero;
+        vehicleRigidbody.transform.rotation = CurrentCheckPoint.transform.rotation;
+
         vehicleRigidbody.transform.position = new Vector3(
                                                     CurrentCheckPoint.transform.position.x, 
                                                     CurrentCheckPoint.transform.position.y + 10f, 
                                                     CurrentCheckPoint.transform.position.z - 2f
                                                     );
-        vehicleRigidbody.transform.rotation = CurrentCheckPoint.transform.rotation;
 
-        vehicleRigidbody.isKinematic = true;
-        dinoRigidbody.isKinematic = true;
-
-        StartCoroutine(disableKinematic());
     }
+    
 
-    private IEnumerator disableKinematic()
+    public void IncreaseHealth()
     {
-        yield return new WaitForEndOfFrame();
-
-        vehicleRigidbody.isKinematic = false;
-        dinoRigidbody.isKinematic = false;
+        if (playerHealth < 4)
+        {
+            playerHealth++;
+        }
+        LevelController.Instance.UIController.SetHealth(playerHealth);
     }
-
-
 
     public void DecreaseHealth()
     {
@@ -102,9 +102,18 @@ public class PlayerController : MonoBehaviour
        
         if (playerHealth == 0)
         {
+            
+            StartCoroutine(makeInvurnerable(invurnerableTime));
             RespawnPlayer();
+
             playerHealth = 4;
+            LevelController.Instance.UIController.ShowLivesNotification(2f);
             LevelController.Instance.UIController.SetHealth(playerHealth);
+            
+
+            
+            
+            
         }
     }
 
@@ -115,14 +124,7 @@ public class PlayerController : MonoBehaviour
         invurnerable = false;
     }
 
-    public void IncreaseHealth()
-    {
-        if (playerHealth < 4)
-        {
-            playerHealth++;
-        }
-        LevelController.Instance.UIController.SetHealth(playerHealth);
-    }
+
 
     public void FinishLap(float time)
     {
