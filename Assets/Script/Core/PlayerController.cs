@@ -83,6 +83,11 @@ public class PlayerController : MonoBehaviour
                                                     CurrentCheckPoint.transform.position.z - 2f
                                                     );
 
+        if (isAI)
+        {
+            gameObject.GetComponentInChildren<AStarController>().ResetPathfinding();
+        }
+
     }
     
 

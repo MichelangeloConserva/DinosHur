@@ -81,6 +81,8 @@ namespace KartGame.KartSystems
             }
         }
 
+        private PlayerController playerController;
+
         public ArcadeKart Player;
         public int counter = 0;
         public bool humanControll = false;
@@ -154,6 +156,8 @@ namespace KartGame.KartSystems
                 ai = GetComponent<AIController>();
             else
                 baseStats.TopSpeed *= (1 - humanHandicap);
+
+            playerController = gameObject.GetComponentInParent<PlayerController>();
         }
 
         void FixedUpdate()
@@ -522,13 +526,8 @@ namespace KartGame.KartSystems
             if (IsStuck() && lastGroundCollided != null)
             {
                 if (lastGroundCollided.TryGetComponent(out Collider collider))
-                {
-                    Vector3 pos = new Vector3(
-                        collider.bounds.center.x,
-                        collider.bounds.max.y,
-                        collider.bounds.center.z
-                    );
-                    transform.position = pos;
+                { 
+                    playerController.RespawnPlayer();
                 }
             }
         }

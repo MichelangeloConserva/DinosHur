@@ -219,6 +219,28 @@ public class AStarController : MonoBehaviour
         curWaypointTarget = curTarget;
     }
 
+    public void ResetPathfinding()
+    {
+        
+        RaycastHit[] hits =  Physics.RaycastAll(transform.position, Vector3.down);
+        foreach(RaycastHit hit in hits)
+        {
+            WaypointChecker wc = hit.collider.gameObject.GetComponentInChildren<WaypointChecker>();
+            if ( wc != null)
+            {
+                //recalculate the way
+                start = wc.gameObject.GetComponentInChildren<WaypointChecker>();
+                end = start;
+
+                for (int i = 0; i < H; i++)
+                    end = end.nextWaypointsAndDist.Keys.ToList().Last();
+
+                CalculateLayers();
+                calculateTarget();
+            }
+        }
+    }
+
 
     void Update()
     {

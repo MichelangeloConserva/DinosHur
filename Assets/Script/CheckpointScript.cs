@@ -21,6 +21,15 @@ public class CheckpointScript : MonoBehaviour
             Passed = true;
             playerController.CurrentCheckPoint = this;
         }
+
+        foreach(PlayerController ai in LevelController.Instance.AIControllers)
+        {
+            if (other.Equals(ai.CollectionCollider))
+            {
+                ai.CurrentCheckPoint = this;
+            }
+        }
+        
     }
 
     public void ResetCheckPoint()

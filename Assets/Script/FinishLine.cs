@@ -9,6 +9,10 @@ public class FinishLine : CheckpointScript
     private void Start()
     {
         LevelController.Instance.PlayerController.CurrentCheckPoint = this;
+        foreach(PlayerController pc in LevelController.Instance.AIControllers)
+        {
+            pc.CurrentCheckPoint = this;
+        }
     }
 
     public new void OnTriggerEnter(Collider other)

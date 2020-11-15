@@ -11,5 +11,14 @@ public class FallingRespawn : MonoBehaviour
         {
             LevelController.Instance.PlayerController.RespawnPlayer();
         }
+
+        foreach(PlayerController ai in LevelController.Instance.AIControllers)
+        {
+
+            if (other.Equals(ai.CollectionCollider))
+            {
+                ai.RespawnPlayer();
+            }
+        }
     }
 }

@@ -11,7 +11,7 @@ public class GunScript : MonoBehaviour, IWeapon
     private Rigidbody vehicleRigibody;
 
     public int MaxAmmo = 6;
-    private int currentAmmo = 0;
+    private int currentAmmo = 6;
 
     public float FiringCooldown = 0.3f;
 
