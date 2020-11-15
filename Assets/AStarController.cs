@@ -140,7 +140,6 @@ public class AStarController : MonoBehaviour
         float[] costsSums = new float[] { 0, 0, 0, 0, 0 };
 
         // Find the waypoints in the last H layer
-        int k = 0;
         foreach (var wp in waypointsLayers)
         {
             var otherPos = wp.transform.position;

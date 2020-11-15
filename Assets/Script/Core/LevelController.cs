@@ -51,6 +51,54 @@ public class LevelController : MonoBehaviour
         {
             Application.Quit();
         }
+
+
+        StartCoroutine(UpdateRankings());
+    }
+
+    private IEnumerator UpdateRankings()
+    {
+        while (true)
+        {
+            List<string> positions = CalculatePoisitions();
+            UIController.UpdateRankings(positions);
+
+            yield return new WaitForSeconds(1f);
+
+            
+        }
+    }
+
+    private List<string> CalculatePoisitions()
+    {
+
+        List<PlayerController> allRacers = new List<PlayerController>();
+        allRacers.AddRange(AIControllers);
+        allRacers.Add(PlayerController);
+        
+
+        
+        for (int i = 0; i < allRacers.Count - 1; i++)
+        {
+            for (int j = i + 1; j < allRacers.Count; j++)
+            {
+
+                // if laps are different OR if laps are same but current tile are different
+                if (allRacers[i].CurrentLap < allRacers[j].CurrentLap ||
+                    allRacers[i].CurrentLap == allRacers[i].CurrentLap && allRacers[i].CurrentTile < allRacers[j].CurrentTile)
+                {
+                    PlayerController temp = allRacers[i];
+                    allRacers[i] = allRacers[j];
+                    allRacers[j] = temp;
+                } 
+
+            }
+        }
+
+        List<String> allNames = new List<string>();
+        allRacers.ForEach(o => allNames.Add(o.RacerName));
+
+        return allNames;
     }
 
     public void AddCollectable(ICollectable cs)
@@ -93,10 +141,8 @@ public class LevelController : MonoBehaviour
 
     public void FinishLap()
     {
-
         if (Checkpoints.TrueForAll(o => o.Passed == true))
         {
-
             if (PlayerController.CurrentLap == 3)
             {
                 FinishRace();
@@ -116,6 +162,11 @@ public class LevelController : MonoBehaviour
             Checkpoints.ForEach(o => o.ResetCheckPoint());
         }
 
+    }
+
+    public void FinishAILap(PlayerController ai)
+    {
+        ai.CurrentLap++;
     }
 
     public void SetTime(float time)

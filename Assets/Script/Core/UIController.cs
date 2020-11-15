@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -17,6 +18,9 @@ public class UIController : MonoBehaviour
 
     public Text[] Laps;
     public Text[] LapTimes;
+
+    public Image[] RankingImages;
+    public Text[] RankingNames;
 
     public GameObject LivesNotification;
     
@@ -104,6 +108,14 @@ public class UIController : MonoBehaviour
     {
         yield return new WaitForSeconds(time);
         LivesNotification.SetActive(false);
+    }
+
+    public void UpdateRankings(List<string> names)
+    {
+        for (int i = 0; i < RankingNames.Length; i++)
+        {
+            RankingNames[i].text = (i + 1).ToString() + ". " + names[i];
+        }
     }
     
 

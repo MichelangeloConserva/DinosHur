@@ -12,6 +12,8 @@ public class PlayerController : MonoBehaviour
     public float invurnerableTime = 1f;
     private bool invurnerable = false;
 
+    public String RacerName;
+
     public GameObject gun;
 
     public Collider CollectionCollider;
@@ -25,6 +27,7 @@ public class PlayerController : MonoBehaviour
 
 
     public int CurrentLap { get; set; } = 0;
+    public int CurrentTile = 0;
     public List<float> LapTimes { get; set; } = new List<float>();
     // Start is called before the first frame update
     void Start()

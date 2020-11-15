@@ -18,5 +18,14 @@ public class FinishLine : CheckpointScript
         {
             LevelController.Instance.FinishLap();
         }
+
+        List<PlayerController> AIControllers = LevelController.Instance.AIControllers;
+        foreach(PlayerController ai in AIControllers)
+        {
+            if (other.Equals(ai.CollectionCollider))
+            {
+                LevelController.Instance.FinishAILap(ai);
+            }
+        }
     }
 }
