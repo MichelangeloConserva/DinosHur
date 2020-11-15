@@ -28,6 +28,7 @@ public class PlayerController : MonoBehaviour
 
     public int CurrentLap { get; set; } = 0;
     public int CurrentTile = 0;
+    public float TimeEnteredTile = 0;
     public List<float> LapTimes { get; set; } = new List<float>();
     // Start is called before the first frame update
     void Start()

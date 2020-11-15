@@ -23,6 +23,7 @@ public class LevelController : MonoBehaviour
 
     public List<CheckpointScript> Checkpoints { get; set; } = new List<CheckpointScript>();
 
+    public List<TrackTile> trackTiles = new List<TrackTile>();
     private float startTime;
     private void Awake()
     {
@@ -84,8 +85,10 @@ public class LevelController : MonoBehaviour
             {
 
                 // if laps are different OR if laps are same but current tile are different
-                if (allRacers[i].CurrentLap < allRacers[j].CurrentLap ||
-                    allRacers[i].CurrentLap == allRacers[i].CurrentLap && allRacers[i].CurrentTile < allRacers[j].CurrentTile)
+                if ((allRacers[i].CurrentLap < allRacers[j].CurrentLap) ||
+                    (allRacers[i].CurrentLap == allRacers[i].CurrentLap && allRacers[i].CurrentTile < allRacers[j].CurrentTile) ||
+                    (allRacers[i].CurrentLap == allRacers[i].CurrentLap && allRacers[i].CurrentTile == allRacers[j].CurrentTile && allRacers[i].TimeEnteredTile > allRacers[i].TimeEnteredTile)
+                    )
                 {
                     PlayerController temp = allRacers[i];
                     allRacers[i] = allRacers[j];
