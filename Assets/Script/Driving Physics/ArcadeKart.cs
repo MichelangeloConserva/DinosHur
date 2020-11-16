@@ -180,7 +180,7 @@ namespace KartGame.KartSystems
                 Input = ai.GatherInputs();
 
                 if (counter - Player.counter > 2)
-                    baseStats.TopSpeed = Mathf.Max(initialTopSpeed - 8, baseStats.TopSpeed * 0.99f);
+                    baseStats.TopSpeed = Mathf.Max(initialTopSpeed - 15, baseStats.TopSpeed * 0.999f);
                 else if (Player.counter - counter > 2)
                     baseStats.TopSpeed = Mathf.Min(initialTopSpeed + 12, baseStats.TopSpeed * 1.01f);
                 else
@@ -214,8 +214,8 @@ namespace KartGame.KartSystems
             if (canMove)
                 MoveVehicle(accel, turn);
             else
-                if (Mathf.Abs(transform.localRotation.z) > 5)
-                    Rigidbody.AddForceAtPosition(- Vector3.up * 500, transform.position + transform.forward, ForceMode.Acceleration);
+                if (Mathf.Abs(transform.localRotation.z) > 0.2f)
+                    Rigidbody.AddForceAtPosition(- Vector3.up * 50, transform.position + transform.forward, ForceMode.Acceleration);
 
             GroundAirbourne();
 
@@ -499,7 +499,6 @@ namespace KartGame.KartSystems
             float speed = Rigidbody.velocity.magnitude;
             if(GroundPercent <= 0 && speed < 0.01f && Mathf.Abs(Input.y) > 0)
                 return true;
-
             return false;
         }
 
