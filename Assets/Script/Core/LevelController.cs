@@ -227,7 +227,7 @@ public class LevelController : MonoBehaviour
     public void FinishRace()
     {
         GameController.Instance.SetLapTimes(PlayerController.LapTimes);
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene("EndScene");
     }
 
 }

@@ -18,15 +18,21 @@ public class FinishLine : CheckpointScript
 
     void OnTriggerExit(Collider other)
     {
-        
+
         if (other.Equals(playerController.CollectionCollider))
+        {
             LevelController.Instance.FinishLap();
+            playerController.GetComponentInChildren<KartGame.KartSystems.ArcadeKart>().counter = 0;
+        }
 
         List<PlayerController> AIControllers = LevelController.Instance.AIControllers;
         foreach(PlayerController ai in AIControllers)
         {
             if (other.Equals(ai.CollectionCollider))
+            {
                 LevelController.Instance.FinishAILap(ai);
+                ai.GetComponentInChildren<KartGame.KartSystems.ArcadeKart>().counter = 0;
+            }
         }
     }
 }
