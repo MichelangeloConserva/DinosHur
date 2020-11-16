@@ -49,15 +49,13 @@ public class LevelController : MonoBehaviour
         startTime = Time.time;
         maxNumTiles = GetComponent<TrackCreator>().trackTileNum;
 
+        StartCoroutine(UpdateRankings());
+
     }
 
     public void Update()
     {
         
-        if (PlayerController == null)
-        {
-            Debug.Log("AAAa");
-        }
 
         UpdateUITimers();
 
@@ -66,8 +64,6 @@ public class LevelController : MonoBehaviour
             Application.Quit();
         }
 
-
-        StartCoroutine(UpdateRankings());
     }
 
     private IEnumerator UpdateRankings()

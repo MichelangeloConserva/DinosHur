@@ -20,15 +20,19 @@ public class MainMenuScript : MonoBehaviour
 
     public void StartRace()
     {
-        //SceneManager.LoadScene(1);
 
-        
         Controls.SetActive(false);
         MenuItems.SetActive(false);
         Rules.SetActive(false);
         Loading.gameObject.SetActive(true);
 
 
+        GameController.Instance.StartConfirmed = true;
+        StartCoroutine(ShowLoading());
+    }
+
+    public void PreloadScene()
+    {
         StartCoroutine(LoadYourAsyncScene());
     }
 
@@ -59,7 +63,7 @@ public class MainMenuScript : MonoBehaviour
     public void TwitchHover()
     {
         RulesHeading.text = "Twitch:";
-        RulesText.text = "- Twitch is a streaming platform.\n\n - To play with your friend have them go to twitch.tv/lightsider23\n\n - To fire the cannons have them write \"FIRE\" in the chat.";
+        RulesText.text = "- Twitch is a streaming platform.\n\n - To play with your friends have them go to twitch.tv/lightsider23\n\n - To fire the cannons have them write \"FIRE\" in the chat.";
     }
 
     public void TwitchLeave()
@@ -68,24 +72,38 @@ public class MainMenuScript : MonoBehaviour
         RulesText.text = "- Finish 4 laps before the opponents to win the race\n\n- Collect 6 boxes to receive a gun\n\n- Avoid the obstacles on the track\n\n- Have your friends control the cannons at twitch.tv";
     }
 
-
-    IEnumerator LoadYourAsyncScene()
+    public void CharacterSelection()
     {
+        SceneManager.LoadScene("CharacterCreation");
+    }
 
-        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync("MarkoTrack");
-        //asyncLoad.allowSceneActivation = false;
 
+    IEnumerator ShowLoading()
+    {
         string text = "...Loading...";
         int currentIndex = 0;
 
-        while (!asyncLoad.isDone)
+        while (true)
         {
-
             Loading.text = text.Substring(0, currentIndex);
             currentIndex = (currentIndex + 1) % (text.Length + 1);
             yield return new WaitForSeconds(0.2f);
-
         }
+    }
+    IEnumerator LoadYourAsyncScene()
+    {
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync("MarkoTrack");
+        asyncLoad.allowSceneActivation = false;
+
+        while (GameController.Instance.StartConfirmed == false || !asyncLoad.isDone)
+        {
+            yield return new WaitForSeconds(0.2f);
+        }
+
+        asyncLoad.allowSceneActivation = true;
+
+
+
         
     }
 

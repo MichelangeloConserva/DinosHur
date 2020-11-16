@@ -39,6 +39,8 @@ public class AIController : MonoBehaviour
     private Vector3 lastPos;
     public List<Vector3> previousPositions;
 
+    private float previousTimeCheck;
+
     //Start is called before the first frame update
     void Start()
     {
@@ -46,6 +48,8 @@ public class AIController : MonoBehaviour
         asc = GetComponent<AStarController>();
         lastPos = transform.position;
         previousPositions = new List<Vector3>();
+
+        previousTimeCheck = Time.time;
     }
 
     private Vector2 BasicAI()
@@ -113,20 +117,25 @@ public class AIController : MonoBehaviour
     internal Vector2 GatherInputs()
     {
 
-        previousPositions.Add(transform.position);
-
-
-        if (previousPositions.Count > 21 && Time.time > 5)
+        if (Time.time - previousTimeCheck > 1f)
         {
-            previousPositions.RemoveAt(0);
+            previousPositions.Add(transform.position);
 
-            if (previousPositions.Aggregate(0f, (acc, p) => acc + Vector3.Distance(p, transform.position)) / previousPositions.Count < 1)
-                GetComponentInParent<PlayerController>().RespawnPlayer();
-            else if (previousPositions.Aggregate(0f, (acc, p) => acc + Vector3.Distance(p, transform.position)) / previousPositions.Count < 5)
+
+            if (previousPositions.Count > 21 && Time.time > 5)
             {
-                GetComponent<Rigidbody>().AddForce(-transform.forward * 100, ForceMode.Impulse);
-                asc.ResetPathfinding();
+                previousPositions.RemoveAt(0);
+
+                if (previousPositions.Aggregate(0f, (acc, p) => acc + Vector3.Distance(p, transform.position)) / previousPositions.Count < 1)
+                    GetComponentInParent<PlayerController>().RespawnPlayer();
+                else if (previousPositions.Aggregate(0f, (acc, p) => acc + Vector3.Distance(p, transform.position)) / previousPositions.Count < 5)
+                {
+                    GetComponent<Rigidbody>().AddForce(-transform.forward * 100, ForceMode.Impulse);
+                    asc.ResetPathfinding();
+                }
             }
+
+            previousTimeCheck = Time.time;
         }
 
 
