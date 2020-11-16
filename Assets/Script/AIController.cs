@@ -124,7 +124,6 @@ public class AIController : MonoBehaviour
                 GetComponentInParent<PlayerController>().RespawnPlayer();
             else if (previousPositions.Aggregate(0f, (acc, p) => acc + Vector3.Distance(p, transform.position)) / previousPositions.Count < 5)
             {
-                Debug.Log("AIHelper");
                 GetComponent<Rigidbody>().AddForce(-transform.forward * 100, ForceMode.Impulse);
                 asc.ResetPathfinding();
             }

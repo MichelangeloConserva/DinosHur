@@ -18,13 +18,15 @@ public class LevelController : MonoBehaviour
 
     public CollectableController CollectableController;
     public ObstacleController ObstacleController;
-    public TwitchController TwitchController;
+    
 
     public PlayerController PlayerController;
     public List<PlayerController> AIControllers;
 
     public UIController UIController;
     public SoundController SoundController;
+
+    public TwitchController TwitchController;
 
     public List<CheckpointScript> Checkpoints { get; set; } = new List<CheckpointScript>();
 
@@ -46,11 +48,16 @@ public class LevelController : MonoBehaviour
     {
         startTime = Time.time;
         maxNumTiles = GetComponent<TrackCreator>().trackTileNum;
+
     }
 
     public void Update()
     {
         
+        if (PlayerController == null)
+        {
+            Debug.Log("AAAa");
+        }
 
         UpdateUITimers();
 
@@ -113,7 +120,8 @@ public class LevelController : MonoBehaviour
         allRacers = allRacers.OrderBy(o => o.CurrentLap * maxNumTiles + o.GetComponentInChildren<KartGame.KartSystems.ArcadeKart>().counter).Reverse().ToList();
 
         List <String> allNames = new List<string>();
-        allRacers.ForEach(o => allNames.Add(o.RacerName + ": " + o.GetComponentInChildren<KartGame.KartSystems.ArcadeKart>().counter.ToString() + " : " + o.CurrentLap.ToString()));
+        //allRacers.ForEach(o => allNames.Add(o.RacerName + ": " + o.GetComponentInChildren<KartGame.KartSystems.ArcadeKart>().counter.ToString() + " : " + o.CurrentLap.ToString()));
+        allRacers.ForEach(o => allNames.Add(o.RacerName));
 
         return allNames;
     }

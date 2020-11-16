@@ -8,7 +8,8 @@ public class FinishLine : CheckpointScript
     // Start is called before the first frame update
     private void Start()
     {
-        LevelController.Instance.PlayerController.CurrentCheckPoint = this;
+        playerController = LevelController.Instance.PlayerController;
+        playerController.CurrentCheckPoint = this;
         foreach(PlayerController pc in LevelController.Instance.AIControllers)
         {
             pc.CurrentCheckPoint = this;
@@ -18,7 +19,7 @@ public class FinishLine : CheckpointScript
     public new void OnTriggerExit(Collider other)
     {
         
-        if (other.Equals(LevelController.Instance.PlayerController.CollectionCollider))
+        if (other.Equals(playerController.CollectionCollider))
             LevelController.Instance.FinishLap();
 
         List<PlayerController> AIControllers = LevelController.Instance.AIControllers;

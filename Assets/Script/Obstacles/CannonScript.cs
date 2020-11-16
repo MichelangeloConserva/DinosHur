@@ -34,7 +34,16 @@ public class CannonScript : IObstacle
     }
     public new void Start()
     {
-        base.Start();
+
+        if (GameController.Instance.TwitchEnabled)
+        {
+            LevelController.Instance.TwitchController.AddCannon(this);
+        } 
+        else
+        {
+            LevelController.Instance.AddObstacle(this);
+        }
+
         direction = Vector3.Normalize(direction);
     }
     // Update is called once per frame

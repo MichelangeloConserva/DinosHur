@@ -8,7 +8,7 @@ public class TwitchController : MonoBehaviour {
 
 	public TwitchIRC TwitchIRC;
 	[SerializeField, SerializeReference]
-	public GameObject[] obstacles;
+	public List<CannonScript> cannons = new List<CannonScript>();
 	
 
 	
@@ -43,22 +43,26 @@ public class TwitchController : MonoBehaviour {
 		switch (msg)
         {
 			case "fire": ActivateObstacles();  break;
-			case "cheer": Cheer();  break;
-			case "fire all": StartCoroutine(FireAllTime()); break;
+			//case "cheer": Cheer();  break;
+			//case "fire all": StartCoroutine(FireAllTime()); break;
 			
         }
 	}
+
+	public void AddCannon(CannonScript cs)
+    {
+		cannons.Add(cs);
+    }
 
 	#region TwitchActions
 	private void ActivateObstacles()
     {
 
-		foreach(GameObject go in obstacles)
+		foreach(CannonScript cs in cannons)
         {
-			if (go != null)
+			if (cs != null)
 			{
-				IObstacle iobstacle = go.GetComponent<IObstacle>();
-				iobstacle.Activate();
+				cs.Activate();
 			}
         }
 

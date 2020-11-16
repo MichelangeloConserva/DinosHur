@@ -765,10 +765,20 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3055889472706042596, guid: 2ef2c07be4c50a94b985146b4a402a7a,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3055889472706042597, guid: 2ef2c07be4c50a94b985146b4a402a7a,
         type: 3}
       propertyPath: m_Name
       value: Game Manager
+      objectReference: {fileID: 0}
+    - target: {fileID: 3055889472706042598, guid: 2ef2c07be4c50a94b985146b4a402a7a,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3055889472706042599, guid: 2ef2c07be4c50a94b985146b4a402a7a,
         type: 3}
@@ -825,7 +835,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3055889472706042596, guid: 2ef2c07be4c50a94b985146b4a402a7a, type: 3}
+    - {fileID: 3055889472706042598, guid: 2ef2c07be4c50a94b985146b4a402a7a, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 2ef2c07be4c50a94b985146b4a402a7a, type: 3}
 --- !u!1 &1120030397 stripped
 GameObject:
