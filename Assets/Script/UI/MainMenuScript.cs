@@ -98,9 +98,14 @@ public class MainMenuScript : MonoBehaviour
         while (GameController.Instance.StartConfirmed == false || !asyncLoad.isDone)
         {
             yield return new WaitForSeconds(0.2f);
+
+            if (GameController.Instance.StartConfirmed == true)
+            {
+                asyncLoad.allowSceneActivation = true;
+            }
         }
 
-        asyncLoad.allowSceneActivation = true;
+        
 
 
 
