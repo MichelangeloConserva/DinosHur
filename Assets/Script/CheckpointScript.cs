@@ -34,9 +34,7 @@ public class CheckpointScript : MonoBehaviour
         foreach(PlayerController ai in LevelController.Instance.AIControllers)
         {
             if (other.Equals(ai.CollectionCollider))
-            {
                 ai.CurrentCheckPoint = this;
-            }
         }
         
     }

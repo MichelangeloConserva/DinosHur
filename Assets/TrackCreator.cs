@@ -24,7 +24,9 @@ public class TrackCreator : MonoBehaviour
 
     public static void WaypointAdd(WaypointChecker waypoint, GameObject nextGO)
     {
-        waypoint.nextWaypointsAndDist.Add(nextGO.GetComponent<WaypointChecker>(), Vector3.Distance(waypoint.transform.position, nextGO.transform.position)); ;
+        if(waypoint)
+            if (nextGO.GetComponent<WaypointChecker>())
+                waypoint.nextWaypointsAndDist.Add(nextGO.GetComponent<WaypointChecker>(), Vector3.Distance(waypoint.transform.position, nextGO.transform.position)); ;
     }
 
 
@@ -34,6 +36,7 @@ public class TrackCreator : MonoBehaviour
 
     public GameObject straightPiece;
     public GameObject curvePiece;
+    public GameObject counter;
 
     public TrackPiece[] trackPieces;
 
@@ -52,9 +55,10 @@ public class TrackCreator : MonoBehaviour
 
     private void LinkTwoStraight(GameObject prev, GameObject next)
     {
-        for (int j = 0; j < prev.transform.childCount - 2; j++)   // -2 to take into account of the walls
-            for (int k = 0; k < next.transform.childCount - 2; k++)
-                WaypointAdd(prev.transform.GetChild(j).GetComponent<WaypointChecker>(), next.transform.GetChild(k).gameObject);
+        for (int j = 0; j < prev.transform.childCount; j++)   // -2 to take into account of the walls
+            for (int k = 0; k < next.transform.childCount; k++)
+                if(prev.transform.GetChild(j).GetComponent<WaypointChecker>())
+                    WaypointAdd(prev.transform.GetChild(j).GetComponent<WaypointChecker>(), next.transform.GetChild(k).gameObject);
     }
 
     void DeployStraight(TrackPiece tp, Vector3 startPos, int num, Quaternion rotation, Vector3 direction, int index)
@@ -63,8 +67,27 @@ public class TrackCreator : MonoBehaviour
         for (int i = 0; i < num; i++)
         {
             GameObject cur = Instantiate(straightPiece, startPos + i * direction, rotation, transform.GetChild(0));
-            cur.GetComponentInChildren<TrackTile>().SetTileIndex(trackTileNum);
-            trackTileNum++;
+
+
+
+            if (rotation.eulerAngles.x != 0)
+                for (int ii=0; ii< cur.transform.GetChild(cur.transform.childCount - 1).childCount; ii++)
+                    cur.transform.GetChild(cur.transform.childCount - 1).GetChild(ii).rotation = Quaternion.Euler(0, 0, 0);
+
+            for (int ii=0; ii< cur.transform.GetChild(cur.transform.childCount - 1).childCount; ii++)
+            {
+                cur.transform.GetChild(cur.transform.childCount - 1).GetChild(ii).GetComponent<TrackTile>().SetTileIndex(trackTileNum++);
+                //if (rotation.eulerAngles.x != 0)
+                //    cur.transform.GetChild(cur.transform.childCount - 1).GetChild(ii).rotation = Quaternion.identity;
+            }
+
+            //for (int ii=-4; ii < 5; ii++)
+            //{
+            //    var cc = Instantiate(counter, Vector3.zero, Quaternion.identity, cur.transform.GetChild(cur.transform.childCount - 1));
+            //    cc.transform.localPosition = 8 * (ii / 4f) * cur.transform.forward;
+            //    cc.GetComponent<TrackTile>().SetTileIndex(trackTileNum++);
+            //}
+
 
             if (prev)
                 LinkTwoStraight(prev, cur);

@@ -14,7 +14,7 @@ public class GameController : MonoBehaviour
     {
         if (Instance != null)
         {
-            GameObject.Destroy(Instance);
+            Destroy(Instance);
         }
         else
         {

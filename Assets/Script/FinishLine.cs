@@ -16,7 +16,7 @@ public class FinishLine : CheckpointScript
         }
     }
 
-    public new void OnTriggerExit(Collider other)
+    void OnTriggerExit(Collider other)
     {
         
         if (other.Equals(playerController.CollectionCollider))
