@@ -41,6 +41,11 @@ public class PlayerController : MonoBehaviour
         if (transform.GetChild(0).childCount == 3)
             transform.GetChild(0).GetChild(2).gameObject.SetActive(true);
 
+        if (isAI == false)
+        {
+            RacerName = GameController.Instance.PlayerName;
+        }
+
     }
 
     // Update is called once per frame

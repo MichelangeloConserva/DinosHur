@@ -25,7 +25,8 @@ public class EndMenuScript : MonoBehaviour
             totalTime += GameController.Instance.LapTimes[i];
         }
 
-        raceMessage.text = "Congratulations, you have finished the race in " + ParseTime(totalTime);
+        raceMessage.text = "Congratulations " + GameController.Instance.PlayerName + ", you have finished the race in the "
+                            + GameController.Instance.PlayerPosition + " place.\n Total time: " + ParseTime(totalTime);
 
 
     }

@@ -18,6 +18,8 @@ public class MainMenuScript : MonoBehaviour
 
     public Text TwitchText;
 
+    public Text PlayerNameText;
+
     public void StartRace()
     {
 
@@ -28,6 +30,7 @@ public class MainMenuScript : MonoBehaviour
 
 
         GameController.Instance.StartConfirmed = true;
+        GameController.Instance.PlayerName = PlayerNameText.text;
         StartCoroutine(ShowLoading());
     }
 

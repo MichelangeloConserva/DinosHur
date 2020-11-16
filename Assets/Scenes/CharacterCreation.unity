@@ -197,6 +197,7 @@ MonoBehaviour:
   RulesText: {fileID: 1044799957}
   RulesHeading: {fileID: 1478484346}
   TwitchText: {fileID: 1044799957}
+  PlayerNameText: {fileID: 1799575059}
 --- !u!114 &248911635
 MonoBehaviour:
   m_ObjectHideFlags: 0

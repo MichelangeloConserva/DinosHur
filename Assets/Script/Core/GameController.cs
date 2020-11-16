@@ -8,6 +8,8 @@ public class GameController : MonoBehaviour
     public static GameController Instance;
 
     public bool StartConfirmed = false;
+    public string PlayerName = "Ben Hur";
+    public string PlayerPosition = "1st";
 
     public List<float> LapTimes = new List<float>();
 

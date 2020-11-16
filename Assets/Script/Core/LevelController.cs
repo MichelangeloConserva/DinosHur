@@ -227,6 +227,31 @@ public class LevelController : MonoBehaviour
     public void FinishRace()
     {
         GameController.Instance.SetLapTimes(PlayerController.LapTimes);
+
+        List<string> names = CalculatePoisitions();
+
+        int position = 1; ;
+        for(int i = 0; i < names.Count; i++)
+        {
+            if (names[i].Equals(PlayerController.RacerName)){
+                position = i + 1;
+            }
+        }
+
+        string place = "1st";
+        switch (position)
+        {
+            case 1: place = "1st"; break;
+            case 2: place = "2nd"; break;
+            case 3: place = "3rd"; break;
+            case 4: place = "4th"; break;
+            case 5: place = "5th"; break;
+            case 6: place = "6th"; break;
+
+
+        }
+
+        GameController.Instance.PlayerPosition = place;
         SceneManager.LoadScene("EndScene");
     }
 
