@@ -8,6 +8,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MainMenu.unity
     guid: ef029954d6d36944685fd6b0187f2614
+  - enabled: 1
+    path: Assets/Scenes/CharacterCreation.unity
+    guid: 50ff3cb92ab86014cb81fe0d5e623919
   - enabled: 0
     path: Assets/Scenes/TrackAI.unity
     guid: 73b732eb44bb6a144b0ed047d2ed8d68

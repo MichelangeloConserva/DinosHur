@@ -7,6 +7,8 @@ public class GameController : MonoBehaviour
 
     public static GameController Instance;
 
+    public bool StartConfirmed = false;
+
     public List<float> LapTimes = new List<float>();
 
     public bool TwitchEnabled = false;
@@ -21,6 +23,8 @@ public class GameController : MonoBehaviour
             Instance = this;
             DontDestroyOnLoad(this);
         }
+
+        Application.targetFrameRate = 60;
     }
 
     public void SetLapTimes(List<float> times)

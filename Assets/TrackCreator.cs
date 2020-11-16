@@ -69,7 +69,6 @@ public class TrackCreator : MonoBehaviour
             GameObject cur = Instantiate(straightPiece, startPos + i * direction, rotation, transform.GetChild(0));
 
 
-
             if (rotation.eulerAngles.x != 0)
                 for (int ii=0; ii< cur.transform.GetChild(cur.transform.childCount - 1).childCount; ii++)
                     cur.transform.GetChild(cur.transform.childCount - 1).GetChild(ii).rotation = Quaternion.Euler(0, 0, 0);
