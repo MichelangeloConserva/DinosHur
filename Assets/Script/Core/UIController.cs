@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class UIController : MonoBehaviour
@@ -13,9 +15,14 @@ public class UIController : MonoBehaviour
     public GameObject BulletUI;
     public Image[] Bullets;
 
-   
 
+    public Text[] Laps;
     public Text[] LapTimes;
+
+    public Image[] RankingImages;
+    public Text[] RankingNames;
+
+    public GameObject LivesNotification;
     
     public void SetProgressionBar(float percentage)
     {
@@ -57,6 +64,23 @@ public class UIController : MonoBehaviour
         Timer.text = time;
     }
 
+    public void ChangeLap(int lap)
+    {
+        for (int i = 0; i < Laps.Length; i++)
+        {
+            if (i <= lap)
+            {
+                Laps[i].gameObject.SetActive(true);
+                LapTimes[i].gameObject.SetActive(true);
+            }
+            else
+            {
+                LapTimes[i].gameObject.SetActive(false);
+                Laps[i].gameObject.SetActive(false);
+            }
+        }
+    }
+
     public void SetLapTime(int lap, string time)
     {
         LapTimes[lap].text = time;
@@ -72,6 +96,26 @@ public class UIController : MonoBehaviour
     {
         BulletUI.SetActive(false);
         ProgressionBarUI.SetActive(true);
+    }
+
+    public void ShowLivesNotification(float time)
+    {
+        LivesNotification.SetActive(true);
+        StartCoroutine(HideLivesNotification(time));
+    }
+
+    private IEnumerator HideLivesNotification(float time)
+    {
+        yield return new WaitForSeconds(time);
+        LivesNotification.SetActive(false);
+    }
+
+    public void UpdateRankings(List<string> names)
+    {
+        for (int i = 0; i < RankingNames.Length; i++)
+        {
+            RankingNames[i].text = (i + 1).ToString() + ". " + names[i];
+        }
     }
     
 

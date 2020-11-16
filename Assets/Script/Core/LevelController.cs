@@ -4,12 +4,17 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine.SceneManagement;
 using UnityEngine;
+using System.Linq;
 
 public class LevelController : MonoBehaviour
 {
 
     //Singleton
     public static LevelController Instance = null;
+
+    public List<int> rankings = new List<int>();
+    public int maxNumTiles;
+
 
     public CollectableController CollectableController;
     public ObstacleController ObstacleController;
@@ -23,6 +28,7 @@ public class LevelController : MonoBehaviour
 
     public List<CheckpointScript> Checkpoints { get; set; } = new List<CheckpointScript>();
 
+    public List<TrackTile> trackTiles = new List<TrackTile>();
     private float startTime;
     private void Awake()
     {
@@ -39,6 +45,7 @@ public class LevelController : MonoBehaviour
     public void Start()
     {
         startTime = Time.time;
+        maxNumTiles = GetComponent<TrackCreator>().trackTileNum;
     }
 
     public void Update()
@@ -51,6 +58,64 @@ public class LevelController : MonoBehaviour
         {
             Application.Quit();
         }
+
+
+        StartCoroutine(UpdateRankings());
+    }
+
+    private IEnumerator UpdateRankings()
+    {
+        while (true)
+        {
+            List<string> positions = CalculatePoisitions();
+            UIController.UpdateRankings(positions);
+
+            yield return new WaitForSeconds(1f);
+
+            
+        }
+    }
+
+
+
+    private List<string> CalculatePoisitions()
+    {
+        rankings = new List<int>();
+
+        List<PlayerController> allRacers = new List<PlayerController>();
+        allRacers.AddRange(AIControllers);
+        allRacers.Add(PlayerController);
+        
+
+        
+        //for (int i = 0; i < allRacers.Count - 1; i++)
+        //{
+        //    for (int j = i + 1; j < allRacers.Count; j++)
+        //    {
+
+        //        // if laps are different OR if laps are same but current tile are different
+        //        if ((allRacers[i].CurrentLap < allRacers[j].CurrentLap) ||
+        //            (allRacers[i].CurrentLap == allRacers[i].CurrentLap && allRacers[i].CurrentTile < allRacers[j].CurrentTile) ||
+        //            (allRacers[i].CurrentLap == allRacers[i].CurrentLap && allRacers[i].CurrentTile == allRacers[j].CurrentTile && allRacers[i].TimeEnteredTile > allRacers[i].TimeEnteredTile)
+        //            )
+        //        {
+        //            PlayerController temp = allRacers[i];
+        //            allRacers[i] = allRacers[j];
+        //            allRacers[j] = temp;
+        //        } 
+
+        //    }
+        //}
+
+
+
+        allRacers.ForEach(o => rankings.Add(o.CurrentLap * maxNumTiles + o.GetComponentInChildren<KartGame.KartSystems.ArcadeKart>().counter));
+        allRacers = allRacers.OrderBy(o => o.CurrentLap * maxNumTiles + o.GetComponentInChildren<KartGame.KartSystems.ArcadeKart>().counter).Reverse().ToList();
+
+        List <String> allNames = new List<string>();
+        allRacers.ForEach(o => allNames.Add(o.RacerName + ": " + o.GetComponentInChildren<KartGame.KartSystems.ArcadeKart>().counter.ToString() + " : " + o.CurrentLap.ToString()));
+
+        return allNames;
     }
 
     public void AddCollectable(ICollectable cs)
@@ -93,9 +158,9 @@ public class LevelController : MonoBehaviour
 
     public void FinishLap()
     {
-
         if (Checkpoints.TrueForAll(o => o.Passed == true))
         {
+
 
             if (PlayerController.CurrentLap == 3)
             {
@@ -107,11 +172,20 @@ public class LevelController : MonoBehaviour
             float lapTime = Time.time - currentLapStartTime;
 
             UIController.SetLapTime(PlayerController.CurrentLap, ParseTime(lapTime));
+
             PlayerController.FinishLap(lapTime);
+
+            UIController.ChangeLap(PlayerController.CurrentLap);
+
 
             Checkpoints.ForEach(o => o.ResetCheckPoint());
         }
 
+    }
+
+    public void FinishAILap(PlayerController ai)
+    {
+        ai.CurrentLap++;
     }
 
     public void SetTime(float time)

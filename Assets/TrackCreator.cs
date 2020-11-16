@@ -39,6 +39,8 @@ public class TrackCreator : MonoBehaviour
 
 
     private List<GameObject> track;
+
+    public int trackTileNum = 0;
     
     void Awake()
     {
@@ -60,7 +62,10 @@ public class TrackCreator : MonoBehaviour
         GameObject prev = null;
         for (int i = 0; i < num; i++)
         {
-            var cur = Instantiate(straightPiece, startPos + i * direction, rotation, transform.GetChild(0));
+            GameObject cur = Instantiate(straightPiece, startPos + i * direction, rotation, transform.GetChild(0));
+            cur.GetComponentInChildren<TrackTile>().SetTileIndex(trackTileNum);
+            trackTileNum++;
+
             if (prev)
                 LinkTwoStraight(prev, cur);
 
@@ -98,6 +103,8 @@ public class TrackCreator : MonoBehaviour
 
     private void UpdateTrack()
     {
+        trackTileNum = 0;
+
         while (transform.GetChild(0).childCount > 0)
             DestroyImmediate(transform.GetChild(0).GetChild(0).gameObject);
 
@@ -109,6 +116,8 @@ public class TrackCreator : MonoBehaviour
         for (int i=0; i<trackPieces.Length; i++)
             DeployStraight(trackPieces[i], trackPieces[i].startPos, trackPieces[i].num, Quaternion.Euler(trackPieces[i].rotation), trackPieces[i].direction, i);
 
+
+        
 
     }
 

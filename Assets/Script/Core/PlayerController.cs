@@ -5,11 +5,18 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-
+    public bool isAI = false;
     public int boxesNecessaryForGun = 6;
     public int playerHealth = 4;
 
+    public float invurnerableTime = 1f;
+    private bool invurnerable = false;
+
+    public String RacerName;
+
     public GameObject gun;
+
+    public LevelController levelController;
 
     public Collider CollectionCollider;
     public Collider ObstacleCollider;
@@ -17,11 +24,14 @@ public class PlayerController : MonoBehaviour
     public Rigidbody dinoRigidbody;
     public Rigidbody vehicleRigidbody;
 
+
     public CheckpointScript CurrentCheckPoint { get; set; }
     public int CollectedBoxNum { get; set; } = 0;
 
 
     public int CurrentLap { get; set; } = 0;
+    public int CurrentTile = 0;
+    public float TimeEnteredTile = 0;
     public List<float> LapTimes { get; set; } = new List<float>();
     // Start is called before the first frame update
     void Start()
@@ -36,7 +46,8 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.R))
+        
+        if (Input.GetKeyDown(KeyCode.R) && isAI == false)
         {
             RespawnPlayer();
         }
@@ -51,46 +62,78 @@ public class PlayerController : MonoBehaviour
     /// <summary>
     /// Resets player to the last checkpoint
     /// </summary>
-    void RespawnPlayer()
+    public void RespawnPlayer()
     {
 
         dinoRigidbody.velocity = Vector3.zero;
         dinoRigidbody.angularVelocity = Vector3.zero;
+        dinoRigidbody.transform.rotation = CurrentCheckPoint.transform.rotation; 
+
         dinoRigidbody.transform.position = new Vector3(
                                                     CurrentCheckPoint.transform.position.x,
                                                     CurrentCheckPoint.transform.position.y + 10f,
                                                     CurrentCheckPoint.transform.position.z
                                                     );
-        dinoRigidbody.transform.rotation = CurrentCheckPoint.transform.rotation;
+       
 
         vehicleRigidbody.velocity = Vector3.zero;
         vehicleRigidbody.angularVelocity = Vector3.zero;
+        vehicleRigidbody.transform.rotation = CurrentCheckPoint.transform.rotation;
+
         vehicleRigidbody.transform.position = new Vector3(
                                                     CurrentCheckPoint.transform.position.x, 
                                                     CurrentCheckPoint.transform.position.y + 10f, 
                                                     CurrentCheckPoint.transform.position.z - 2f
                                                     );
-        vehicleRigidbody.transform.rotation = CurrentCheckPoint.transform.rotation;
-        
-    }
+
+        dinoRigidbody.GetComponent<KartGame.KartSystems.ArcadeKart>().counter = CurrentCheckPoint.GetComponent<CheckpointScript>().tileIndex;
 
 
-
-    public void DecreaseHealth()
-    {
-        if (playerHealth > 0)
+        if (isAI)
         {
-            playerHealth--;
-            LevelController.Instance.UIController.SetHealth(playerHealth);
+            gameObject.GetComponentInChildren<AStarController>().ResetPathfinding();
         }
+
     }
+    
 
     public void IncreaseHealth()
     {
         if (playerHealth < 4)
+        {
             playerHealth++;
-            LevelController.Instance.UIController.SetHealth(playerHealth);
+        }
+        LevelController.Instance.UIController.SetHealth(playerHealth);
     }
+
+    public void DecreaseHealth()
+    {
+        if (playerHealth > 0 && invurnerable == false)
+        {
+            playerHealth--;
+            LevelController.Instance.UIController.SetHealth(playerHealth);
+            StartCoroutine(makeInvurnerable(invurnerableTime));
+        } 
+       
+        if (playerHealth == 0)
+        {
+            
+            StartCoroutine(makeInvurnerable(invurnerableTime));
+            RespawnPlayer();
+
+            playerHealth = 4;
+            LevelController.Instance.UIController.ShowLivesNotification(2f);
+            LevelController.Instance.UIController.SetHealth(playerHealth);
+        }
+    }
+
+    private IEnumerator makeInvurnerable(float time)
+    {
+        invurnerable = true;
+        yield return new WaitForSeconds(time);
+        invurnerable = false;
+    }
+
 
     public void FinishLap(float time)
     {
@@ -107,7 +150,6 @@ public class PlayerController : MonoBehaviour
 
     public void UnequipGun()
     {
-
         CollectedBoxNum = 0;
         gun.SetActive(false);
 

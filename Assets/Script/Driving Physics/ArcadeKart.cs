@@ -81,10 +81,19 @@ namespace KartGame.KartSystems
             }
         }
 
+        private PlayerController playerController;
+
         public ArcadeKart Player;
         public int counter = 0;
         public bool humanControll = false;
         public float humanHandicap;
+
+
+
+        public int GetRaceCounter()
+        {
+            return 0;
+        }
 
         public Rigidbody Rigidbody { get; private set; }
         public Vector2 Input       { get; private set; }
@@ -154,6 +163,8 @@ namespace KartGame.KartSystems
                 ai = GetComponent<AIController>();
             else
                 baseStats.TopSpeed *= (1 - humanHandicap);
+
+            playerController = gameObject.GetComponentInParent<PlayerController>();
         }
 
         void FixedUpdate()
@@ -168,21 +179,32 @@ namespace KartGame.KartSystems
             if (transform.position.y > 5 && Mathf.Abs(tr.x) < 10)
                 transform.position -= Vector3.up * (transform.position.y - 5);*/
 
-
-            ResetIfStuck();
+            if (Rigidbody.isKinematic == false)
+            {
+                ResetIfStuck();
+            }
 
             if (humanControll)
             {
                 GatherInputs();
             }
-            else
+            else if (humanControll == false)
             {
                 Input = ai.GatherInputs();
 
-                if (counter - Player.counter > 2)
-                    baseStats.TopSpeed = Mathf.Max(initialTopSpeed - 15, baseStats.TopSpeed * 0.999f);
-                else if (Player.counter - counter > 2)
-                    baseStats.TopSpeed = Mathf.Min(initialTopSpeed + 12, baseStats.TopSpeed * 1.01f);
+
+                var ourPC = GetComponentInParent<PlayerController>();
+                var humanPC = Player.GetComponentInParent<PlayerController>();
+                var maxNumTiles = ourPC.levelController.maxNumTiles;
+
+                var ourRank = ourPC.CurrentLap * maxNumTiles + counter;
+                var humanRank = humanPC.CurrentLap * maxNumTiles + counter;
+
+
+                if (ourRank - humanRank > 2)
+                    baseStats.TopSpeed = Mathf.Max(initialTopSpeed - 10, baseStats.TopSpeed * 0.999f);
+                else if (humanRank - ourRank > 2)
+                    baseStats.TopSpeed = Mathf.Min(initialTopSpeed + 6, baseStats.TopSpeed * 1.01f);
                 else
                     baseStats.TopSpeed = initialTopSpeed;
             }
@@ -224,12 +246,6 @@ namespace KartGame.KartSystems
         }
 
 
-        private void OnTriggerExit(Collider other)
-        {
-            if (other.gameObject.CompareTag("Counter"))
-                counter++;
-        }
-
         /// <summary>
         /// Used to prevent rotation during airtime
         /// </summary>
@@ -249,14 +265,18 @@ namespace KartGame.KartSystems
             // reset input
             Input = Vector2.zero;
 
-            // gather nonzero input from our sources
-            for (int i = 0; i < m_Inputs.Length; i++)
+
+            if (AirPercent < 1)
             {
-                var inputSource = m_Inputs[i];
-                Vector2 current = inputSource.GenerateInput();
-                if (current.sqrMagnitude > 0)
+                // gather nonzero input from our sources
+                for (int i = 0; i < m_Inputs.Length; i++)
                 {
-                    Input = current;
+                    var inputSource = m_Inputs[i];
+                    Vector2 current = inputSource.GenerateInput();
+                    if (current.sqrMagnitude > 0)
+                    {
+                        Input = current;
+                    }
                 }
             }
         }
@@ -515,13 +535,8 @@ namespace KartGame.KartSystems
             if (IsStuck() && lastGroundCollided != null)
             {
                 if (lastGroundCollided.TryGetComponent(out Collider collider))
-                {
-                    Vector3 pos = new Vector3(
-                        collider.bounds.center.x,
-                        collider.bounds.max.y,
-                        collider.bounds.center.z
-                    );
-                    transform.position = pos;
+                { 
+                    playerController.RespawnPlayer();
                 }
             }
         }

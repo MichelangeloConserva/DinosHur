@@ -7,7 +7,7 @@ public class ExplosiveObstacle : IObstacle
 
     public GameObject area;
     public float explosionForce = 10f;
-    public float explosionRadius = 5f;
+    public float explosionRadius = 7.5f;
     public float upForce = 0.5f;
 
     public float delayTime = 1f;
@@ -23,7 +23,11 @@ public class ExplosiveObstacle : IObstacle
             if (rb != null)
             {
                 rb.AddExplosionForce(explosionForce, transform.position, explosionRadius, upForce, ForceMode.Impulse);
-                
+            }
+
+            if (collider.Equals(LevelController.Instance.PlayerController.ObstacleCollider))
+            {
+                LevelController.Instance.PlayerController.DecreaseHealth();
             }
         }
 

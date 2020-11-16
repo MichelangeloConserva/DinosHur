@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 using static Utils;
@@ -36,6 +37,7 @@ public class AIController : MonoBehaviour
     private AStarController asc;
     private KartGame.KartSystems.ArcadeKart ak;
     private Vector3 lastPos;
+    public List<Vector3> previousPositions;
 
     //Start is called before the first frame update
     void Start()
@@ -43,6 +45,7 @@ public class AIController : MonoBehaviour
         ak = GetComponent<KartGame.KartSystems.ArcadeKart>();
         asc = GetComponent<AStarController>();
         lastPos = transform.position;
+        previousPositions = new List<Vector3>();
     }
 
     private Vector2 BasicAI()
@@ -103,14 +106,35 @@ public class AIController : MonoBehaviour
     }
 
 
+
+
+
+
     internal Vector2 GatherInputs()
     {
 
+        previousPositions.Add(transform.position);
 
-        lastPos = transform.position;
+
+        if (previousPositions.Count > 21 && Time.time > 5)
+        {
+            previousPositions.RemoveAt(0);
+
+            if (previousPositions.Aggregate(0f, (acc, p) => acc + Vector3.Distance(p, transform.position)) / previousPositions.Count < 1)
+                GetComponentInParent<PlayerController>().RespawnPlayer();
+            else if (previousPositions.Aggregate(0f, (acc, p) => acc + Vector3.Distance(p, transform.position)) / previousPositions.Count < 5)
+            {
+                Debug.Log("AIHelper");
+                GetComponent<Rigidbody>().AddForce(-transform.forward * 100, ForceMode.Impulse);
+                asc.ResetPathfinding();
+            }
+        }
 
 
-        if (Vector3.Project(asc.curTargetPos() - transform.position, transform.forward).magnitude < 3)
+
+        var tg = asc.curTargetPos() - asc.curTargetPos().y * Vector3.up;
+        var ourPos = transform.position - transform.position.y * Vector3.up;
+        if (Vector3.Project(tg - ourPos, transform.forward).magnitude < 3)
             asc.NextTg();
 
 

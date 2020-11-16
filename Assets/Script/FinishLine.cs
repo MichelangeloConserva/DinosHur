@@ -2,18 +2,30 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FinishLine : MonoBehaviour
+public class FinishLine : CheckpointScript
 {
 
     // Start is called before the first frame update
+    private void Start()
+    {
+        LevelController.Instance.PlayerController.CurrentCheckPoint = this;
+        foreach(PlayerController pc in LevelController.Instance.AIControllers)
+        {
+            pc.CurrentCheckPoint = this;
+        }
+    }
 
-
-    public void OnTriggerEnter(Collider other)
+    public new void OnTriggerExit(Collider other)
     {
         
         if (other.Equals(LevelController.Instance.PlayerController.CollectionCollider))
-        {
             LevelController.Instance.FinishLap();
+
+        List<PlayerController> AIControllers = LevelController.Instance.AIControllers;
+        foreach(PlayerController ai in AIControllers)
+        {
+            if (other.Equals(ai.CollectionCollider))
+                LevelController.Instance.FinishAILap(ai);
         }
     }
 }

@@ -21,11 +21,6 @@ public class GameController : MonoBehaviour
             Instance = this;
             DontDestroyOnLoad(this);
         }
-
-        LapTimes.Add(11111111);
-        LapTimes.Add(22222222);
-        LapTimes.Add(33333333);
-        LapTimes.Add(44444444);
     }
 
     public void SetLapTimes(List<float> times)
