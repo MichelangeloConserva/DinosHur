@@ -70,12 +70,11 @@ public class LevelController : MonoBehaviour
     {
         while (true)
         {
-            List<string> positions = CalculatePoisitions();
-            UIController.UpdateRankings(positions);
-
             yield return new WaitForSeconds(1f);
 
-            
+            List<string> positions = CalculatePoisitions();
+            UIController.UpdateRankings(positions);
+  
         }
     }
 

@@ -23,6 +23,7 @@ public class GameController : MonoBehaviour
         else
         {
             Instance = this;
+            TwitchEnabled = false;
             DontDestroyOnLoad(this);
         }
 
